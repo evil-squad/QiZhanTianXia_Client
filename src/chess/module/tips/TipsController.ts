@@ -1,0 +1,4 @@
+class TipsController {
+	public constructor() {
+	}
+}
