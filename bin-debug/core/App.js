@@ -17,10 +17,25 @@ var App = (function () {
         //实例化Http请求
         App.Http.initServer(App.GlobalData.HttpSerever);
         //实例化ProtoBuf和Socket请求
-        App.ProtoFile = dcodeIO.ProtoBuf.loadProto(RES.getRes(App.GlobalData.ProtoFile));
-        App.ProtoConfig = RES.getRes(App.GlobalData.ProtoConfig);
+        protobuf.load("resource/proto/package.proto?" + Math.random()).then(function (root) {
+            App.ProtoRoot = root;
+        });
+        Log.trace(App.GlobalData.ReqConfig, App.GlobalData.RespConfig);
+        App.ReqConfig = RES.getRes(App.GlobalData.ReqConfig);
+        App.RespConfig = RES.getRes(App.GlobalData.RespConfig);
         App.Socket.initServer(App.GlobalData.SocketServer, App.GlobalData.SocketPort, new ByteArrayMsgByProtobuf());
     };
+    App.lookupProtoMessage = function (key) {
+        return App.ProtoRoot.lookup(key);
+    };
+    d(App, "Head"
+        ,function () {
+            if (this._head == null) {
+                this._head = App.lookupProtoMessage(Msg.Head).create({ uid: 12, err: 0, errmsg: "" });
+            }
+            return this._head;
+        }
+    );
     d(App, "Http"
         /**
          * Http请求

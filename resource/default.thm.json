@@ -35,6 +35,7 @@
     "resource/skins/LoadingUISkin.exml",
     "resource/skins/LoginSkin.exml",
     "resource/skins/PanelSkin.exml",
+    "resource/skins/RoomUISkin.exml",
     "resource/skins/SaleItemSkin.exml",
     "resource/skins/ServerChooseSkin.exml",
     "resource/skins/ServerItemRendererSkin.exml",

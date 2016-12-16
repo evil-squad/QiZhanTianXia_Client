@@ -8,7 +8,7 @@ class App {
      */
     public static Init():void {
         //全局配置数据
-        App.GlobalData = RES.getRes("global");
+         App.GlobalData = RES.getRes("global");
         //开启调试
         App.DebugUtils.isOpen(App.GlobalData.IsDebug);
         App.DebugUtils.setThreshold(5);
@@ -17,10 +17,22 @@ class App {
         //实例化Http请求
         App.Http.initServer(App.GlobalData.HttpSerever);
         //实例化ProtoBuf和Socket请求
-        App.ProtoFile = dcodeIO.ProtoBuf.loadProto(RES.getRes(App.GlobalData.ProtoFile));
-        App.ProtoConfig = RES.getRes(App.GlobalData.ProtoConfig);
+        protobuf.load("resource/proto/package.proto?" + Math.random()).then(function (root) {
+            App.ProtoRoot = root;
+        });
+        Log.trace(App.GlobalData.ReqConfig,App.GlobalData.RespConfig);
+        App.ReqConfig = RES.getRes(App.GlobalData.ReqConfig);
+        App.RespConfig = RES.getRes(App.GlobalData.RespConfig);
         App.Socket.initServer(App.GlobalData.SocketServer, App.GlobalData.SocketPort, new ByteArrayMsgByProtobuf());
     }
+
+    public static lookupProtoMessage(key:string){
+        return App.ProtoRoot.lookup(key);
+    }
+
+    public static ProtoRoot:any;
+    public static ReqConfig:any;
+    public static RespConfig:any;
 
     /**
      * 请求服务器使用的用户标识
@@ -45,6 +57,14 @@ class App {
      * @type {null}
      */
     public static ProtoConfig:any = null;
+
+    private static _head:any;
+    public static get Head(){
+        if (this._head == null) {
+                this._head = App.lookupProtoMessage(Msg.Head).create({ uid: 12, err: 0, errmsg: "" });
+        }
+        return this._head;
+    }
 
     /**
      * Http请求

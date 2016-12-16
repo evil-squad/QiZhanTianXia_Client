@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ServerItemRendererSkin" width="400" height="70" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="nameLbl" text="名词" left="20" top="5" bold="true" textColor="0xe6456a"/>
+	<e:Label id="ipLbl" text="IP" textColor="0x397FA9" left="20" bottom="5"/>
+	<e:Label id="portLbl" text="port" textColor="0x397FA9" right="20" bottom="5"/>
+</e:Skin>

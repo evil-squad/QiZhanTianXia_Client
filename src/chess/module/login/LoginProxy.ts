@@ -3,7 +3,7 @@ class LoginProxy extends BaseProxy{
         super($controller);
 
         //注册从服务器返回消息的监听
-        this.receiveServerMsg(HttpConst.USER_LOGIN, this.loginSuccess, this);
+        this.receiveServerMsg(Cmd.LOGIN, this.loginSuccess, this);
     }
 
     /**
@@ -11,18 +11,22 @@ class LoginProxy extends BaseProxy{
      * @param userName
      * @param pwd
      */
-    public login(userName:string, pwd:string):void{
-        var paramObj:any = {
-            "uName":userName,
-            "uPass":pwd
+    public login(openId:string, code:number):void{
+         var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId });
+        var wechat = App.lookupProtoMessage(Msg.WECHAT).create({ code: code });
+        var body = {
+            "head": App.Head,
+            "debug": debug,
+            "wechat": wechat
         };
-        this.sendHttpMsg(HttpConst.USER_LOGIN, paramObj);
+        this.sendSocketCBMsg(Cmd.LOGIN, body);
     }
 
     /**
      * 用户登陆成功返回
      */
     public loginSuccess(obj:any):void{
-        this.applyFunc(LoginConst.LOGIN_S2C, obj);
+        MainManager.setUserInfo(obj.player);
+        this.applyFunc(LoginConst.LOGIN_RESP, obj);
     }
 }

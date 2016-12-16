@@ -1,19 +1,20 @@
 var SceneConsts;
 (function (SceneConsts) {
+    SceneConsts[SceneConsts["Enter"] = 1] = "Enter";
     /**
      * Game场景
      * @type {number}
      */
-    SceneConsts[SceneConsts["Game"] = 1] = "Game";
+    SceneConsts[SceneConsts["Room"] = 2] = "Room";
     /**
      * 游戏场景
      * @type {number}
      */
-    SceneConsts[SceneConsts["UI"] = 2] = "UI";
+    SceneConsts[SceneConsts["Home"] = 3] = "Home";
     /**
      * Loading场景
      * @type {number}
      */
-    SceneConsts[SceneConsts["LOADING"] = 3] = "LOADING";
+    SceneConsts[SceneConsts["LOADING"] = 4] = "LOADING";
 })(SceneConsts || (SceneConsts = {}));
 //# sourceMappingURL=SceneConsts.js.map

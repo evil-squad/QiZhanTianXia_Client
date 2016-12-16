@@ -18,39 +18,40 @@ var HomeView = (function (_super) {
         this.warehouseBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.warehouseClickHandler, this);
         this.factoryBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.factoryClickHandler, this);
         this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.moreClickHandler, this);
+        this.createBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createClickHandler, this);
+        this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
     };
     p.playSound = function () {
         App.SoundManager.playEffect("sound_dianji");
     };
-    p.friendClickHandler = function (e) {
-        App.TipsUtils.showCenter("" + Math.random());
-        return;
-        function send() {
-            Log.trace("home send");
-            var msg = {};
-            msg.key = "user_login_c2s";
-            msg.body = {
-                "accid": 888,
-                "tstamp": 999,
-                "ticket": "海潮"
-            };
-            App.Socket.send(msg);
+    p.open = function () {
+        var param = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            param[_i - 0] = arguments[_i];
         }
-        send();
-        this.playSound();
+        _super.prototype.open.call(this, param);
+        this.refreshView();
+    };
+    p.createClickHandler = function (e) {
+        this.applyFunc(HomeConst.ROOM_CREATE_REQ);
+    };
+    p.enterClickHandler = function (e) {
+        this.applyFunc(HomeConst.ROOM_ENTER_REQ);
+    };
+    p.friendClickHandler = function (e) {
         //App.ViewManager.open(ViewConst.Friend);
     };
     p.shopClickHandler = function (e) {
         this.playSound();
-        App.ViewManager.open(ViewConst.Shop);
+        //App.ViewManager.open(ViewConst.Shop);
     };
     p.warehouseClickHandler = function (e) {
         this.playSound();
-        App.ViewManager.open(ViewConst.Warehouse);
+        //App.ViewManager.open(ViewConst.Warehouse);
     };
     p.factoryClickHandler = function (e) {
         this.playSound();
-        App.ViewManager.open(ViewConst.Factory);
+        //App.ViewManager.open(ViewConst.Factory);
     };
     p.moreClickHandler = function (e) {
         this.playSound();
@@ -65,21 +66,38 @@ var HomeView = (function (_super) {
         console.log(e.target);
         if (e.target == this.menu.taskBtn) {
             this.playSound();
-            App.ViewManager.open(ViewConst.Task);
+            //App.ViewManager.open(ViewConst.Task);
             this.menuBtn.selected = false;
             this.menu.visible = false;
         }
         else if (e.target == this.menu.dailyBtn) {
             this.playSound();
-            App.ViewManager.open(ViewConst.Daily);
+            //App.ViewManager.open(ViewConst.Daily);
             this.menuBtn.selected = false;
             this.menu.visible = false;
         }
         else if (e.target == this.menu.mailBtn) {
             this.playSound();
-            App.ViewManager.open(ViewConst.Mail);
+            //App.ViewManager.open(ViewConst.Mail);
             this.menuBtn.selected = false;
             this.menu.visible = false;
+        }
+    };
+    p.createRoomSuccess = function () {
+        this.refreshView();
+    };
+    p.refreshView = function () {
+        this.nameDisplay.text = MainManager.userInfo.nick;
+        this.coinsDisplay.text = "" + MainManager.userInfo.coins;
+        if (RoomManager.hasRoomInfo) {
+            this.createBtn.enabled = false;
+            this.enterBtn.enabled = true;
+            this.enterBtn.label = "进入【" + RoomManager.roomId + "】房间";
+        }
+        else {
+            this.createBtn.enabled = true;
+            this.enterBtn.enabled = false;
+            this.enterBtn.label = "进入房间";
         }
     };
     return HomeView;

@@ -1,1 +1,1 @@
-{"version":3,"file":"LoginConst.js","sourceRoot":"","sources":["../../../../src/chess/module/login/LoginConst.ts"],"names":[],"mappings":"AAAA;IAAA;IAGA,CAAC;;IAFiB,oBAAS,GAAU,KAAK,CAAC;IACzB,oBAAS,GAAU,KAAK,CAAC;IAC3C,iBAAC;AAAD,CAAC,AAHD,IAGC;oBAHK,UAAU;AAGf"}
+{"version":3,"file":"LoginConst.js","sourceRoot":"","sources":["../../../../src/chess/module/login/LoginConst.ts"],"names":[],"mappings":"AAAA;IAAA;IAGA,CAAC;;IAFiB,oBAAS,GAAU,WAAW,CAAC;IAC/B,qBAAU,GAAU,YAAY,CAAC;IACnD,iBAAC;AAAD,CAAC,AAHD,IAGC;oBAHK,UAAU;AAGf"}

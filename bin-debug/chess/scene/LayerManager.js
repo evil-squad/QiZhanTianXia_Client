@@ -11,7 +11,7 @@ var LayerManager = (function () {
      * 主游戏层
      * @type {BaseSpriteLayer}
      */
-    LayerManager.Game_Main = new BaseSpriteLayer();
+    LayerManager.Room_Main = new BaseEuiLayer();
     /**
      * UI主界面
      * @type {BaseEuiLayer}

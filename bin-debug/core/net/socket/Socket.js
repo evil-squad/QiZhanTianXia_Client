@@ -14,7 +14,6 @@ var Socket = (function (_super) {
      * 添加事件监听
      */
     p.addEvents = function () {
-        //Log.trace("[Socket] add events");
         this._socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
         this._socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this._socket.addEventListener(egret.Event.CLOSE, this.onSocketClose, this);
@@ -24,7 +23,6 @@ var Socket = (function (_super) {
      * 移除事件监听
      */
     p.removeEvents = function () {
-        //Log.trace("[Socket] remove events");
         this._socket.removeEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
         this._socket.removeEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this._socket.removeEventListener(egret.Event.CLOSE, this.onSocketClose, this);
@@ -34,7 +32,6 @@ var Socket = (function (_super) {
      * 服务器连接成功
      */
     p.onSocketOpen = function () {
-        //Log.trace("[Socket] open");
         this._reconnectCount = 0;
         if (this._connectFlag) {
             App.MessageCenter.dispatch(SocketConst.SOCKET_RECONNECT);
@@ -49,7 +46,6 @@ var Socket = (function (_super) {
      * 服务器断开连接
      */
     p.onSocketClose = function () {
-        //Log.trace("[Socket] close");
         App.TipsUtils.showCenter("服务器断开连接");
         if (this._needReconnect) {
             this.reconnect();
@@ -64,7 +60,6 @@ var Socket = (function (_super) {
      * 服务器连接错误
      */
     p.onSocketError = function () {
-        //Log.trace("[Socket] error");
         App.TipsUtils.showCenter("服务器连接错误");
         if (this._needReconnect) {
             this.reconnect();
@@ -79,7 +74,6 @@ var Socket = (function (_super) {
      * @param e
      */
     p.onReceiveMessage = function (e) {
-        Log.trace("socket receive message");
         this._msg.receive(this._socket);
     };
     /**

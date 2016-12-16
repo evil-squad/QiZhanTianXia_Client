@@ -21,7 +21,6 @@ class Socket extends BaseClass {
      * 添加事件监听
      */
     private addEvents() {
-        //Log.trace("[Socket] add events");
         this._socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
         this._socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this._socket.addEventListener(egret.Event.CLOSE, this.onSocketClose, this);
@@ -32,7 +31,6 @@ class Socket extends BaseClass {
      * 移除事件监听
      */
     private removeEvents():void {
-        //Log.trace("[Socket] remove events");
         this._socket.removeEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
         this._socket.removeEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this._socket.removeEventListener(egret.Event.CLOSE, this.onSocketClose, this);
@@ -43,7 +41,6 @@ class Socket extends BaseClass {
      * 服务器连接成功
      */
     private onSocketOpen():void {
-        //Log.trace("[Socket] open");
         this._reconnectCount = 0;
 
         if (this._connectFlag) {
@@ -60,7 +57,6 @@ class Socket extends BaseClass {
      * 服务器断开连接
      */
     private onSocketClose():void {
-        //Log.trace("[Socket] close");
         App.TipsUtils.showCenter("服务器断开连接");
         if (this._needReconnect) {
             this.reconnect();
@@ -75,7 +71,6 @@ class Socket extends BaseClass {
      * 服务器连接错误
      */
     private onSocketError():void {
-        //Log.trace("[Socket] error");
         App.TipsUtils.showCenter("服务器连接错误");
         if (this._needReconnect) {
             this.reconnect();
@@ -90,7 +85,6 @@ class Socket extends BaseClass {
      * @param e
      */
     private onReceiveMessage(e:egret.Event):void {
-        Log.trace("socket receive message");
         this._msg.receive(this._socket);
     }
 

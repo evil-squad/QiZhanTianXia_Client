@@ -1,15 +1,16 @@
 enum SceneConsts{
+    Enter = 1,
     /**
      * Game场景
      * @type {number}
      */
-    Game = 1,
+    Room,
 
     /**
      * 游戏场景
      * @type {number}
      */
-    UI,
+    Home,
 
     /**
      * Loading场景

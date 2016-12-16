@@ -17,6 +17,10 @@
 			{
 				"configPath":"resource/resource_ui.json",
 				"relativePath":"resource/"
+			},
+			{
+				"configPath":"resource/resource_mj.json",
+				"relativePath":"resource/"
 			}
 		],
 		"id":"org.egret-labs.resource",

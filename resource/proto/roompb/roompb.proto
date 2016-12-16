@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+//import "errpb/err.proto";
+
+package roompb;
+
+service Room {
+	// 注册 Online
+	rpc Register(RegisterReq) returns (RegisterResp) {}
+	// 注销 Online
+	rpc Unregister(UnregisterReq) returns (UnregisterResp) {}
+	// Keepalive 保活(3秒保活一次, 10秒超时)
+	rpc Keepalive(KeepaliveReq) returns (KeepaliveResp) {}
+	// CreateRoom 创建房间
+	rpc CreateRoom(CreateRoomReq) returns (CreateRoomResp) {}
+	// DismissRoom 解散房间
+	rpc DismissRoom(DismissRoomReq) returns (DismissRoomResp) {}
+	// EnterRoom 玩家进入房间
+	rpc EnterRoom(EnterRoomReq) returns (EnterRoomResp) {}
+	// LeaveRoom 玩家离开房间
+	rpc LeaveRoom(LeaveRoomReq) returns (LeaveRoomResp) {}
+	// 查询uid信息
+	rpc GetPlayerInfo(GetPlayerInfoReq) returns (GetPlayerInfoResp) {}
+	// 换座位? 座位空好换, 座位有人要协商?
+}
+
+message RegisterReq {
+	int32 online_id = 1;
+	// true: 如果之前有注册, 就先注销它
+	bool force = 2;
+}
+message RegisterResp {
+	errpb.ERR errcode = 1;
+	int64 session = 2;
+}
+
+message UnregisterReq {
+	int64 session = 1;
+}
+message UnregisterResp {
+}
+
+message KeepaliveReq {
+	int64 session = 1;
+}
+message KeepaliveResp {
+}
+
+message CreateRoomReq {
+	int64 session = 1;
+	// 玩家信息
+	int32 uid = 2;
+	string nick = 3;
+}
+message CreateRoomResp {
+	// 错误码
+	errpb.ERR errcode = 1;
+	// 房间号(全局唯一)
+	string roomid = 3;
+	// 座位号
+	int32 seatid = 4;
+}
+
+message EnterRoomReq {
+	int64 session = 1;
+	// 要进入的房间号
+	string roomid = 2;
+	// true: 观察者(不能占位子, 只接收同步消息)
+	bool ob = 3;
+	// 加入者玩家信息
+	int32 uid = 4;
+	string nick = 5;
+}
+message EnterRoomResp {
+	// 错误码
+	errpb.ERR errcode = 1;
+	// 座位情况
+	repeated PlayerInfo players = 3;
+}
+
+message LeaveRoomReq {
+	int64 session = 1;
+	// 离开者id
+	int32 uid = 2;
+}
+message LeaveRoomResp {
+	// 错误码
+	errpb.ERR errcode = 1;
+}
+
+message DismissRoomReq {
+	int64 session = 1;
+	// 玩家信息
+	int32 uid = 2;
+}
+message DismissRoomResp {
+	// 错误码
+	errpb.ERR errcode = 1;
+}
+
+message GetPlayerInfoReq {
+	int64 session = 1;
+	repeated int32 uid = 2;
+}
+message GetPlayerInfoResp {
+	// 错误码
+	errpb.ERR errcode = 1;
+	repeated PlayerInfo player_info = 3;
+}
+
+// 通知源 或 通知接受者的类型
+enum NOTIFIER {
+	// 玩家
+	PLAYER = 0;
+	// 房间
+	ROOM = 1;
+	// online服务器
+	ONLINE = 2;
+}
+enum NOTIFY {
+	NOOP = 0;
+	// 房间关闭
+	ROOM_CLOSE = 1;
+	// 玩家进入房间
+	PLAYER_ENTER = 2;
+	// 玩家离开房间
+	PLAYER_LEAVE = 3;
+	// 有人提出解散房间
+	ROOM_DISMISS_REQ = 4;
+}
+enum ROOM_CLOSE_REASON {
+	// 房间空(指:没有玩家, 但可能还有ob), 所以关闭
+	EMPTY = 0;
+	// 被某玩家解散
+	DISMISS = 1;
+	// room服务器关闭
+	ROOMSRV_CLOSE = 2;
+}
+message Notify {
+	int64 session = 1;
+	// 通知类型, 参考 NOTIFY 的定义
+	NOTIFY type = 2;
+	// 通知接收者, 具体指:
+	// 解散通知: 不包括解散者自己, 包括ob
+	// 进入通知: 房间所有人(不包括进入者自己)
+	// 离开通知: 房间所有人(不包括退出者自己)
+	int32 recver = 3;
+	repeated int32 recvers = 4;
+	RoomCloseNotify room_close = 5;
+	PlayerEnterNotify player_enter = 6;
+	PlayerLeaveNotify player_leave = 7;
+	RoomDismissReqNotify room_dismiss = 8;
+}
+message RoomCloseNotify {
+	// 解散者信息
+	message Dismisser {
+		int32 uid = 1;
+		string nick = 2;
+	}
+	ROOM_CLOSE_REASON reason = 1;
+	Dismisser dismisser = 2;
+}
+message PlayerEnterNotify {
+	// 进入者
+	PlayerInfo enterer = 1;
+}
+message PlayerLeaveNotify {
+	message Leaver {
+		int32 uid = 1;
+	}
+	// 离开者
+	Leaver leaver = 1;
+}
+message RoomDismissReqNotify {
+	message Dismisser {
+		int32 uid = 1;
+	}
+	// 解散者
+	Dismisser dismisser = 1;
+}
+
+message PlayerInfo {
+	int32 uid = 1;
+	string nick = 2;
+	int32 online_id = 3;
+	string roomid = 4;
+	int32 seatid = 5;
+	int32 obid = 6;
+	bool ob = 7;
+}

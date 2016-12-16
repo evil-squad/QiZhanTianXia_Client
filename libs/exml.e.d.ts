@@ -62,6 +62,8 @@ declare class MenuSkin extends eui.Skin{
 }
 declare class PanelSkin extends eui.Skin{
 }
+declare class RoomUISkin extends eui.Skin{
+}
 declare class SaleItemSkin extends eui.Skin{
 }
 declare class ServerChooseSkin extends eui.Skin{

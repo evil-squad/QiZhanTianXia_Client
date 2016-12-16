@@ -2,8 +2,8 @@ var LoginConst = (function () {
     function LoginConst() {
     }
     var d = __define,c=LoginConst,p=c.prototype;
-    LoginConst.LOGIN_C2S = 10001;
-    LoginConst.LOGIN_S2C = 10002;
+    LoginConst.LOGIN_REQ = "login.req";
+    LoginConst.LOGIN_RESP = "login.resp";
     return LoginConst;
 }());
 egret.registerClass(LoginConst,'LoginConst');

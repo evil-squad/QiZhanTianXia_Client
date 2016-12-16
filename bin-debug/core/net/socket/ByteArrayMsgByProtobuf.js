@@ -6,17 +6,31 @@ var ByteArrayMsgByProtobuf = (function (_super) {
     function ByteArrayMsgByProtobuf() {
         _super.call(this);
         this.msgClass = null;
-        this.protoConfig = null;
-        this.protoConfigSymmetry = null;
+        this.reqConfig = null;
+        this.respConfig = null;
+        this.reqConfigSymmetry = null;
+        this.respConfigSymmetry = null;
+        this.msgClass = null;
+        this.reqConfig = null;
+        this.respConfig = null;
+        this.reqConfigSymmetry = null; //cmd:msg 1:cspb.LoginReq
+        this.respConfigSymmetry = null;
         this.msgClass = {};
-        this.protoConfig = App.ProtoConfig;
-        this.protoConfigSymmetry = {};
-        var keys = Object.keys(this.protoConfig);
-        //Log.trace("protobuf key-value",keys.length);
-        for (var i = 0, len = keys.length; i < len; i++) {
-            var key = keys[i];
-            var value = this.protoConfig[key];
-            this.protoConfigSymmetry[value] = key;
+        this.reqConfig = App.ReqConfig;
+        this.respConfig = App.RespConfig;
+        this.reqConfigSymmetry = {};
+        this.respConfigSymmetry = {};
+        var cmds = Object.keys(this.reqConfig);
+        for (var i = 0, len = cmds.length; i < len; i++) {
+            var cmd = cmds[i];
+            var msg = this.reqConfig[cmd];
+            this.reqConfigSymmetry[cmd] = msg;
+        }
+        cmds = Object.keys(this.respConfig);
+        for (var i = 0, len = cmds.length; i < len; i++) {
+            var cmd = cmds[i];
+            var msg = this.respConfig[cmd];
+            this.respConfigSymmetry[cmd] = msg;
         }
     }
     var d = __define,c=ByteArrayMsgByProtobuf,p=c.prototype;
@@ -25,12 +39,14 @@ var ByteArrayMsgByProtobuf = (function (_super) {
      * @param key
      * @returns {any}
      */
-    p.getMsgClass = function (key) {
-        var cls = this.msgClass[key];
+    p.getMessage = function (msgName) {
+        var cls = this.msgClass[msgName];
         if (cls == null || cls == undefined) {
-            cls = App.ProtoFile.build(key);
-            this.msgClass[key] = cls;
+            cls = App.lookupProtoMessage(msgName);
+            this.msgClass[msgName] = cls;
         }
+        if (cls == null)
+            throw new Error("不存在name=" + msgName + "的Message");
         return cls;
     };
     /**
@@ -38,35 +54,66 @@ var ByteArrayMsgByProtobuf = (function (_super) {
      * @param key
      * @returns {any}
      */
-    p.getMsgID = function (key) {
-        return this.protoConfigSymmetry[key];
+    p.getReqMsg = function (msgId) {
+        return this.reqConfig[msgId];
     };
     /**
      * 获取msgKey
      * @param msgId
      * @returns {any}
      */
-    p.getMsgKey = function (msgId) {
-        return this.protoConfig[msgId];
+    p.getRespMsg = function (msgId) {
+        return this.respConfig[msgId];
+    };
+    p.receive = function (socket) {
+        var head = socket.readHead();
+        var body = socket.readBody();
+        var len = head.readInt();
+        var cmdId = head.readInt();
+        var flag = head.readByte();
+        var obj = {};
+        obj.cmd = cmdId; //this.getRespMsg(cmdId);
+        var Message = this.getMessage(this.getRespMsg(obj.cmd));
+        obj.body = Message.decode(body);
+        Log.trace(Message, obj.body, obj.body.head);
+        if (obj.body != undefined
+            && obj.body.head != undefined) {
+            if (obj.body.head.err != undefined && obj.body.head.err != 0) {
+                App.TipsUtils.showCenter("错误码：" + obj.body.head.err);
+                return;
+            }
+        }
+        else {
+            App.TipsUtils.showCenter("数据错误:" + this.getErrMsg(obj));
+            return;
+        }
+        if (obj) {
+            App.MessageCenter.dispatch(obj.cmd, obj.body);
+        }
+        socket.clear();
+    };
+    p.getErrMsg = function (obj) {
+        if (obj.body == undefined)
+            return "pb解析错误";
+        if (obj.body.head == undefined)
+            return "pb缺少头部信息";
+        return "pb解析失败";
     };
     /**
      * 消息解析
      * @param msg
      */
     p.decode = function (msg) {
-        var len = msg.readInt();
-        var msgID = msg.readInt();
-        var flag = msg.readByte();
-        Log.trace("PB.decode:" + msgID, flag, len);
-        if (msg.bytesAvailable >= len) {
+        var data = msg;
+        var len = data.readInt();
+        var msgID = data.readInt();
+        var flag = data.readByte();
+        if (data.bytesAvailable >= len) {
             var bytes = new egret.ByteArray();
-            msg.readBytes(bytes, 0, len);
+            data.readBytes(bytes, 0, len);
             var obj = {};
-            obj.key = this.getMsgKey(msgID);
-            App.DebugUtils.start("Protobuf Decode");
-            obj.body = this.getMsgClass(obj.key).decode(bytes.buffer);
-            App.DebugUtils.stop("Protobuf Decode");
-            Log.trace("收到数据：", "[" + msgID + " " + obj.key + "]", obj.body);
+            //obj.cmd = this.getRespMsg(msgID);
+            //Log.trace("收到数据：", "[" + msgID + " " + obj.cmd + "]", obj.body);
             return obj;
         }
         return null;
@@ -76,17 +123,22 @@ var ByteArrayMsgByProtobuf = (function (_super) {
      * @param msg
      */
     p.encode = function (msg) {
-        var msgID = this.getMsgID(msg.key);
-        var msgBody = new (this.getMsgClass(msg.key))(msg.body);
+        var msgID = msg.cmd; //this.getReqID(msg.key);//cmd=msg
+        //var msgBody = new (this.getMsgClass(msg.key))(msg.body);
+        var Message = this.getMessage(this.getReqMsg(msg.cmd));
+        var msgBody = Message.create(msg.body);
         App.DebugUtils.start("Protobuf Encode");
-        var bodyBytes = new egret.ByteArray(msgBody.toArrayBuffer());
+        //var bodyBytes:egret.ByteArray = new egret.ByteArray(msgBody.toArrayBuffer());
+        var bodyBytes = Message.encode(msgBody).finish(); //new egret.ByteArray(Message.encode(msgBody).finish());
         App.DebugUtils.stop("Protobuf Encode");
-        Log.trace("发送数据：", "[" + msgID + " " + msg.key + " " + bodyBytes.length + "]", msg.body);
+        Log.trace("发送数据：", "[" + msgID + " " + msg.cmd + " " + bodyBytes.length + "]", msg.body);
         var sendMsg = new egret.ByteArray();
         sendMsg.writeInt(bodyBytes.length); //len
         sendMsg.writeInt(msgID); //cmd
         sendMsg.writeByte(0);
         sendMsg.writeBytes(bodyBytes); //body
+        var result = Message.decode(bodyBytes);
+        Log.trace(result);
         return sendMsg;
     };
     return ByteArrayMsgByProtobuf;

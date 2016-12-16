@@ -3,14 +3,7 @@ enum ViewConst{
     ServerChoose,
     Login,
     Home,
-    Friend,
-    Shop,
-    Warehouse,
-    Factory,
-    Task,
-    Daily,
-    Mail,
 
-    Game = 20000,
-    GameUI,
+    Room = 20000,
+    RoomUI,
 }

@@ -30,7 +30,12 @@ class ServerChooseView extends BaseEuiView{
             App.MessageCenter.addListener(SocketConst.SOCKET_CONNECT, ()=>{
                 Log.trace("[Startup]与服务器连接上");
                 App.ViewManager.close(ViewConst.ServerChoose);
-                App.ViewManager.open(ViewConst.Login);
+                if (item.seletedIdex == 0) {
+                    App.ViewManager.open(ViewConst.Home);
+                }
+                else {
+                    App.ViewManager.open(ViewConst.Login);
+                }
             }, this);
             App.MessageCenter.addListener(SocketConst.SOCKET_RECONNECT, ()=>{
                 Log.trace("[Startup]与服务器重新连接上");

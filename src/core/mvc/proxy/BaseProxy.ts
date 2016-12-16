@@ -101,6 +101,20 @@ class BaseProxy {
         App.Socket.send(msg);
     }
 
+     public sendSocketCBMsg(cmd:number,body:any):void {
+        App.Socket.send({ cmd: cmd, body: body });
+    }
+
+     public sendSocketCHBMsg(cmd:number,head:any,body:any):void {
+        body.head = head;
+        App.Socket.send({ cmd: cmd, body: body });
+    }
+
+     public sendSocketCEBMsg(cmd:number,err:number,body:any):void {
+        body.head.err = err;
+        App.Socket.send({ cmd: cmd, body: body });
+    }
+
     /**
      * 发送消息到Http服务端
      * @param type 消息标识 例如: User.login

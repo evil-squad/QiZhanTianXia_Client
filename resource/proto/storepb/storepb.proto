@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package storepb;
+
+message User {
+	message RegInfo {
+		// qudao
+		string channel = 1;
+		// android or ios
+		string os = 2;
+		// register time (UTC second)
+		int32 time = 3;
+		// ...
+	}
+	string id = 1;
+	string uuid = 2;
+	RegInfo reg_info = 3;
+	int32 uid = 4;
+}
+
+message Player {
+	string id = 1;
+	int32 uid = 2;
+	string nick = 3;
+	int32 role_time = 4;
+	int64 coins = 5;
+	int32 last_login_time = 6;
+}

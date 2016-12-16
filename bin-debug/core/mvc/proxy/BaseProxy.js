@@ -98,6 +98,17 @@ var BaseProxy = (function () {
     p.sendSocketMsg = function (msg) {
         App.Socket.send(msg);
     };
+    p.sendSocketCBMsg = function (cmd, body) {
+        App.Socket.send({ cmd: cmd, body: body });
+    };
+    p.sendSocketCHBMsg = function (cmd, head, body) {
+        body.head = head;
+        App.Socket.send({ cmd: cmd, body: body });
+    };
+    p.sendSocketCEBMsg = function (cmd, err, body) {
+        body.head.err = err;
+        App.Socket.send({ cmd: cmd, body: body });
+    };
     /**
      * 发送消息到Http服务端
      * @param type 消息标识 例如: User.login

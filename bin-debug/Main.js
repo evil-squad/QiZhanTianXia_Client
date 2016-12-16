@@ -59,6 +59,7 @@ var Main = (function (_super) {
         App.ResourceUtils.addConfig("resource/resource_core.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_ui.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_battle.json", "resource/");
+        App.ResourceUtils.addConfig("resource/resource_mj.json", "resource/");
         App.ResourceUtils.loadConfig(this.onConfigComplete, this);
     };
     /**
@@ -74,40 +75,22 @@ var Main = (function (_super) {
      */
     p.onThemeLoadComplete = function () {
         new Startup();
-        //new ActTest();
-        //        new ProtoBufTest();
-        //        new StarlingSwfTest();
-        //this.createGameScene();
+        //new RoomTest();
     };
     /**
      * 初始化所有场景
      */
     p.initScene = function () {
         App.SceneManager.register(SceneConsts.LOADING, new LoadingScene());
-        App.SceneManager.register(SceneConsts.UI, new UIScene());
-        App.SceneManager.register(SceneConsts.Game, new GameScene());
+        App.SceneManager.register(SceneConsts.Enter, new EnterScene());
+        App.SceneManager.register(SceneConsts.Home, new HomeScene());
+        App.SceneManager.register(SceneConsts.Room, new RoomScene());
     };
     /**
      * 初始化所有模块
      */
     p.initModule = function () {
         App.ControllerManager.register(ControllerConst.Loading, new LoadingController());
-    };
-    p.createGameScene = function () {
-        Log.trace("createGameScene");
-        this.webSocket = new egret.WebSocket();
-        this.webSocket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
-        this.webSocket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
-        this.webSocket.connect("192.168.199.159", 8087);
-    };
-    p.onSocketOpen = function () {
-        var cmd = "Hello Egret WebSocket";
-        Log.trace("连接成功，发送数据：" + cmd);
-        //this.webSocket.writeUTF(cmd);
-    };
-    p.onReceiveMessage = function (e) {
-        var msg = this.webSocket.readUTF();
-        Log.trace("收到数据：" + msg);
     };
     return Main;
 }(egret.DisplayObjectContainer));

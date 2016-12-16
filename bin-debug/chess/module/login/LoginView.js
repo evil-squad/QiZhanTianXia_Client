@@ -60,42 +60,16 @@ var LoginView = (function (_super) {
             App.TipsUtils.showCenter("账号密码不能为空");
             return;
         }
-        var msg = {};
-        msg.key = "user_login_c2s";
-        msg.body = {
-            "username": userName,
-            "password": pwd
-        };
-        App.Socket.send(msg);
-        App.MessageCenter.addListener("user_login_s2c", function (obj) {
-            App.TipsUtils.showCenter(obj.message);
-            if (obj.flag == 1) {
-                App.ViewManager.close(ViewConst.Login);
-                App.ViewManager.open(ViewConst.Home);
-            }
-        }, this);
-    };
-    p.test = function () {
-        //初始化simple_proto
-        var message = dcodeIO.ProtoBuf.loadProto(RES.getRes("simple_proto"));
-        //创建user_login_class
-        var user_login_class = message.build("user_login_c2s");
-        Log.trace(user_login_class);
-        //创建一条消息
-        // var user_login = new user_login_class({
-        //     "username" : "666",
-        //     "password" : "777"
-        // });
-        //序列化
-        //var bytes = user_login.toArrayBuffer();
-        //Log.trace("序列化数据：", bytes);
-        //App.Socket.send(user_login);
+        var openId = "213sefwe";
+        var code = "344";
+        this.applyFunc(LoginConst.LOGIN_REQ, openId, code);
     };
     /**
      * 登陆成功处理
      */
     p.loginSuccess = function () {
         //TODO 登陆成功处理
+        App.TipsUtils.showCenter("登录成功");
     };
     return LoginView;
 }(BaseEuiView));

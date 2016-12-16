@@ -1,0 +1,14 @@
+{
+    "1" : "cspb.LoginResp",
+    
+    "101" : "cspb.CreateRoomResp",
+    "102" : "cspb.DismissRoomResp",
+
+    "103" : "cspb.EnterRoomResp",
+    "104" : "cspb.LeaveRoomResp",
+
+    "105" : "cspb.GetRoomPlayerInfoResp",
+    "106" : "cspb.RoomNotify",
+
+    "9" : "talkpb.TextMsg"
+}

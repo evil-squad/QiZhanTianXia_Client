@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+//import "errpb/err.proto";
+//import "roompb/roompb.proto";
+//import "storepb/storepb.proto";
+
+package cspb;
+
+/*
+包的传输格式: frame = len(uint32) + cmd(uint32) + flag(uint8) + payload(pb)
+其中: len = sizeof(payload), 所以一个完整的 frame 的大小是:
+      frame_size = 4+4+1+len
+	  最大 frame_size 暂定 64K-1(65535), 如果需要传输更大的 frame, 需要采用分包模式;
+	  预留一个flag字段，支持以后加解密和压缩的标识, 目前是全0;
+	  len/cmd/flag 都是以 bigendian 传输
+*/
+
+// CMD 是消息编号, 跟消息名称的对应关系是:
+// 把 CMD 改成 Cmd 的形式就是 Req/Resp 的词根.
+// 例如: LOGIN <-> Login <-> LoginReq/LoginResp
+//
+// 另外有些消息可能是服务端发起, 即通知, 这种消息
+// 的名称遵守 CMD <-> CmdNotify 的形式.
+enum CMD {
+	NOOP = 0;
+	LOGIN = 1;
+
+	// room
+	CREATE_ROOM = 101;
+	DISMISS_ROOM = 102;
+	ENTER_ROOM = 103;
+	LEAVE_ROOM = 104;
+	GET_ROOM_PLAYER_INFO = 105;
+	ROOM_NOTIFY = 106;
+}
+
+// 包头, 每个 Req/Resp 的第一个字段都是它.
+message Head {
+	// 用户id, 跟本次连接绑定
+	int32 uid = 1;
+	// 错误码, 返回时填写
+	errpb.ERR err = 13;
+	// 错误描述, 返回填写(可不填)
+	string errmsg = 14;
+}
+
+// 登陆, 由于没有选角色的过程, 客户端只需要发一次登陆,
+// 就自动完成: 账号验证(如:微信), 创角(如果没有对应角色), 进入游戏的过程.
+// 对应关系: (channel+openid) <--> uid
+message LoginReq {
+	message Debug {
+		// 类似微信的openid, 每个 openid 对应内部的一个uid
+		// 客户端如果不好记录, 就取用户设备的设备id.
+		string openid = 1;
+	}
+	// 微信登陆方式, 参考:
+	// https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317851&token=&lang=zh_CN
+	// http://blog.csdn.net/luoyan973387349/article/details/49815225
+	// app(sdk) -> getcode -> appsvr(code) -> get:token+openid -> get:/sns/userinfo -> loginsucc
+	message Wechat {
+		string code = 1;
+	}
+	Head head = 1;
+	Debug debug = 2;
+	Wechat wechat = 3;
+}
+
+message LoginResp {
+	Head head = 1;
+	storepb.Player player = 2;
+}
+
+// =================== room ===================
+
+// CREATE_ROOM = 101;
+message CreateRoomReq {
+	Head head = 1;
+}
+message CreateRoomResp {
+	Head head = 1;
+	// 房间号(全局唯一)
+	string roomid = 2;
+	// 座位号
+	int32 seatid = 3;
+}
+
+// DISMISS_ROOM = 102;
+message DismissRoomReq {
+	Head head = 1;
+}
+message DismissRoomResp {
+	Head head = 1;
+}
+
+// ENTER_ROOM = 103;
+message EnterRoomReq {
+	Head head = 1;
+	// true: 观察者(不能占位子, 只接收同步消息)
+	bool ob = 2;
+	// 要进入的房间号
+	string roomid = 3;
+}
+message EnterRoomResp {
+	Head head = 1;
+	// 座位情况
+	repeated roompb.PlayerInfo players = 2;
+}
+
+// LEAVE_ROOM = 104;
+message LeaveRoomReq {
+	Head head = 1;
+}
+message LeaveRoomResp {
+	Head head = 1;
+}
+
+// GET_PLAYER_INFO_ROOM = 105;
+message GetRoomPlayerInfoReq {
+	Head head = 1;
+	// 注意如果跟发起请求的玩家不在同一个房间的uid;
+	// 就算列在这里, 返回里也不会有相关信息;
+	repeated int32 uid = 2;
+}
+message GetRoomPlayerInfoResp {
+	Head head = 1;
+	repeated roompb.PlayerInfo player_info = 2;
+}
+
+// ROOM_NOTIFY = 106;
+message RoomNotify {
+	Head head = 1;
+	// 参考 roompb.Notify 的定义
+	roompb.Notify notify = 2;
+}

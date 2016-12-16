@@ -8,7 +8,7 @@ class LayerManager{
      * 主游戏层
      * @type {BaseSpriteLayer}
      */
-    public static Game_Main:BaseSpriteLayer = new BaseSpriteLayer();
+    public static Room_Main:BaseEuiLayer = new BaseEuiLayer();
 
     /**
      * UI主界面

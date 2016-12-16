@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RoomUISkin" width="1000" height="650" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image width="1000" height="650" x="0" y="0" source="map_jpg"/>
+	<e:Button id="leaveBtn" label="退出" x="865" y="55"/>
+	<e:Button id="dismissBtn" label="解散" x="742" y="55"/>
+	<e:Label id="topPlayerLabel" text="1" x="280" y="40" bold="true" textColor="0xf70c0c"/>
+	<e:Label id="leftPlayerLabel" text="2" x="17" y="157" textColor="0xf70e09"/>
+	<e:Label id="rightPlayerLabel" text="4" x="907" y="162" textColor="0xf20c0c"/>
+	<e:Label id="bottomPlayerLabel" text="3" x="137" y="486" textColor="0xf41818"/>
+	<e:TextInput id="msgInput" width="435" height="20" x="321" y="614" enabled="true"/>
+	<e:Button id="sendBtn" label="发送" x="762" y="597"/>
+</e:Skin>
