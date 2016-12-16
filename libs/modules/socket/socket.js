@@ -228,7 +228,9 @@ var egret;
                 this._readMessage += message;
             }
             else {
-                this._readByte._writeUint8Array(new Uint8Array(message));
+                //this._readByte.append(message ,0,0);
+                this._readByte._writeUint8Array(new Uint8Array(message,0,9));
+                this._readUint8Array = new Uint8Array(message,9,message.length);
             }
             egret.ProgressEvent.dispatchProgressEvent(this, egret.ProgressEvent.SOCKET_DATA);
         };
@@ -358,6 +360,7 @@ var egret;
             this._writeByte.writeBytes(bytes, offset, length);
             this.flush();
         };
+
         /**
          * @language en_US
          * Read data byte number specified by the length parameter from the socket. Read these bytes into the specified byte array starting from the location expressed by offset.
@@ -387,6 +390,21 @@ var egret;
             this._readByte.readBytes(bytes, offset, length);
             this._readByte.clear();
         };
+
+        p.readHead = function(){
+            this._readByte.position = 0;
+            return this._readByte;
+        };
+
+        p.readBody = function(){
+            this._readUint8Array.position = 0;
+             return this._readUint8Array;
+        };
+
+        p.clear = function(){
+            this._readByte.clear();
+        };
+
         d(p, "connected"
             /**
              * @language en_US
@@ -423,6 +441,8 @@ var egret;
             ,function (value) {
                 this._type = value;
                 if (value == WebSocket.TYPE_BINARY && !this._writeByte) {
+                    //this._readUint8Array = new 
+                    //this._readByte = new ArrayBuffer(64);//ArrayBuffer\ByteBuffer
                     this._readByte = new egret.ByteArray();
                     this._writeByte = new egret.ByteArray();
                 }

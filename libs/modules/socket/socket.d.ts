@@ -296,6 +296,8 @@ declare namespace egret {
          * @private
          */
         private _readByte;
+
+        private _readUint8Array;
         /**
          * @private
          */
@@ -346,6 +348,10 @@ declare namespace egret {
          * @platform Web,Native
          */
         readBytes(bytes: ByteArray, offset?: number, length?: number): void;
+
+        readHead():ByteArray;
+        readBody():Uint8Array;
+        clear():void;
         /**
          * @language en_US
          * Indicates whether the Socket object is connected currently
