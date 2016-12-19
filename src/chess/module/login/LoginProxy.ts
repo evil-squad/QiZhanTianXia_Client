@@ -11,15 +11,62 @@ class LoginProxy extends BaseProxy{
      * @param userName
      * @param pwd
      */
+    private logined:boolean = true;
     public login(openId:string, code:number):void{
-         var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId });
+        if(this.logined){
+            var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId });
+            var wechat = App.lookupProtoMessage(Msg.WECHAT).create({ code: code });
+            var body = {
+                "head": App.Head,
+                "debug": debug,
+                "wechat": wechat
+            };
+            this.writeAndFlush(Cmd.LOGIN, body);
+            return;
+        }
+        
+        //this.logined = true;
+
+        var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId });
         var wechat = App.lookupProtoMessage(Msg.WECHAT).create({ code: code });
+
         var body = {
             "head": App.Head,
             "debug": debug,
             "wechat": wechat
         };
-        this.sendSocketCBMsg(Cmd.LOGIN, body);
+
+        var body2 = {
+            "head": App.Head,
+            "ob": 1,
+            "roomid": "roomid123"///RoomManager.roomId
+        };
+        //this.writeAndFlush(Cmd.ROOM_ENTER, body2);
+
+        // var body = App.lookupProtoMessage(Msg.EnterRoomReq).create({ head: App.Head, ob:1, roomid: RoomManager.roomId});
+        
+        var Message = App.lookupProtoMessage(Msg.LoginReq);
+
+        var msg = Message.create(body);
+        var bytes = Message.encode(msg).finish();
+
+        var ob = Message.decode(bytes);
+        //Log.trace(ob.roomid);
+
+        
+        
+        var EnterRoomReq = App.lookupProtoMessage(Msg.EnterRoomReq);
+        msg = EnterRoomReq.create(body2);
+        bytes = EnterRoomReq.encode(msg).finish();
+        ob = EnterRoomReq.decode(bytes);
+        //Log.trace(ob.wechat.code);
+
+        // Message.ob = false;
+        // Message.head = App.Head;
+        // Message.roomid = RoomManager.roomId;
+
+        this.writeAndFlush(Cmd.LOGIN, body);
+        this.writeAndFlush(Cmd.ROOM_ENTER, body2);
     }
 
     /**

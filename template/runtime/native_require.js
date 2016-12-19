@@ -13,6 +13,7 @@ var game_file_list = [
 	"libs/modules/protobuf/protobuf.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/chess/RoomTest.js",
 	"bin-debug/chess/Startup.js",
 	"bin-debug/chess/components/Menu.js",
 	"bin-debug/chess/consts/Cmd.js",

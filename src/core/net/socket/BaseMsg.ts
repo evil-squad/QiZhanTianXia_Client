@@ -11,6 +11,8 @@ interface BaseMsg {
      */
     send(socket:egret.WebSocket, msg:any):void;
 
+    writeAndFlush(socket:egret.WebSocket, cmd:number, flag:number, body:any):void;
+
     /**
      * 消息解析,返回格式{key:XX, body:XX}
      * @param msg

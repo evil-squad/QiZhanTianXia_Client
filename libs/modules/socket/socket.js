@@ -134,6 +134,10 @@ var egret;
             /**
              * @private
              */
+            this._buffer = null;
+            /**
+             * @private
+             */
             this._type = WebSocket.TYPE_STRING;
             this._connected = false;
             this._writeMessage = "";
@@ -230,10 +234,60 @@ var egret;
             else {
                 //this._readByte.append(message ,0,0);
                 this._readByte._writeUint8Array(new Uint8Array(message,0,9));
-                this._readUint8Array = new Uint8Array(message,9,message.length);
+                this._readUint8Array = new Uint8Array(message,9);
             }
             egret.ProgressEvent.dispatchProgressEvent(this, egret.ProgressEvent.SOCKET_DATA);
         };
+
+        p.readHead = function(){
+            this._readByte.position = 0;
+            return this._readByte;
+        };
+
+        p.readBody = function(){
+            this._readUint8Array.position = 0;
+             return this._readUint8Array;
+        };
+
+        p.clear = function(){
+            this._readByte.clear();
+        };
+
+        p.writeAndFlush = function(cmd,flag,bytes){
+            if(bytes != null && bytes != undefined && bytes.length > 0){
+                this._bytesWrite = true;
+            }
+            if (!this._connected) {
+                egret.$warn(3101);
+                return;
+            }
+            if (this._bytesWrite) {
+                var writeLength = bytes.byteLength;
+
+                var dataView = new DataView(new ArrayBuffer(writeLength+9));
+
+                var tmp = new Uint8Array(new ArrayBuffer(writeLength));
+                tmp.set(new Uint8Array(bytes, 0, writeLength));
+                var decView = new DataView(tmp.buffer);
+                //this.socket.buffer = tmp.buffer;
+
+
+                dataView.setInt32(0,bytes.length);
+                dataView.setInt32(4,cmd);
+                dataView.setInt8(8,flag);
+
+                var position = 9;
+
+                for(var i=0; i<writeLength; i++){
+                    dataView.setUint8(position+i,decView.getUint8(i));
+                }
+
+                this.socket.send(dataView.buffer);
+                this._bytesWrite = false;
+            }
+            this._isReadySend = false;
+        };
+        
         /**
          * @language en_US
          * Refresh all data accumulated in the output buffer area of the socket
@@ -391,20 +445,6 @@ var egret;
             this._readByte.clear();
         };
 
-        p.readHead = function(){
-            this._readByte.position = 0;
-            return this._readByte;
-        };
-
-        p.readBody = function(){
-            this._readUint8Array.position = 0;
-             return this._readUint8Array;
-        };
-
-        p.clear = function(){
-            this._readByte.clear();
-        };
-
         d(p, "connected"
             /**
              * @language en_US
@@ -444,7 +484,8 @@ var egret;
                     //this._readUint8Array = new 
                     //this._readByte = new ArrayBuffer(64);//ArrayBuffer\ByteBuffer
                     this._readByte = new egret.ByteArray();
-                    this._writeByte = new egret.ByteArray();
+                    //this._writeByte = new egret.ByteArray();
+                    this._writeByte = new Uint8Array();
                 }
             }
         );

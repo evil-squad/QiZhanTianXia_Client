@@ -30,6 +30,10 @@ class UTFMsg implements BaseMsg {
         }
     }
 
+    public writeAndFlush(socket:egret.WebSocket, cmd:number, body:any):void{
+        
+    }
+
     /**
      * 消息解析
      * @param msg

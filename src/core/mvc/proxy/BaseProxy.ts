@@ -101,6 +101,10 @@ class BaseProxy {
         App.Socket.send(msg);
     }
 
+    public sendSocketPBMsg(cmd:number,msg:any):void {
+        App.Socket.send({cmd:cmd,body:msg});
+    }
+
      public sendSocketCBMsg(cmd:number,body:any):void {
         App.Socket.send({ cmd: cmd, body: body });
     }
@@ -113,6 +117,14 @@ class BaseProxy {
      public sendSocketCEBMsg(cmd:number,err:number,body:any):void {
         body.head.err = err;
         App.Socket.send({ cmd: cmd, body: body });
+    }
+
+    public writeAndFlush(cmd:number, body:any):void{
+        App.Socket.writeAndFlush(cmd, 0, body);
+    }
+
+    public writeAndFlushFlag(cmd:number, body:any, flag:number):void{
+        App.Socket.writeAndFlush(cmd, flag, body);
     }
 
     /**

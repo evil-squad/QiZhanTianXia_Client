@@ -10,7 +10,7 @@ var HomeProxy = (function (_super) {
         var body = {
             "head": App.Head
         };
-        this.sendSocketCBMsg(Cmd.ROOM_CREATE, body);
+        this.writeAndFlush(Cmd.ROOM_CREATE, body);
     };
     p.enterRoom = function () {
         if (!RoomManager.hasRoomInfo) {
@@ -19,10 +19,15 @@ var HomeProxy = (function (_super) {
         }
         var body = {
             "head": App.Head,
-            "ob": RoomManager.isOb,
-            "roomid": RoomManager.roomId
+            "ob": 1,
+            "roomid": "roomid123" //RoomManager.roomId
         };
-        this.sendSocketCBMsg(Cmd.ROOM_ENTER, body);
+        // var body = App.lookupProtoMessage(Msg.EnterRoomReq).create({ head: App.Head, ob:1, roomid: RoomManager.roomId});
+        // var Message = App.lookupProtoMessage("cspb.EnterRoomReq");
+        // Message.ob = false;
+        // Message.head = App.Head;
+        // Message.roomid = RoomManager.roomId;
+        this.writeAndFlush(Cmd.ROOM_ENTER, body);
     };
     p.createRoomSuccess = function (obj) {
         RoomManager.setRoomInfo(obj.roomid, obj.seatid);

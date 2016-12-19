@@ -13,14 +13,14 @@ class RoomProxy  extends BaseProxy{
             "head": App.Head
         };
         RoomManager.clearRoomInfo();
-        this.sendSocketCBMsg(Cmd.ROOM_LEAVE, body);
+        this.writeAndFlush(Cmd.ROOM_LEAVE, body);
 	}
 
 	public leaveRoom():void{
 		var body = {
             "head": App.Head
         };
-        this.sendSocketCBMsg(Cmd.ROOM_LEAVE, body);
+        this.writeAndFlush(Cmd.ROOM_LEAVE, body);
 	}
 
 	public getRoomPlayersInfo(uids:any){
@@ -28,7 +28,7 @@ class RoomProxy  extends BaseProxy{
             "head": App.Head,
             "uid": uids
         };
-        this.sendSocketCBMsg(Cmd.ROOM_PLAYER_INFO_GET, body);
+        this.writeAndFlush(Cmd.ROOM_PLAYER_INFO_GET, body);
 	}
 
 	public dismissRoomSuccess(obj:any){

@@ -33,6 +33,12 @@ var ByteArrayMsg = (function () {
             socket.writeBytes(obj, 0, obj.bytesAvailable);
         }
     };
+    p.writeAndFlush = function (socket, cmd, flag, body) {
+        var obj = this.encode({ cmd: cmd, body: body });
+        if (obj) {
+            socket.writeAndFlush(cmd, flag, obj);
+        }
+    };
     /**
      * 消息解析
      * @param msg

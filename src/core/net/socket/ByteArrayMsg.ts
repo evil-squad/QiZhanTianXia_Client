@@ -39,6 +39,13 @@ class ByteArrayMsg implements BaseMsg {
         }
     }
 
+    public writeAndFlush(socket:egret.WebSocket, cmd:number, flag:number, body:any):void{
+        var obj:any = this.encode({cmd:cmd,body:body});
+        if (obj) {
+            socket.writeAndFlush(cmd,flag,obj);
+        }
+    }
+
     /**
      * 消息解析
      * @param msg

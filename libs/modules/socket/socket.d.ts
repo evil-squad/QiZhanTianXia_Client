@@ -352,6 +352,7 @@ declare namespace egret {
         readHead():ByteArray;
         readBody():Uint8Array;
         clear():void;
+        writeAndFlush(cmd,flag,bytes):void;
         /**
          * @language en_US
          * Indicates whether the Socket object is connected currently

@@ -101,7 +101,9 @@ class ByteArrayMsgByProtobuf extends ByteArrayMsg {
             return "pb解析错误";
         if (obj.body.head == undefined)
             return "pb缺少头部信息";
-        return "pb解析失败";
+        if (obj.body.head == null)
+            return "pb解码失败";
+        return "pb解码失败";
     }
 
     /**
@@ -130,21 +132,30 @@ class ByteArrayMsgByProtobuf extends ByteArrayMsg {
      */
     public encode(msg:any):any {
         var msgID = msg.cmd; //this.getReqID(msg.key);//cmd=msg
-        //var msgBody = new (this.getMsgClass(msg.key))(msg.body);
+        // Log.trace(typeof msg.body);
+        // Log.trace(msg.body instanceof protobuf.Type);
+        var message = null;
         var Message = this.getMessage(this.getReqMsg(msg.cmd));
-        var msgBody = Message.create(msg.body);
-        App.DebugUtils.start("Protobuf Encode");
-        //var bodyBytes:egret.ByteArray = new egret.ByteArray(msgBody.toArrayBuffer());
-        var bodyBytes = Message.encode(msgBody).finish(); //new egret.ByteArray(Message.encode(msgBody).finish());
-        App.DebugUtils.stop("Protobuf Encode");
-        Log.trace("发送数据：", "[" + msgID + " " + msg.cmd + " " + bodyBytes.length + "]", msg.body);
-        var sendMsg = new egret.ByteArray();
-        sendMsg.writeInt(bodyBytes.length); //len
-        sendMsg.writeInt(msgID); //cmd
-        sendMsg.writeByte(0);
-        sendMsg.writeBytes(bodyBytes); //body
-        var result = Message.decode(bodyBytes);
-        Log.trace(result);
-        return sendMsg;
+        if(msg.body instanceof protobuf.Message){//body: Proto Message
+            message = msg.body;
+        }else{
+            message = Message.create(msg.body);//body: Object
+        }
+
+        var bytes = Message.encode(message).finish();
+
+        Log.trace("发送数据：", "[cmd:" + msgID + "][Message:" + Message + "] [len:" + bytes.length +"]");
+
+        return bytes;
+        
+        // var sendMsg = new egret.ByteArray();
+        // sendMsg.writeInt(bodyBytes.length); //len
+        // sendMsg.writeInt(msgID); //cmd
+        // sendMsg.writeByte(msg.flag);
+        // sendMsg.writeBytes(bodyBytes) //body
+
+        // Log.trace("发送数据：", "[cmd:" + msgID + "][flag:" + 0 + "] [len:" + bodyBytes.length+"]");
+
+        // return sendMsg;
     }
 }

@@ -82,7 +82,7 @@ class Main extends egret.DisplayObjectContainer{
      */
     private onThemeLoadComplete(): void {
         new Startup();
-         //new RoomTest();
+        //new RoomTest();
     }
 
     /**

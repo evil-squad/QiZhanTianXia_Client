@@ -9,6 +9,7 @@ class RoomUIView  extends BaseEuiView {
     private dismissBtn:eui.Button;
     private leaveBtn:eui.Button;
     private sendBtn:eui.Button;
+    private refreshBtn:eui.Button;
 
     private topPlayerLabel:eui.Label;
     private leftPlayerLabel:eui.Label;
@@ -23,6 +24,7 @@ class RoomUIView  extends BaseEuiView {
         this.dismissBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.dismissBtnClickHandler, this);
         this.leaveBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leaveClickHandler, this);
         this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
+        this.refreshBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.refreshClickHandler, this);
     }
 
      public open(...param:any[]):void{
@@ -41,6 +43,10 @@ class RoomUIView  extends BaseEuiView {
         if (this.msgInput.text == "" || this.msgInput.text == null)
             return;
         App.TipsUtils.showCenter(this.msgInput.text);
+    }
+
+    private refreshClickHandler(evt:egret.TouchEvent):void{
+        this.applyFunc(HomeConst.ROOM_PLAYERS_GET_REQ,RoomManager.playerIds);
     }
 
     private refreshView(){

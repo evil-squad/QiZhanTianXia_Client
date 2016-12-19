@@ -9,4 +9,5 @@
 	<e:Label id="bottomPlayerLabel" text="3" x="137" y="486" textColor="0xf41818"/>
 	<e:TextInput id="msgInput" width="435" height="20" x="321" y="614" enabled="true"/>
 	<e:Button id="sendBtn" label="发送" x="762" y="597"/>
+	<e:Button id="refreshBtn" label="刷新" x="740" y="128"/>
 </e:Skin>

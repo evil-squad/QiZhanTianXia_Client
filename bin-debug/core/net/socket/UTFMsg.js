@@ -27,6 +27,8 @@ var UTFMsg = (function () {
             socket.writeUTF(obj);
         }
     };
+    p.writeAndFlush = function (socket, cmd, body) {
+    };
     /**
      * 消息解析
      * @param msg

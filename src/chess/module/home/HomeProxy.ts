@@ -10,7 +10,7 @@ class HomeProxy extends BaseProxy{
         var body = {
             "head": App.Head
         };
-        this.sendSocketCBMsg(Cmd.ROOM_CREATE, body);
+        this.writeAndFlush(Cmd.ROOM_CREATE, body);
     }
 
     public enterRoom(){
@@ -20,10 +20,18 @@ class HomeProxy extends BaseProxy{
         }
         var body = {
             "head": App.Head,
-            "ob": RoomManager.isOb,
-            "roomid": RoomManager.roomId
+            "ob": 1,
+            "roomid": "roomid123"//RoomManager.roomId
         };
-        this.sendSocketCBMsg(Cmd.ROOM_ENTER, body);
+
+        // var body = App.lookupProtoMessage(Msg.EnterRoomReq).create({ head: App.Head, ob:1, roomid: RoomManager.roomId});
+        
+        // var Message = App.lookupProtoMessage("cspb.EnterRoomReq");
+        // Message.ob = false;
+        // Message.head = App.Head;
+        // Message.roomid = RoomManager.roomId;
+
+        this.writeAndFlush(Cmd.ROOM_ENTER, body);
     }
 
     private createRoomSuccess(obj:any):void{

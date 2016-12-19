@@ -98,6 +98,9 @@ var BaseProxy = (function () {
     p.sendSocketMsg = function (msg) {
         App.Socket.send(msg);
     };
+    p.sendSocketPBMsg = function (cmd, msg) {
+        App.Socket.send({ cmd: cmd, body: msg });
+    };
     p.sendSocketCBMsg = function (cmd, body) {
         App.Socket.send({ cmd: cmd, body: body });
     };
@@ -108,6 +111,12 @@ var BaseProxy = (function () {
     p.sendSocketCEBMsg = function (cmd, err, body) {
         body.head.err = err;
         App.Socket.send({ cmd: cmd, body: body });
+    };
+    p.writeAndFlush = function (cmd, body) {
+        App.Socket.writeAndFlush(cmd, 0, body);
+    };
+    p.writeAndFlushFlag = function (cmd, body, flag) {
+        App.Socket.writeAndFlush(cmd, flag, body);
     };
     /**
      * 发送消息到Http服务端

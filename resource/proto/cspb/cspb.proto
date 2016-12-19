@@ -96,7 +96,7 @@ message DismissRoomResp {
 message EnterRoomReq {
 	Head head = 1;
 	// true: 观察者(不能占位子, 只接收同步消息)
-	bool ob = 2;
+	int32 ob = 2;
 	// 要进入的房间号
 	string roomid = 3;
 }

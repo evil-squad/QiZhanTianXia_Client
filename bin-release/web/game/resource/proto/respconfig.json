@@ -10,5 +10,7 @@
     "105" : "cspb.GetRoomPlayerInfoResp",
     "106" : "cspb.RoomNotify",
 
-    "9" : "talkpb.TextMsg"
+    "9" : "talkpb.TextMsg",
+
+    "99" : "roompb.EnterRoomReq"
 }

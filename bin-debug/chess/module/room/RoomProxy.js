@@ -13,20 +13,20 @@ var RoomProxy = (function (_super) {
             "head": App.Head
         };
         RoomManager.clearRoomInfo();
-        this.sendSocketCBMsg(Cmd.ROOM_LEAVE, body);
+        this.writeAndFlush(Cmd.ROOM_LEAVE, body);
     };
     p.leaveRoom = function () {
         var body = {
             "head": App.Head
         };
-        this.sendSocketCBMsg(Cmd.ROOM_LEAVE, body);
+        this.writeAndFlush(Cmd.ROOM_LEAVE, body);
     };
     p.getRoomPlayersInfo = function (uids) {
         var body = {
             "head": App.Head,
             "uid": uids
         };
-        this.sendSocketCBMsg(Cmd.ROOM_PLAYER_INFO_GET, body);
+        this.writeAndFlush(Cmd.ROOM_PLAYER_INFO_GET, body);
     };
     p.dismissRoomSuccess = function (obj) {
         this.applyFunc(HomeConst.ROOM_DISMISS_RESP, obj);

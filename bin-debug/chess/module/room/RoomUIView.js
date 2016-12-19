@@ -10,6 +10,7 @@ var RoomUIView = (function (_super) {
         this.dismissBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.dismissBtnClickHandler, this);
         this.leaveBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leaveClickHandler, this);
         this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
+        this.refreshBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.refreshClickHandler, this);
     };
     p.open = function () {
         var param = [];
@@ -28,6 +29,9 @@ var RoomUIView = (function (_super) {
         if (this.msgInput.text == "" || this.msgInput.text == null)
             return;
         App.TipsUtils.showCenter(this.msgInput.text);
+    };
+    p.refreshClickHandler = function (evt) {
+        this.applyFunc(HomeConst.ROOM_PLAYERS_GET_REQ, RoomManager.playerIds);
     };
     p.refreshView = function () {
         var players = RoomManager.players;

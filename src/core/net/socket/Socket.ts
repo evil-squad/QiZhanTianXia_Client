@@ -145,6 +145,10 @@ class Socket extends BaseClass {
         this._msg.send(this._socket, msg);
     }
 
+    public writeAndFlush(cmd:number, flag:number, body:any):void{
+        this._msg.writeAndFlush(this._socket, cmd, flag, body);
+    }
+
     /**
      * 关闭Socket连接
      */

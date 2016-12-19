@@ -51,6 +51,7 @@ class RoomController  extends BaseController{
             ps += players[i].nick + " ";
             RoomManager.addPlayer(new PlayerInfo(players[i]));
         }
+		this.roomView.refreshView(MahjongManager.random(20));
         App.TipsUtils.showCenter("牌友: " + ps);
 	}
 }

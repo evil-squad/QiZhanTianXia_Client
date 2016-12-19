@@ -131,6 +131,9 @@ var Socket = (function (_super) {
     p.send = function (msg) {
         this._msg.send(this._socket, msg);
     };
+    p.writeAndFlush = function (cmd, flag, body) {
+        this._msg.writeAndFlush(this._socket, cmd, flag, body);
+    };
     /**
      * 关闭Socket连接
      */
