@@ -50,7 +50,9 @@ var BMahjongBar = (function (_super) {
     };
     p.removeAllChildren = function () {
         while (this.numChildren > 0) {
-            this.removeChildAt(0);
+            var item = this.removeChildAt(0);
+            item.x = 0;
+            item.y = 0;
         }
     };
     BMahjongBar.ITEM_WIDTH = 40;

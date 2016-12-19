@@ -20,8 +20,8 @@ class HomeProxy extends BaseProxy{
         }
         var body = {
             "head": App.Head,
-            "ob": 1,
-            "roomid": "roomid123"//RoomManager.roomId
+            "ob": RoomManager.isOb,
+            "roomid": RoomManager.roomId
         };
 
         // var body = App.lookupProtoMessage(Msg.EnterRoomReq).create({ head: App.Head, ob:1, roomid: RoomManager.roomId});

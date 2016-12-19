@@ -18,6 +18,7 @@ var RoomUIView = (function (_super) {
             param[_i - 0] = arguments[_i];
         }
         _super.prototype.open.call(this, param);
+        this.refreshView();
     };
     p.dismissBtnClickHandler = function (evt) {
         this.applyFunc(HomeConst.ROOM_DISMISS_REQ);

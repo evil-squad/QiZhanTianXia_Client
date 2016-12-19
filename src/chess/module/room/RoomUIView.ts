@@ -29,6 +29,7 @@ class RoomUIView  extends BaseEuiView {
 
      public open(...param:any[]):void{
         super.open(param);
+        this.refreshView();
     }
 
     private dismissBtnClickHandler(evt:egret.TouchEvent):void{
@@ -49,7 +50,7 @@ class RoomUIView  extends BaseEuiView {
         this.applyFunc(HomeConst.ROOM_PLAYERS_GET_REQ,RoomManager.playerIds);
     }
 
-    private refreshView(){
+    public refreshView(){
         var players = RoomManager.players;
         var player;
         for (var i = 0; i < players.length; i++) {

@@ -20,6 +20,7 @@ var HomeView = (function (_super) {
         this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.moreClickHandler, this);
         this.createBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createClickHandler, this);
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
+        this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
     };
     p.playSound = function () {
         App.SoundManager.playEffect("sound_dianji");
@@ -37,6 +38,9 @@ var HomeView = (function (_super) {
     };
     p.enterClickHandler = function (e) {
         this.applyFunc(HomeConst.ROOM_ENTER_REQ);
+    };
+    p.crossEnterClickHandler = function () {
+        App.SceneManager.runScene(SceneConsts.Room);
     };
     p.friendClickHandler = function (e) {
         //App.ViewManager.open(ViewConst.Friend);

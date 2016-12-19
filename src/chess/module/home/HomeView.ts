@@ -20,6 +20,8 @@ class HomeView extends BaseEuiView{
     public createBtn:eui.Button;
     public enterBtn:eui.Button;
 
+    private crossEnterBtn:eui.Button;
+
     /**
      *对面板进行显示初始化，用于子类继承
      *
@@ -37,6 +39,8 @@ class HomeView extends BaseEuiView{
 
         this.createBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createClickHandler, this);
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
+
+        this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
     }
 
     private playSound():void{
@@ -54,6 +58,10 @@ class HomeView extends BaseEuiView{
 
     private enterClickHandler(e:egret.TouchEvent):void{
         this.applyFunc(HomeConst.ROOM_ENTER_REQ);
+    }
+
+    public crossEnterClickHandler():void{
+        App.SceneManager.runScene(SceneConsts.Room);
     }
 
     private friendClickHandler(e:egret.TouchEvent):void{

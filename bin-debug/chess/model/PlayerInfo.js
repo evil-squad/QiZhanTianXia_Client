@@ -2,19 +2,15 @@ var PlayerInfo = (function () {
     function PlayerInfo(pbObj) {
         if (pbObj == null)
             return;
-        this._id = pbObj.id;
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
-        this._roleTime = pbObj.role_time;
-        this._coins = pbObj.coins;
-        this._lastLoginTime = pbObj.last_login_time;
+        this._onlineId = pbObj.role_time;
+        this._roomId = pbObj.roomid;
+        this._seatId = pbObj.seatid;
+        this._obId = pbObj.obid;
+        this._ob = pbObj.ob;
     }
     var d = __define,c=PlayerInfo,p=c.prototype;
-    d(p, "id"
-        ,function () {
-            return this._id;
-        }
-    );
     d(p, "uid"
         ,function () {
             return this._uid;
@@ -25,9 +21,24 @@ var PlayerInfo = (function () {
             return this._nick;
         }
     );
-    d(p, "coins"
+    d(p, "roomId"
         ,function () {
-            return this._coins;
+            return this._roomId;
+        }
+    );
+    d(p, "seatId"
+        ,function () {
+            return this._seatId;
+        }
+    );
+    d(p, "obId"
+        ,function () {
+            return this._obId;
+        }
+    );
+    d(p, "isOb"
+        ,function () {
+            return this._ob;
         }
     );
     return PlayerInfo;

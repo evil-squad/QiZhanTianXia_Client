@@ -51,4 +51,5 @@
 	<e:ToggleButton id="menuBtn" label="切换按钮" skinName="MenuButtonSkin" x="14" y="237"/>
 	<e:Button id="createBtn" label="创建房间" x="851" y="263"/>
 	<e:Button id="enterBtn" label="进入房间" x="848" y="339"/>
+	<e:Button id="crossEnterBtn" label="跨协议进入" x="848" y="416"/>
 </e:Skin>

@@ -1,26 +1,28 @@
 class PlayerInfo {
 	
-	private _id:string;
 	private _uid:number;
 	private _nick:string;
-	private _roleTime:number;
-	private _coins:number;
-	private _lastLoginTime:number;
+	private _onlineId:number;
+
+	private _roomId:string;
+	private _seatId:number;
+	private _obId:number;
+	private _ob:boolean;
 
 	public constructor(pbObj:any) {
 		if (pbObj == null)
             return;
-		this._id = pbObj.id;
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
-        this._roleTime = pbObj.role_time;
-        this._coins = pbObj.coins;
-        this._lastLoginTime = pbObj.last_login_time;
+        this._onlineId = pbObj.role_time;
+
+        this._roomId = pbObj.roomid;
+        this._seatId = pbObj.seatid;
+		this._obId = pbObj.obid;
+        this._ob = pbObj.ob;
 	}
 
-	public get id():string{
-		return this._id;
-	}
+	
 
 	public get uid():number{
 		return this._uid;
@@ -30,7 +32,19 @@ class PlayerInfo {
 		return this._nick;
 	}
 
-	public get coins():number{
-		return this._coins;
+	public get roomId():string{
+		return this._roomId;
+	}
+
+	public get seatId():number{
+		return this._seatId;
+	}
+
+	public get obId():number{
+		return this._obId;
+	}
+
+	public get isOb():boolean{
+		return this._ob;
 	}
 }
