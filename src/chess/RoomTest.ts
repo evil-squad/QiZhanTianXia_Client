@@ -1,7 +1,7 @@
 class RoomTest {
 	public constructor() {
 		var groupName:string = "preload";
-        var subGroups:Array<string> = ["preload_core", "preload_ui", "preload_mj"];
+        var subGroups:Array<string> = ["preload_core", "preload_ui", "preload_puke"];
         App.ResourceUtils.loadGroups(groupName, subGroups, this.onResourceLoadComplete, this.onResourceLoadProgress, this);
 	}
 

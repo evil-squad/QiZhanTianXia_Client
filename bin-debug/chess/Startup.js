@@ -1,7 +1,7 @@
 var Startup = (function () {
     function Startup() {
         var groupName = "preload";
-        var subGroups = ["preload_core", "preload_ui", "preload_mj"];
+        var subGroups = ["preload_core", "preload_ui", "preload_puke"];
         App.ResourceUtils.loadGroups(groupName, subGroups, this.onResourceLoadComplete, this.onResourceLoadProgress, this);
     }
     var d = __define,c=Startup,p=c.prototype;
@@ -30,6 +30,7 @@ var Startup = (function () {
         App.ControllerManager.register(ControllerConst.Login, new LoginController());
         App.ControllerManager.register(ControllerConst.Home, new HomeController());
         App.ControllerManager.register(ControllerConst.Room, new RoomController());
+        App.ControllerManager.register(ControllerConst.RoomEnter, new RoomEnterController());
     };
     return Startup;
 }());

@@ -11,8 +11,8 @@ var LoginView = (function (_super) {
      */
     p.initUI = function () {
         _super.prototype.initUI.call(this);
-        this.passwordInput.displayAsPassword = true;
-        this.loginBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
+        //this.passwordInput.displayAsPassword = true;
+        this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
     };
     /**
      *对面板数据的初始化，用于子类继承
@@ -31,6 +31,9 @@ var LoginView = (function (_super) {
             param[_i - 0] = arguments[_i];
         }
         _super.prototype.open.call(this, param);
+        if (RoomManager.hasRoomInfo) {
+            this.roomIdInput.text = RoomManager.roomId;
+        }
     };
     /**
      * 面板关闭执行函数，用于子类继承
@@ -49,19 +52,22 @@ var LoginView = (function (_super) {
      * @param pwd
      */
     p.onLogin = function () {
-        var userName = this.usernameInput.text;
-        var pwd = this.passwordInput.text;
+        RoomManager.roomId = this.roomIdInput.text;
+        // if(roomId != null && roomId != ""){
+        //     RoomManager.roomId = roomId;
+        // }
+        //var pwd:string = this.passwordInput.text;
         //进行基础检测
-        if (userName == null || userName.length == 0) {
-            App.TipsUtils.showCenter("账号密码不能为空");
-            return;
-        }
-        if (pwd == null || pwd.length == 0) {
-            App.TipsUtils.showCenter("账号密码不能为空");
-            return;
-        }
-        var openId = "213sefwe";
-        var code = "344";
+        // if(userName == null || userName.length == 0){
+        //     App.TipsUtils.showCenter("账号密码不能为空");
+        //     return;
+        // }
+        // if(pwd == null || pwd.length == 0){
+        //     App.TipsUtils.showCenter("账号密码不能为空");
+        //     return;
+        // }
+        var openId = egret.Capabilities.os + "" + (Math.floor(Math.random() * 10));
+        var code = "1";
         this.applyFunc(LoginConst.LOGIN_REQ, openId, code);
     };
     /**

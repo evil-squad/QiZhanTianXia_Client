@@ -37,10 +37,16 @@ var HomeView = (function (_super) {
         this.applyFunc(HomeConst.ROOM_CREATE_REQ);
     };
     p.enterClickHandler = function (e) {
-        this.applyFunc(HomeConst.ROOM_ENTER_REQ);
+        if (RoomManager.hasRoomInfo) {
+            this.applyFunc(HomeConst.ROOM_ENTER_REQ);
+        }
+        else {
+            App.ViewManager.open(ViewConst.RoomEnter);
+        }
     };
     p.crossEnterClickHandler = function () {
-        App.SceneManager.runScene(SceneConsts.Room);
+        //App.SceneManager.runScene(SceneConsts.Room);
+        App.ViewManager.open(ViewConst.RoomEnter);
     };
     p.friendClickHandler = function (e) {
         //App.ViewManager.open(ViewConst.Friend);
@@ -97,11 +103,13 @@ var HomeView = (function (_super) {
             this.createBtn.enabled = false;
             this.enterBtn.enabled = true;
             this.enterBtn.label = "进入【" + RoomManager.roomId + "】房间";
+            this.roomLabel.text = "房间号：" + RoomManager.roomId;
         }
         else {
             this.createBtn.enabled = true;
             this.enterBtn.enabled = false;
             this.enterBtn.label = "进入房间";
+            this.roomLabel.text = "房间";
         }
     };
     return HomeView;

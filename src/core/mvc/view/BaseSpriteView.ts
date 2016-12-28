@@ -106,7 +106,7 @@ class BaseSpriteView extends egret.DisplayObjectContainer implements IBaseView {
      * @param param 参数
      */
     public open(...param:any[]):void {
-
+        this._controller.addEvents();
     }
 
     /**
@@ -114,13 +114,14 @@ class BaseSpriteView extends egret.DisplayObjectContainer implements IBaseView {
      * @param param 参数
      */
     public close(...param:any[]):void {
-
+        this._controller.removeEvents();
     }
 
     /**
      * 销毁
      */
     public destroy():void {
+        this._controller.destroy();
         this._controller = null;
         this._myParent = null;
         this._resources = null;

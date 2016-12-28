@@ -3,5 +3,6 @@ enum ControllerConst{
     Login,
     Home,
     Servers,
-    Room
+    Room,
+    RoomEnter
 }

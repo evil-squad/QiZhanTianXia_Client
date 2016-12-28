@@ -26,6 +26,18 @@ class BaseController {
         this._messages[key] = [callbackFunc, callbackObj];
     }
 
+    public removeFunc(key:any):void{
+        this._messages[key] = null;
+    }
+
+    public addEvents():void{
+
+    }
+
+    public removeEvents():void{
+
+    }
+
     /**
      * 触发本模块消息
      * @param key 唯一标识
@@ -37,7 +49,7 @@ class BaseController {
         if (listen) {
             return listen[0].apply(listen[1], param);
         } else {
-            Log.trace("消息" + key + "不存在侦听");
+            Log.trace("消息[" + key + "]不存在侦听");
             return null;
         }
     }
@@ -76,5 +88,9 @@ class BaseController {
      */
     public getControllerModel(controllerD:number):BaseModel {
         return App.ControllerManager.getControllerModel(controllerD);
+    }
+
+    public destroy():void{
+
     }
 }

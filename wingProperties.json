@@ -19,6 +19,10 @@
 				"relativePath":"resource/"
 			},
 			{
+				"configPath":"resource/resource_puke.json",
+				"relativePath":"resource/"
+			},
+			{
 				"configPath":"resource/resource_mj.json",
 				"relativePath":"resource/"
 			}

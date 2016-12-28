@@ -1,7 +1,7 @@
 var RoomTest = (function () {
     function RoomTest() {
         var groupName = "preload";
-        var subGroups = ["preload_core", "preload_ui", "preload_mj"];
+        var subGroups = ["preload_core", "preload_ui", "preload_puke"];
         App.ResourceUtils.loadGroups(groupName, subGroups, this.onResourceLoadComplete, this.onResourceLoadProgress, this);
     }
     var d = __define,c=RoomTest,p=c.prototype;

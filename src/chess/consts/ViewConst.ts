@@ -6,4 +6,5 @@ enum ViewConst{
 
     Room = 20000,
     RoomUI,
+    RoomEnter
 }

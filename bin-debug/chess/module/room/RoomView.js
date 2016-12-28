@@ -7,7 +7,7 @@ var RoomView = (function (_super) {
     var d = __define,c=RoomView,p=c.prototype;
     p.initUI = function () {
         _super.prototype.initUI.call(this);
-        this.bbar = new BMahjongBar();
+        this.bbar = new PukeBar();
         this.bbar.x = 100;
         this.bbar.y = App.StageUtils.getHeight() - 100;
         this.addChild(this.bbar);
@@ -18,13 +18,13 @@ var RoomView = (function (_super) {
             param[_i - 0] = arguments[_i];
         }
         _super.prototype.open.call(this, param);
-        this.refreshView(MahjongManager.random(20));
+        this.refreshView(PukeManager.random(13));
     };
     p.refreshView = function (data) {
         this.bbar.data = data;
     };
     p.onClickItem = function (evt) {
-        if (evt.target instanceof MahjongItem) {
+        if (evt.target instanceof PukeItem) {
             this.bbar.switchItem(evt.target);
         }
     };

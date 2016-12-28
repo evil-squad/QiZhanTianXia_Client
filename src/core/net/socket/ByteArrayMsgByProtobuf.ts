@@ -78,7 +78,7 @@ class ByteArrayMsgByProtobuf extends ByteArrayMsg {
         obj.cmd = cmdId; //this.getRespMsg(cmdId);
         var Message = this.getMessage(this.getRespMsg(obj.cmd));
         obj.body = Message.decode(body);
-        Log.trace(Message, obj.body, obj.body.head);
+        Log.trace("收到数据：","[cmd:"+obj.cmd+"] ", obj.body, obj.body.head);
         if (obj.body != undefined
             && obj.body.head != undefined) {
             if (obj.body.head.err != undefined && obj.body.head.err != 0) {

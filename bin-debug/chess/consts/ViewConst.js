@@ -6,5 +6,6 @@ var ViewConst;
     ViewConst[ViewConst["Home"] = 10003] = "Home";
     ViewConst[ViewConst["Room"] = 20000] = "Room";
     ViewConst[ViewConst["RoomUI"] = 20001] = "RoomUI";
+    ViewConst[ViewConst["RoomEnter"] = 20002] = "RoomEnter";
 })(ViewConst || (ViewConst = {}));
 //# sourceMappingURL=ViewConst.js.map

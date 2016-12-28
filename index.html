@@ -31,6 +31,7 @@
 	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
 	<script egret="lib" src="libs/modules/socket/socket.js" src-release="libs/modules/socket/socket.min.js"></script>
 	<script egret="lib" src="libs/modules/protobuf/protobuf.js" src-release="libs/modules/protobuf/protobuf.min.js"></script>
+	<script egret="lib" src="libs/modules/WeixinAPI/WeixinAPI.js" src-release="libs/modules/WeixinAPI/WeixinAPI.js"></script>
 	<!--modules_files_end-->
 
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
@@ -53,19 +54,22 @@
 	<script egret="game" src="bin-debug/chess/consts/ViewConst.js"></script>
 	<script egret="game" src="bin-debug/chess/data/MahjongManager.js"></script>
 	<script egret="game" src="bin-debug/chess/data/MainManager.js"></script>
+	<script egret="game" src="bin-debug/chess/data/PukeManager.js"></script>
 	<script egret="game" src="bin-debug/chess/data/RoomManager.js"></script>
 	<script egret="game" src="bin-debug/chess/mahjong/BMahjongBar.js"></script>
 	<script egret="game" src="bin-debug/chess/mahjong/BaseMahjongItem.js"></script>
 	<script egret="game" src="bin-debug/chess/mahjong/MahjongItem.js"></script>
 	<script egret="game" src="bin-debug/chess/model/MahjongInfo.js"></script>
 	<script egret="game" src="bin-debug/chess/model/PlayerInfo.js"></script>
+	<script egret="game" src="bin-debug/chess/model/PukeInfo.js"></script>
 	<script egret="game" src="bin-debug/chess/model/UserInfo.js"></script>
+	<script egret="game" src="bin-debug/core/mvc/view/BaseEuiView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/base/BasePanelView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeConst.js"></script>
 	<script egret="game" src="bin-debug/core/mvc/controller/BaseController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeController.js"></script>
 	<script egret="game" src="bin-debug/core/mvc/proxy/BaseProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeProxy.js"></script>
-	<script egret="game" src="bin-debug/core/mvc/view/BaseEuiView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeView.js"></script>
 	<script egret="game" src="bin-debug/core/base/BaseClass.js"></script>
 	<script egret="game" src="bin-debug/chess/module/loading/EasyLoading.js"></script>
@@ -78,16 +82,23 @@
 	<script egret="game" src="bin-debug/chess/module/login/LoginModel.js"></script>
 	<script egret="game" src="bin-debug/chess/module/login/LoginProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/login/LoginView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/room/RoomConst.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomUIView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/roomEnter/RoomEnterController.js"></script>
+	<script egret="game" src="bin-debug/chess/module/roomEnter/RoomEnterPanel.js"></script>
+	<script egret="game" src="bin-debug/chess/module/roomEnter/RoomEnterProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/servers/ServerChooseController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/servers/ServerChooseView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/servers/ServerItemRenderer.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/BaseTips.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/CenterTips.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/TipsController.js"></script>
+	<script egret="game" src="bin-debug/chess/puke/BasePukeItem.js"></script>
+	<script egret="game" src="bin-debug/chess/puke/PukeBar.js"></script>
+	<script egret="game" src="bin-debug/chess/puke/PukeItem.js"></script>
 	<script egret="game" src="bin-debug/core/scene/base/BaseScene.js"></script>
 	<script egret="game" src="bin-debug/chess/scene/EnterScene.js"></script>
 	<script egret="game" src="bin-debug/chess/scene/HomeScene.js"></script>

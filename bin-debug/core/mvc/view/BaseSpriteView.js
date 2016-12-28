@@ -106,6 +106,7 @@ var BaseSpriteView = (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             param[_i - 0] = arguments[_i];
         }
+        this._controller.addEvents();
     };
     /**
      * 面板关闭执行函数，用于子类继承
@@ -116,11 +117,13 @@ var BaseSpriteView = (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             param[_i - 0] = arguments[_i];
         }
+        this._controller.removeEvents();
     };
     /**
      * 销毁
      */
     p.destroy = function () {
+        this._controller.destroy();
         this._controller = null;
         this._myParent = null;
         this._resources = null;

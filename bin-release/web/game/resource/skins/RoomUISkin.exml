@@ -4,10 +4,12 @@
 	<e:Button id="leaveBtn" label="退出" x="865" y="55"/>
 	<e:Button id="dismissBtn" label="解散" x="742" y="55"/>
 	<e:Label id="topPlayerLabel" text="1" x="280" y="40" bold="true" textColor="0xf70c0c"/>
-	<e:Label id="leftPlayerLabel" text="2" x="17" y="157" textColor="0xf70e09"/>
-	<e:Label id="rightPlayerLabel" text="4" x="907" y="162" textColor="0xf20c0c"/>
+	<e:Label id="leftPlayerLabel" text="2" x="101" y="225" textColor="0xf70e09"/>
+	<e:Label id="rightPlayerLabel" text="4" x="898" y="240" textColor="0xf20c0c"/>
 	<e:Label id="bottomPlayerLabel" text="3" x="137" y="486" textColor="0xf41818"/>
 	<e:TextInput id="msgInput" width="435" height="20" x="321" y="614" enabled="true"/>
 	<e:Button id="sendBtn" label="发送" x="762" y="597"/>
 	<e:Button id="refreshBtn" label="刷新" x="740" y="128"/>
+	<e:Button id="inviteBtn" label="邀请" x="865" y="128"/>
+	<e:Label id="roomLabel" text="房间" x="470" y="349"/>
 </e:Skin>

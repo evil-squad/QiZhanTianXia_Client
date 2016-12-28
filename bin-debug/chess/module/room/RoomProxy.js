@@ -29,13 +29,13 @@ var RoomProxy = (function (_super) {
         this.writeAndFlush(Cmd.ROOM_PLAYER_INFO_GET, body);
     };
     p.dismissRoomSuccess = function (obj) {
-        this.applyFunc(HomeConst.ROOM_DISMISS_RESP, obj);
+        this.applyFunc(RoomConst.ROOM_DISMISS_RESP, obj);
     };
     p.leaveRoomSuccess = function (obj) {
-        this.applyFunc(HomeConst.ROOM_LEAVE_RESP, obj);
+        this.applyFunc(RoomConst.ROOM_LEAVE_RESP, obj);
     };
     p.getRoomPlayersInfoSuccess = function (obj) {
-        this.applyFunc(HomeConst.ROOM_PLAYERS_GET_RESP, obj);
+        this.applyFunc(RoomConst.ROOM_PLAYERS_GET_RESP, obj);
     };
     return RoomProxy;
 }(BaseProxy));

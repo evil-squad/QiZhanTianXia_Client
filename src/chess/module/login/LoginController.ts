@@ -12,14 +12,22 @@ class LoginController extends BaseController{
         App.ViewManager.register(ViewConst.Login, this.loginView);
 
         //初始化Proxy
-        this.loginProxy = new LoginProxy(this);
+        this.loginProxy = new LoginProxy(this);        
+    }
 
-        //注册模块间、模块内部事件监听
-
+    //注册模块间、模块内部事件监听
+    public addEvents():void{
         //注册C2S消息
         this.registerFunc(LoginConst.LOGIN_REQ, this.onLogin, this);
         //注册S2C消息
         this.registerFunc(LoginConst.LOGIN_RESP, this.loginSuccess, this);
+        this.registerFunc(LoginConst.ROOM_ENTER_RESP, this.enterResp, this);
+    }
+
+    public removeEvents():void{
+        this.removeFunc(LoginConst.LOGIN_REQ);
+        this.removeFunc(LoginConst.LOGIN_RESP);
+        this.removeFunc(LoginConst.ROOM_ENTER_RESP);
     }
 
     /**
@@ -38,6 +46,15 @@ class LoginController extends BaseController{
         //本模块UI处理
         this.loginView.loginSuccess();
         //UI跳转
-        App.SceneManager.runScene(SceneConsts.Home);
+        if(RoomManager.hasRoomInfo){
+            this.loginProxy.enterRoom();
+        }else{
+            App.SceneManager.runScene(SceneConsts.Home);
+        }
+    }
+
+    private enterResp(obj:any):void{
+        RoomManager.parsePlayers(obj.players,"login");
+        App.SceneManager.runScene(SceneConsts.Room);
     }
 }

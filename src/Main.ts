@@ -41,6 +41,8 @@ class Main extends egret.DisplayObjectContainer{
         //适配方式
         if(App.DeviceUtils.IsPC){
             App.StageUtils.setScaleMode(egret.StageScaleMode.SHOW_ALL);
+        }else if(App.DeviceUtils.IsMobile){
+            App.StageUtils.setScaleMode(egret.StageScaleMode.EXACT_FIT);
         }
 
         //初始化
@@ -64,7 +66,8 @@ class Main extends egret.DisplayObjectContainer{
         App.ResourceUtils.addConfig("resource/resource_core.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_ui.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_battle.json", "resource/");
-        App.ResourceUtils.addConfig("resource/resource_mj.json", "resource/");
+        //App.ResourceUtils.addConfig("resource/resource_mj.json", "resource/");
+        App.ResourceUtils.addConfig("resource/resource_puke.json", "resource/");
         App.ResourceUtils.loadConfig(this.onConfigComplete, this);
     }
 
@@ -81,6 +84,13 @@ class Main extends egret.DisplayObjectContainer{
      * 主题文件加载完成
      */
     private onThemeLoadComplete(): void {
+        Log.trace(egret.getOption("roomid"));
+        let roomid = egret.getOption("roomid");
+        let seatid = egret.getOption("seatid");
+        Log.trace("options:",roomid,seatid);
+        if(roomid != undefined && roomid != null){
+            RoomManager.setRoomInfo(roomid,parseInt(seatid));
+        }
         new Startup();
         //new RoomTest();
     }

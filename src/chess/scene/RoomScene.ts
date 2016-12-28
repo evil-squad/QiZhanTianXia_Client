@@ -14,6 +14,7 @@ class RoomScene extends BaseScene{
 
         this.addLayerAt(LayerManager.Room_Main, 0);
         this.addLayer(LayerManager.UI_Tips);
+        
         App.ViewManager.open(ViewConst.RoomUI);
         App.ViewManager.open(ViewConst.Room);
         //播放背景音乐

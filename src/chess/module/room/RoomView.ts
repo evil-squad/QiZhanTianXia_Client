@@ -1,6 +1,7 @@
 class RoomView extends BaseEuiView {
 
-	private bbar:BMahjongBar;
+	//private bbar:BMahjongBar;
+	private bbar:PukeBar;
 
     public constructor($controller:BaseController, $parent:eui.Group){
         super($controller, $parent);
@@ -11,7 +12,7 @@ class RoomView extends BaseEuiView {
 	public initUI(){
 		super.initUI();
 
-        this.bbar = new BMahjongBar();
+        this.bbar = new PukeBar();
         this.bbar.x = 100;
         this.bbar.y = App.StageUtils.getHeight() - 100;
         this.addChild(this.bbar);
@@ -19,15 +20,15 @@ class RoomView extends BaseEuiView {
 
 	public open(...param:any[]):void{
         super.open(param);
-		this.refreshView(MahjongManager.random(20));
+		this.refreshView(PukeManager.random(13));
     }
 
-	public refreshView(data:Array<MahjongInfo>):void{
+	public refreshView(data:Array<PukeInfo>):void{
 		this.bbar.data = data;
 	}
 
 	private onClickItem(evt:egret.TouchEvent){
-		if (evt.target instanceof MahjongItem) {
+		if (evt.target instanceof PukeItem) {
             this.bbar.switchItem(evt.target);
         }
 	}

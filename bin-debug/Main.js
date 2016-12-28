@@ -40,6 +40,9 @@ var Main = (function (_super) {
         if (App.DeviceUtils.IsPC) {
             App.StageUtils.setScaleMode(egret.StageScaleMode.SHOW_ALL);
         }
+        else if (App.DeviceUtils.IsMobile) {
+            App.StageUtils.setScaleMode(egret.StageScaleMode.EXACT_FIT);
+        }
         //初始化
         this.initScene();
         this.initModule();
@@ -59,7 +62,8 @@ var Main = (function (_super) {
         App.ResourceUtils.addConfig("resource/resource_core.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_ui.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_battle.json", "resource/");
-        App.ResourceUtils.addConfig("resource/resource_mj.json", "resource/");
+        //App.ResourceUtils.addConfig("resource/resource_mj.json", "resource/");
+        App.ResourceUtils.addConfig("resource/resource_puke.json", "resource/");
         App.ResourceUtils.loadConfig(this.onConfigComplete, this);
     };
     /**
@@ -74,6 +78,13 @@ var Main = (function (_super) {
      * 主题文件加载完成
      */
     p.onThemeLoadComplete = function () {
+        Log.trace(egret.getOption("roomid"));
+        var roomid = egret.getOption("roomid");
+        var seatid = egret.getOption("seatid");
+        Log.trace("options:", roomid, seatid);
+        if (roomid != undefined && roomid != null) {
+            RoomManager.setRoomInfo(roomid, parseInt(seatid));
+        }
         new Startup();
         //new RoomTest();
     };

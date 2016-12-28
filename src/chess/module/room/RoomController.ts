@@ -12,12 +12,28 @@ class RoomController  extends BaseController{
         App.ViewManager.register(ViewConst.Room, this.roomView);
         this.roomUIView = new RoomUIView(this, LayerManager.Room_Main);
         App.ViewManager.register(ViewConst.RoomUI, this.roomUIView);
-        this.registerFunc(HomeConst.ROOM_DISMISS_REQ, this.onDismiss, this);
-        this.registerFunc(HomeConst.ROOM_LEAVE_REQ, this.onLeave, this);
-        this.registerFunc(HomeConst.ROOM_PLAYERS_GET_REQ, this.getPlayers, this);
-        this.registerFunc(HomeConst.ROOM_DISMISS_RESP, this.dismissResp, this);
-        this.registerFunc(HomeConst.ROOM_LEAVE_RESP, this.leaveResp, this);
-        this.registerFunc(HomeConst.ROOM_PLAYERS_GET_RESP, this.onGetPlayersResp, this);
+
+		this.registerFunc(RoomConst.NOTIFY, this.notify, this);
+	}
+
+	public addEvents():void{
+		this.registerFunc(RoomConst.ROOM_DISMISS_REQ, this.onDismiss, this);
+        this.registerFunc(RoomConst.ROOM_LEAVE_REQ, this.onLeave, this);
+        this.registerFunc(RoomConst.ROOM_PLAYERS_GET_REQ, this.getPlayers, this);
+
+        this.registerFunc(RoomConst.ROOM_DISMISS_RESP, this.dismissResp, this);
+        this.registerFunc(RoomConst.ROOM_LEAVE_RESP, this.leaveResp, this);
+        this.registerFunc(RoomConst.ROOM_PLAYERS_GET_RESP, this.onGetPlayersResp, this);
+	}
+
+	public removeEvents():void{
+		this.removeFunc(RoomConst.ROOM_DISMISS_REQ);
+		this.removeFunc(RoomConst.ROOM_LEAVE_REQ);
+		this.removeFunc(RoomConst.ROOM_PLAYERS_GET_REQ);
+
+		this.removeFunc(RoomConst.ROOM_DISMISS_RESP);
+		this.removeFunc(RoomConst.ROOM_LEAVE_RESP);
+		this.removeFunc(RoomConst.ROOM_PLAYERS_GET_RESP);
 	}
 
 	private onDismiss(){
@@ -29,7 +45,7 @@ class RoomController  extends BaseController{
 	}
 
 	private dismissResp(){
-		App.TipsUtils.showCenter("解释房间");
+		App.TipsUtils.showCenter("解散房间");
         App.SceneManager.runScene(SceneConsts.Home);
 	}
 
@@ -43,16 +59,14 @@ class RoomController  extends BaseController{
 	}
 
 	private onGetPlayersResp(obj:any){
-		var players = obj.playerInfo;
-        var player;
-        var ps = "";
-        RoomManager.clearPlayers();
-        for (var i = 0; i < players.length; i++) {
-            ps += players[i].nick + " ";
-            RoomManager.addPlayer(new PlayerInfo(players[i]));
-        }
+        RoomManager.parsePlayers(obj.playerInfo,"room");
 		this.roomUIView.refreshView();
-		this.roomView.refreshView(MahjongManager.random(20));
-        App.TipsUtils.showCenter("牌友: " + ps);
+		this.roomView.refreshView(PukeManager.random(13));
 	}
+
+	private notify(obj:any):void{
+        if(obj.type == NotifyType.PLAYER_ENTER){
+			RoomManager.addPlayer(obj.player_enter.enterer);
+        }
+    }
 }

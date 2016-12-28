@@ -12,6 +12,7 @@ class DeviceUtils extends BaseClass {
      * @constructor
      */
     public get IsHtml5():boolean {
+        
         return egret.Capabilities.runtimeType == egret.RuntimeType.WEB;
     }
 

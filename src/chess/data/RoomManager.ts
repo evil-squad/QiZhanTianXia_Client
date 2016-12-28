@@ -26,6 +26,14 @@ class RoomManager {
         return this._players.push(player);
 	}
 
+	public static parsePlayers(players:any,source:string):void{
+		Log.trace("parse",source);
+        RoomManager.clearPlayers();
+        for (var i = 0; i < players.length; i++) {
+            RoomManager.addPlayer(new PlayerInfo(players[i]));
+        }
+	}
+
 	public static setRoomInfo(roomId:string,seatId:number){
 		this._roomId = roomId;
 		this._seatId = seatId;
@@ -68,7 +76,7 @@ class RoomManager {
 	}
 
 	public static get hasRoomInfo():boolean{
-		return this._roomId != null;
+		return this._roomId != null && this._roomId != "";
 	}
 
 	public static clearRoomInfo():void{

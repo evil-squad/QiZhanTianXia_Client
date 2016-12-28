@@ -1,8 +1,8 @@
 class LoginView extends BaseEuiView {
 
-    private usernameInput:eui.TextInput;
-    private passwordInput:eui.TextInput;
-    private loginBtn:eui.Button;
+    private roomIdInput:eui.TextInput;
+    //private passwordInput:eui.TextInput;
+    private enterBtn:eui.Button;
 
     public constructor($controller:BaseController, $parent:eui.Group){
         super($controller, $parent);
@@ -17,8 +17,8 @@ class LoginView extends BaseEuiView {
     public initUI():void{
         super.initUI();
 
-        this.passwordInput.displayAsPassword = true;
-        this.loginBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
+        //this.passwordInput.displayAsPassword = true;
+        this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
     }
 
     /**
@@ -35,6 +35,9 @@ class LoginView extends BaseEuiView {
      */
     public open(...param:any[]):void{
         super.open(param);
+        if(RoomManager.hasRoomInfo){
+            this.roomIdInput.text = RoomManager.roomId;
+        }
     }
 
     /**
@@ -51,20 +54,23 @@ class LoginView extends BaseEuiView {
      * @param pwd
      */
     private onLogin():void{
-        var userName:string = this.usernameInput.text;
-        var pwd:string = this.passwordInput.text;
+        RoomManager.roomId = this.roomIdInput.text;
+        // if(roomId != null && roomId != ""){
+        //     RoomManager.roomId = roomId;
+        // }
+        //var pwd:string = this.passwordInput.text;
         //进行基础检测
-        if(userName == null || userName.length == 0){
-            App.TipsUtils.showCenter("账号密码不能为空");
-            return;
-        }
-        if(pwd == null || pwd.length == 0){
-            App.TipsUtils.showCenter("账号密码不能为空");
-            return;
-        }
+        // if(userName == null || userName.length == 0){
+        //     App.TipsUtils.showCenter("账号密码不能为空");
+        //     return;
+        // }
+        // if(pwd == null || pwd.length == 0){
+        //     App.TipsUtils.showCenter("账号密码不能为空");
+        //     return;
+        // }
 
-        var openId = "213sefwe";
-        var code = "344";
+        var openId = egret.Capabilities.os+""+(Math.floor(Math.random()*10));
+        var code = "1";
         this.applyFunc(LoginConst.LOGIN_REQ, openId, code);
     }
 

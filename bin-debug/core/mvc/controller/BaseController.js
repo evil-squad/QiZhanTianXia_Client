@@ -15,6 +15,13 @@ var BaseController = (function () {
     p.registerFunc = function (key, callbackFunc, callbackObj) {
         this._messages[key] = [callbackFunc, callbackObj];
     };
+    p.removeFunc = function (key) {
+        this._messages[key] = null;
+    };
+    p.addEvents = function () {
+    };
+    p.removeEvents = function () {
+    };
     /**
      * 触发本模块消息
      * @param key 唯一标识
@@ -31,7 +38,7 @@ var BaseController = (function () {
             return listen[0].apply(listen[1], param);
         }
         else {
-            Log.trace("消息" + key + "不存在侦听");
+            Log.trace("消息[" + key + "]不存在侦听");
             return null;
         }
     };
@@ -70,6 +77,8 @@ var BaseController = (function () {
      */
     p.getControllerModel = function (controllerD) {
         return App.ControllerManager.getControllerModel(controllerD);
+    };
+    p.destroy = function () {
     };
     return BaseController;
 }());

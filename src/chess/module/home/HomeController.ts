@@ -10,13 +10,22 @@ class HomeController extends BaseController{
 
         this.homeView = new HomeView(this, LayerManager.UI_Main);
         App.ViewManager.register(ViewConst.Home, this.homeView);
+    }
 
-        //注册C2S消息
+    public addEvents():void{
+         //注册C2S消息
         this.registerFunc(HomeConst.ROOM_CREATE_REQ, this.onCreate, this);
         this.registerFunc(HomeConst.ROOM_ENTER_REQ, this.onEnter, this);
         //注册S2C消息
         this.registerFunc(HomeConst.ROOM_CREATE_RESP, this.createResp, this);
         this.registerFunc(HomeConst.ROOM_ENTER_RESP, this.enterResp, this);
+    }
+
+    public removeEvents():void{
+        this.removeFunc(HomeConst.ROOM_CREATE_REQ);
+        this.removeFunc(HomeConst.ROOM_ENTER_REQ);
+        this.removeFunc(HomeConst.ROOM_CREATE_RESP);
+        this.removeFunc(HomeConst.ROOM_ENTER_RESP);
     }
 
     private onCreate():void{
@@ -33,15 +42,9 @@ class HomeController extends BaseController{
     }
 
     private enterResp(obj:any):void{
-        var players = obj.players;
-        var player;
-        var ps = "";
-        RoomManager.clearPlayers();
-        for (var i = 0; i < players.length; i++) {
-            ps += players[i].nick + " ";
-            RoomManager.addPlayer(new PlayerInfo(players[i]));
-        }
-        App.TipsUtils.showCenter("进入房间: " + ps);
+        RoomManager.parsePlayers(obj.players,"home");
         App.SceneManager.runScene(SceneConsts.Room);
     }
+
+    
 }

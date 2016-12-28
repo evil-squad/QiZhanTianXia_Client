@@ -17,6 +17,13 @@ var RoomManager = (function () {
         }
         return this._players.push(player);
     };
+    RoomManager.parsePlayers = function (players, source) {
+        Log.trace("parse", source);
+        RoomManager.clearPlayers();
+        for (var i = 0; i < players.length; i++) {
+            RoomManager.addPlayer(new PlayerInfo(players[i]));
+        }
+    };
     RoomManager.setRoomInfo = function (roomId, seatId) {
         this._roomId = roomId;
         this._seatId = seatId;
@@ -60,7 +67,7 @@ var RoomManager = (function () {
     );
     d(RoomManager, "hasRoomInfo"
         ,function () {
-            return this._roomId != null;
+            return this._roomId != null && this._roomId != "";
         }
     );
     RoomManager.clearRoomInfo = function () {

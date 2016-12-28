@@ -32,14 +32,14 @@ class RoomProxy  extends BaseProxy{
 	}
 
 	public dismissRoomSuccess(obj:any){
-		this.applyFunc(HomeConst.ROOM_DISMISS_RESP, obj);
+		this.applyFunc(RoomConst.ROOM_DISMISS_RESP, obj);
 	}
 
 	public leaveRoomSuccess(obj:any){
-		this.applyFunc(HomeConst.ROOM_LEAVE_RESP, obj);
+		this.applyFunc(RoomConst.ROOM_LEAVE_RESP, obj);
 	}
 
 	public getRoomPlayersInfoSuccess(obj:any){
-		this.applyFunc(HomeConst.ROOM_PLAYERS_GET_RESP, obj);
+		this.applyFunc(RoomConst.ROOM_PLAYERS_GET_RESP, obj);
 	}
 }
