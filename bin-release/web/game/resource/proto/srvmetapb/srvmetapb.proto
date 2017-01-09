@@ -6,6 +6,9 @@ enum STYPE {
 	NONE = 0;
 	ONLINE = 1;
 	ROOM = 2;
+	DB = 3;
+	GM = 4;
+	SWITCH = 5;
 }
 
 message SrvMeta {

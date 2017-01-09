@@ -8,7 +8,7 @@ var Cmd = (function () {
     Cmd.ROOM_ENTER = 103;
     Cmd.ROOM_LEAVE = 104;
     Cmd.ROOM_PLAYER_INFO_GET = 105;
-    Cmd.ROOM_NOTIRY = 106;
+    Cmd.ROOM_NOTIFY = 106;
     return Cmd;
 }());
 egret.registerClass(Cmd,'Cmd');

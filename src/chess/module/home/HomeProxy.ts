@@ -35,8 +35,8 @@ class HomeProxy extends BaseProxy{
     }
 
     private createRoomSuccess(obj:any):void{
-        RoomManager.setRoomInfo(obj.roomid, obj.seatid);
-        this.applyFunc(HomeConst.ROOM_CREATE_RESP, RoomManager.roomId, RoomManager.seatId);
+        RoomManager.setRoomInfo(obj.roomid);
+        this.applyFunc(HomeConst.ROOM_CREATE_RESP, RoomManager.roomId);
     }
 
     private enterRoomSuccess(obj:any):void{

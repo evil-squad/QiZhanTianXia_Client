@@ -10,6 +10,7 @@ var Startup = (function () {
      */
     p.onResourceLoadComplete = function () {
         this.initModule();
+        this.initListener();
         App.Init();
         //音乐音效处理
         App.SoundManager.setBgOn(true);
@@ -31,6 +32,9 @@ var Startup = (function () {
         App.ControllerManager.register(ControllerConst.Home, new HomeController());
         App.ControllerManager.register(ControllerConst.Room, new RoomController());
         App.ControllerManager.register(ControllerConst.RoomEnter, new RoomEnterController());
+    };
+    p.initListener = function () {
+        new RoomNotifyCmdListener(null);
     };
     return Startup;
 }());

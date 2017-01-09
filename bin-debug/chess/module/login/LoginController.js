@@ -27,8 +27,8 @@ var LoginController = (function (_super) {
      * @param userName
      * @param pwd
      */
-    p.onLogin = function (openId, code) {
-        this.loginProxy.login(openId, code);
+    p.onLogin = function (openId, code, nick) {
+        this.loginProxy.login(openId, code, nick);
     };
     /**
      * 登陆成功处理

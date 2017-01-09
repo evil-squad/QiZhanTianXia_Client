@@ -129,7 +129,7 @@ class HomeView extends BaseEuiView{
 
     private refreshView():void{
         this.nameDisplay.text = MainManager.userInfo.nick;
-        this.coinsDisplay.text = "" + MainManager.userInfo.coins;
+        this.coinsDisplay.text = "" + MainManager.userInfo.roomCard;
         if (RoomManager.hasRoomInfo) {
             this.createBtn.enabled = false;
             this.enterBtn.enabled = true;

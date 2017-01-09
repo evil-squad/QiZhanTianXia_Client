@@ -82,7 +82,7 @@ class ByteArrayMsgByProtobuf extends ByteArrayMsg {
         if (obj.body != undefined
             && obj.body.head != undefined) {
             if (obj.body.head.err != undefined && obj.body.head.err != 0) {
-                App.TipsUtils.showCenter("错误码：" + obj.body.head.err);
+                App.TipsUtils.showCenter("[" + obj.body.head.err + "]" + ErrorConst.getDetail(obj.body.head.err));
                 return;
             }
         }

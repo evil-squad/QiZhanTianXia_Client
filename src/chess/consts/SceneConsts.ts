@@ -4,17 +4,17 @@ enum SceneConsts{
      * Game场景
      * @type {number}
      */
-    Room,
+    Room = 2,
 
     /**
      * 游戏场景
      * @type {number}
      */
-    Home,
+    Home = 3,
 
     /**
      * Loading场景
      * @type {number}
      */
-    LOADING,
+    LOADING= 4,
 }

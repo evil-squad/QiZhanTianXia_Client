@@ -1,20 +1,17 @@
+/**
+ * storepb.Player
+ */
 var UserInfo = (function () {
     function UserInfo(pbObj) {
         if (pbObj == null)
             return;
-        this._id = pbObj.id;
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
-        this._roleTime = pbObj.role_time;
-        this._coins = pbObj.coins;
+        this._icon = pbObj.icon;
         this._lastLoginTime = pbObj.last_login_time;
+        this._roomCard = pbObj.room_card;
     }
     var d = __define,c=UserInfo,p=c.prototype;
-    d(p, "id"
-        ,function () {
-            return this._id;
-        }
-    );
     d(p, "uid"
         ,function () {
             return this._uid;
@@ -25,9 +22,9 @@ var UserInfo = (function () {
             return this._nick;
         }
     );
-    d(p, "coins"
+    d(p, "roomCard"
         ,function () {
-            return this._coins;
+            return this._roomCard;
         }
     );
     return UserInfo;

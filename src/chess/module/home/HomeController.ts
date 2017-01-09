@@ -36,9 +36,9 @@ class HomeController extends BaseController{
         this.proxy.enterRoom();
     }
 
-    private createResp(roomId:string,seatId:number):void{
+    private createResp(roomId:string):void{
         this.homeView.createRoomSuccess();
-        App.TipsUtils.showCenter("创建房间 roomId:" + roomId + " seatId:" + seatId);
+        App.TipsUtils.showCenter("创建房间 roomId:" + roomId);
     }
 
     private enterResp(obj:any):void{

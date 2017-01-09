@@ -86,10 +86,9 @@ class Main extends egret.DisplayObjectContainer{
     private onThemeLoadComplete(): void {
         Log.trace(egret.getOption("roomid"));
         let roomid = egret.getOption("roomid");
-        let seatid = egret.getOption("seatid");
-        Log.trace("options:",roomid,seatid);
+        Log.trace("options:",roomid);
         if(roomid != undefined && roomid != null){
-            RoomManager.setRoomInfo(roomid,parseInt(seatid));
+            RoomManager.setRoomInfo(roomid);
         }
         new Startup();
         //new RoomTest();

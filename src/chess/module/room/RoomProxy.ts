@@ -12,8 +12,7 @@ class RoomProxy  extends BaseProxy{
 		var body = {
             "head": App.Head
         };
-        RoomManager.clearRoomInfo();
-        this.writeAndFlush(Cmd.ROOM_LEAVE, body);
+        this.writeAndFlush(Cmd.ROOM_DISMISS, body);
 	}
 
 	public leaveRoom():void{
@@ -32,6 +31,7 @@ class RoomProxy  extends BaseProxy{
 	}
 
 	public dismissRoomSuccess(obj:any){
+        RoomManager.clearRoomInfo();
 		this.applyFunc(RoomConst.ROOM_DISMISS_RESP, obj);
 	}
 

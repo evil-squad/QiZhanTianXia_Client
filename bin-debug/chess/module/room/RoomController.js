@@ -7,6 +7,10 @@ var RoomController = (function (_super) {
         App.ViewManager.register(ViewConst.Room, this.roomView);
         this.roomUIView = new RoomUIView(this, LayerManager.Room_Main);
         App.ViewManager.register(ViewConst.RoomUI, this.roomUIView);
+        this.registerFunc(RoomConst.NOTIFY, this.notify, this);
+        App.MessageCenter.addListener(NotifyConst.PLAYER_ENTER, this.onPlayersChange, this);
+        App.MessageCenter.addListener(NotifyConst.PLAYER_LEAVE, this.onPlayersChange, this);
+        App.MessageCenter.addListener(NotifyConst.ROOM_START, this.onRoomStart, this);
     }
     var d = __define,c=RoomController,p=c.prototype;
     p.addEvents = function () {
@@ -46,6 +50,18 @@ var RoomController = (function (_super) {
         RoomManager.parsePlayers(obj.playerInfo, "room");
         this.roomUIView.refreshView();
         this.roomView.refreshView(PukeManager.random(13));
+    };
+    p.notify = function (obj) {
+        if (obj.type == NotifyType.PLAYER_ENTER) {
+            RoomManager.addPlayer(obj.player_enter.enterer);
+        }
+    };
+    //
+    p.onPlayersChange = function (obj) {
+        this.roomUIView.refreshView();
+    };
+    p.onRoomStart = function (obj) {
+        App.TipsUtils.showCenter("牌局开始");
     };
     return RoomController;
 }(BaseController));

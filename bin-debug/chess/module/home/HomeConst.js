@@ -6,6 +6,7 @@ var HomeConst = (function () {
     HomeConst.ROOM_CREATE_RESP = "home.create.room.resp";
     HomeConst.ROOM_ENTER_REQ = "home.enter.room.req";
     HomeConst.ROOM_ENTER_RESP = "home.enter.room.resp";
+    HomeConst.NOTIFY = "home.notify";
     return HomeConst;
 }());
 egret.registerClass(HomeConst,'HomeConst');

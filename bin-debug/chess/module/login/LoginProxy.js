@@ -12,13 +12,14 @@ var LoginProxy = (function (_super) {
      * @param userName
      * @param pwd
      */
-    p.login = function (openId, code) {
-        var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId });
+    p.login = function (openId, code, nick) {
+        //var nick = "nick"+Math.floor(Math.random()*10);
+        var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId, nick: nick });
         var wechat = App.lookupProtoMessage(Msg.WECHAT).create({ code: code });
         var body = {
             "head": App.Head,
             "debug": debug,
-            "wechat": wechat
+            "type": 0 //DEBUG:0,WECHAT:1
         };
         this.writeAndFlush(Cmd.LOGIN, body);
     };
@@ -39,6 +40,7 @@ var LoginProxy = (function (_super) {
      */
     p.loginSuccess = function (obj) {
         MainManager.setUserInfo(obj.player);
+        RoomManager.roomId = obj.roomid;
         this.applyFunc(LoginConst.LOGIN_RESP, obj);
     };
     p.enterRoomSuccess = function (obj) {

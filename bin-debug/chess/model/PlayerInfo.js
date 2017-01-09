@@ -1,14 +1,19 @@
+/**
+ * roompb.PleyerInfo
+ */
 var PlayerInfo = (function () {
     function PlayerInfo(pbObj) {
         if (pbObj == null)
             return;
+        this._onlineId = pbObj.role_time;
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
-        this._onlineId = pbObj.role_time;
-        this._roomId = pbObj.roomid;
         this._seatId = pbObj.seatid;
         this._obId = pbObj.obid;
         this._ob = pbObj.ob;
+        this._icon = pbObj.icon;
+        this._ip = pbObj.ip;
+        this._inRoom = pbObj.in_room;
     }
     var d = __define,c=PlayerInfo,p=c.prototype;
     d(p, "uid"
@@ -19,11 +24,6 @@ var PlayerInfo = (function () {
     d(p, "nick"
         ,function () {
             return this._nick;
-        }
-    );
-    d(p, "roomId"
-        ,function () {
-            return this._roomId;
         }
     );
     d(p, "seatId"
@@ -39,6 +39,11 @@ var PlayerInfo = (function () {
     d(p, "isOb"
         ,function () {
             return this._ob;
+        }
+    );
+    d(p, "inRoom"
+        ,function () {
+            return this._inRoom;
         }
     );
     return PlayerInfo;

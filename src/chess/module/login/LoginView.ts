@@ -1,7 +1,8 @@
 class LoginView extends BaseEuiView {
 
     private roomIdInput:eui.TextInput;
-    //private passwordInput:eui.TextInput;
+    private openIdInput:eui.TextInput;
+    private nickInput:eui.TextInput;
     private enterBtn:eui.Button;
 
     public constructor($controller:BaseController, $parent:eui.Group){
@@ -16,6 +17,9 @@ class LoginView extends BaseEuiView {
      */
     public initUI():void{
         super.initUI();
+
+        this.openIdInput.text = "default_openid_"+egret.Capabilities.os;
+        this.nickInput.text = "nick"+Math.floor(Math.random()*100);
 
         //this.passwordInput.displayAsPassword = true;
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
@@ -55,6 +59,12 @@ class LoginView extends BaseEuiView {
      */
     private onLogin():void{
         RoomManager.roomId = this.roomIdInput.text;
+
+        var openId = this.openIdInput.text;
+        openId = openId==""||openId==null?"default_openid"+egret.Capabilities.os:openId;
+
+        var nick = this.nickInput.text;
+        nick = nick==""||nick==null?"nick"+Math.floor(Math.random()*100):nick;
         // if(roomId != null && roomId != ""){
         //     RoomManager.roomId = roomId;
         // }
@@ -69,9 +79,10 @@ class LoginView extends BaseEuiView {
         //     return;
         // }
 
-        var openId = egret.Capabilities.os+""+(Math.floor(Math.random()*10));
+        //var openId = egret.Capabilities.os+""+(Math.floor(Math.random()*10));
         var code = "1";
-        this.applyFunc(LoginConst.LOGIN_REQ, openId, code);
+        
+        this.applyFunc(LoginConst.LOGIN_REQ, openId, code, nick);
     }
 
     /**

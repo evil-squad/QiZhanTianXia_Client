@@ -35,8 +35,8 @@ class LoginController extends BaseController{
      * @param userName
      * @param pwd
      */
-    private onLogin(openId:string, code:number):void{
-        this.loginProxy.login(openId, code);
+    private onLogin(openId:string, code:number, nick:string):void{
+        this.loginProxy.login(openId, code, nick);
     }
 
     /**

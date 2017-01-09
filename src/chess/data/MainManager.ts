@@ -7,6 +7,8 @@ class MainManager {
 
 	public static setUserInfo(player:any){
 		this._userInfo = new UserInfo(player);
+		this._userId = this._userInfo.uid;
+		App.Head.uid = this._userId;
 	}
 
 	public static get userId():number{

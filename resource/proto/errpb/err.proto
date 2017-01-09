@@ -67,4 +67,43 @@ enum ERR {
 	PLAYER_LOST_ROOM_INDEX = 2013;
 	// ob 不能发起解散房间的请求
 	OB_CANT_ASK_DISMISS_ROOM = 2014;
+	// 玩家已经绑定了房间, 不能再创建/加入别的房间了
+	PLAYER_ALREADY_BINDING_ROOM = 2015;
+	// 房间已经关闭
+	ROOM_IS_CLOSED = 2016;
+	// 无法申请 roomid (因为room_idgen获取不到,
+	// 可能原因: uid重复, 或已经没有roomid可申请)
+	CANNOT_GET_ROOMID = 2017;
+	// 无效的 roomid
+	INVALID_ROOMID = 2018;
+	// 不能进入房间(被房间服拒绝)
+	CANNOT_ENTER_ROOM = 2019;
+	// 找不到 UID 绑定的房间
+	NOFOUND_UID_BINDING_ROOM = 2020;
+	// 不是创建者不能直接解散房间
+	NON_OWNER_CANNOT_DISMISS_ROOM = 2021;
+	// 不能直接解散开始的房间, 必须投票(ask dismiss)
+	CANNOT_DISMISS_STARTED_ROOM = 2022;
+	// 不能离开已经开始的房间
+	CANNOT_LEAVE_STARTED_ROOM = 2023;
+	// 无效的 debug 登陆请求(空请求或空openid)
+	INVALID_DEBUG_LOGIN_REQUEST = 2024;
+	// 不支持的登陆方式
+	UNSUPPORTED_LOGIN_TYPE = 2025;
+	// 获取UserInfo失败(NotFound错误除外)
+	FAILED_LOAD_USERINFO = 2026;
+	// 获取新Uid失败
+	FAILED_GET_NEW_UID = 2027;
+	// 存储新 UserInfo 失败
+	FAILED_STORE_USERINFO = 2028;
+	// 获取玩家信息失败(NotFound错误除外)
+	FAILED_LOAD_PLAYER = 2029;
+	// 存储玩家信息失败
+	FAILED_STORE_PLAYER = 2030;
+	// 进入房间返回0个玩家(至少应该包括房主)
+	ENTER_ROOM_RESP_ZERO_PLAYER = 2031;
+	// 房间ID用光了
+	NOT_ENOUGH_ROOMID = 2032;
+	// 绑定 roomid 和 roomsrvid
+	FAILED_BINDING_ROOMID_WITH_SRVID = 2033;
 }

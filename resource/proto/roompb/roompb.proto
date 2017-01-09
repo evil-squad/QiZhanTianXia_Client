@@ -5,12 +5,12 @@ syntax = "proto3";
 package roompb;
 
 service Room {
-	// 注册 Online
-	rpc Register(RegisterReq) returns (RegisterResp) {}
-	// 注销 Online
-	rpc Unregister(UnregisterReq) returns (UnregisterResp) {}
-	// Keepalive 保活(3秒保活一次, 10秒超时)
-	rpc Keepalive(KeepaliveReq) returns (KeepaliveResp) {}
+	//// 注册 Online
+	//rpc Register(RegisterReq) returns (RegisterResp) {}
+	//// 注销 Online
+	//rpc Unregister(UnregisterReq) returns (UnregisterResp) {}
+	//// Keepalive 保活(3秒保活一次, 10秒超时)
+	//rpc Keepalive(KeepaliveReq) returns (KeepaliveResp) {}
 	// CreateRoom 创建房间
 	rpc CreateRoom(CreateRoomReq) returns (CreateRoomResp) {}
 	// DismissRoom 解散房间
@@ -24,6 +24,7 @@ service Room {
 	// 换座位? 座位空好换, 座位有人要协商?
 }
 
+/*
 message RegisterReq {
 	int32 online_id = 1;
 	// true: 如果之前有注册, 就先注销它
@@ -45,31 +46,28 @@ message KeepaliveReq {
 }
 message KeepaliveResp {
 }
+*/
 
 message CreateRoomReq {
-	int64 session = 1;
-	// 玩家信息
-	int32 uid = 2;
-	string nick = 3;
+	string roomid = 1;
+	int32 owner = 2;
 }
 message CreateRoomResp {
 	// 错误码
 	errpb.ERR errcode = 1;
-	// 房间号(全局唯一)
-	string roomid = 3;
-	// 座位号
-	int32 seatid = 4;
 }
 
 message EnterRoomReq {
-	int64 session = 1;
-	// 要进入的房间号
+	int32 OnlineId = 1;
 	string roomid = 2;
-	// true: 观察者(不能占位子, 只接收同步消息)
-	bool ob = 3;
+	string notiSubj = 3;
+	// true: 观察者(房主不能是观察者, 硬塞会失败)
+	bool ob = 4;
 	// 加入者玩家信息
-	int32 uid = 4;
-	string nick = 5;
+	int32 uid = 5;
+	string nick = 6;
+	bytes icon = 7;
+	string ip = 8;
 }
 message EnterRoomResp {
 	// 错误码
@@ -78,10 +76,22 @@ message EnterRoomResp {
 	repeated PlayerInfo players = 3;
 }
 
+enum LEAVE_REASON {
+	// 客户端连接断开(杀APP/断网)
+	CLIENT_CONN_BROKEN = 0;
+	// 房间解散(这个原因只会由roomsrv发起, online不会传过来)
+	ROOM_DISMISS = 1;
+	// 玩家在房间开始牌局之前点了离开房间
+	PLAYER_WANT = 2;
+	// 房间服务器出于逻辑需要不要保留座位
+	ROOM_NEED_NORES = 3;
+}
+
 message LeaveRoomReq {
-	int64 session = 1;
 	// 离开者id
-	int32 uid = 2;
+	int32 uid = 1;
+	// 离开的原因
+	LEAVE_REASON reason = 2;
 }
 message LeaveRoomResp {
 	// 错误码
@@ -89,9 +99,12 @@ message LeaveRoomResp {
 }
 
 message DismissRoomReq {
-	int64 session = 1;
-	// 玩家信息
-	int32 uid = 2;
+	// 解散者
+	int32 uid = 1;
+	// 解散的房间号(房间号和uid二选一, uid优先)
+	string roomid = 2;
+	// 强行关闭
+	bool force = 3;
 }
 message DismissRoomResp {
 	// 错误码
@@ -99,8 +112,7 @@ message DismissRoomResp {
 }
 
 message GetPlayerInfoReq {
-	int64 session = 1;
-	repeated int32 uid = 2;
+	repeated int32 uid = 1;
 }
 message GetPlayerInfoResp {
 	// 错误码
@@ -120,16 +132,18 @@ enum NOTIFIER {
 enum NOTIFY {
 	NOOP = 0;
 	// 房间关闭
-	ROOM_CLOSE = 1;
+	ROOM_CLOSED = 1;
 	// 玩家进入房间
 	PLAYER_ENTER = 2;
 	// 玩家离开房间
 	PLAYER_LEAVE = 3;
 	// 有人提出解散房间
 	ROOM_DISMISS_REQ = 4;
+	// 人齐了, 牌局开始
+	ROOM_START = 5;
 }
 enum ROOM_CLOSE_REASON {
-	// 房间空(指:没有玩家, 但可能还有ob), 所以关闭
+	// 房间空闲超时(指:没有玩家, 但可能还有ob)
 	EMPTY = 0;
 	// 被某玩家解散
 	DISMISS = 1;
@@ -137,9 +151,8 @@ enum ROOM_CLOSE_REASON {
 	ROOMSRV_CLOSE = 2;
 }
 message Notify {
-	int64 session = 1;
 	// 通知类型, 参考 NOTIFY 的定义
-	NOTIFY type = 2;
+	NOTIFY type = 1;
 	// 通知接收者, 具体指:
 	// 解散通知: 不包括解散者自己, 包括ob
 	// 进入通知: 房间所有人(不包括进入者自己)
@@ -150,15 +163,12 @@ message Notify {
 	PlayerEnterNotify player_enter = 6;
 	PlayerLeaveNotify player_leave = 7;
 	RoomDismissReqNotify room_dismiss = 8;
+	RoomStartNotify room_start = 9;
 }
 message RoomCloseNotify {
-	// 解散者信息
-	message Dismisser {
-		int32 uid = 1;
-		string nick = 2;
-	}
-	ROOM_CLOSE_REASON reason = 1;
-	Dismisser dismisser = 2;
+	string roomid = 1;
+	ROOM_CLOSE_REASON reason = 2;
+	int32 dismisser = 3;
 }
 message PlayerEnterNotify {
 	// 进入者
@@ -167,6 +177,10 @@ message PlayerEnterNotify {
 message PlayerLeaveNotify {
 	message Leaver {
 		int32 uid = 1;
+		// true: ob, false: player
+		bool ob = 2;
+		// ob: obid, player: seatid
+		int32 idx = 3;
 	}
 	// 离开者
 	Leaver leaver = 1;
@@ -178,13 +192,18 @@ message RoomDismissReqNotify {
 	// 解散者
 	Dismisser dismisser = 1;
 }
+message RoomStartNotify {
+	string roomid = 1;
+}
 
 message PlayerInfo {
-	int32 uid = 1;
-	string nick = 2;
-	int32 online_id = 3;
-	string roomid = 4;
+	int32 online_id = 1;
+	int32 uid = 2;
+	string nick = 3;
 	int32 seatid = 5;
 	int32 obid = 6;
 	bool ob = 7;
+	bytes icon = 8;
+	string ip = 9;
+	bool in_room = 10;
 }

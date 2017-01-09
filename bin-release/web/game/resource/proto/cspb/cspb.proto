@@ -44,6 +44,11 @@ message Head {
 	string errmsg = 14;
 }
 
+enum LOGIN_TYPE {
+	DEBUG = 0;
+	WECHAT = 1;
+}
+
 // 登陆, 由于没有选角色的过程, 客户端只需要发一次登陆,
 // 就自动完成: 账号验证(如:微信), 创角(如果没有对应角色), 进入游戏的过程.
 // 对应关系: (channel+openid) <--> uid
@@ -52,6 +57,8 @@ message LoginReq {
 		// 类似微信的openid, 每个 openid 对应内部的一个uid
 		// 客户端如果不好记录, 就取用户设备的设备id.
 		string openid = 1;
+		string nick = 2;
+		bytes icon = 3;
 	}
 	// 微信登陆方式, 参考:
 	// https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317851&token=&lang=zh_CN
@@ -61,13 +68,15 @@ message LoginReq {
 		string code = 1;
 	}
 	Head head = 1;
-	Debug debug = 2;
-	Wechat wechat = 3;
+	LOGIN_TYPE type = 2;
+	Debug debug = 3;
+	Wechat wechat = 4;
 }
 
 message LoginResp {
 	Head head = 1;
 	storepb.Player player = 2;
+	string roomid = 3;
 }
 
 // =================== room ===================
@@ -80,8 +89,6 @@ message CreateRoomResp {
 	Head head = 1;
 	// 房间号(全局唯一)
 	string roomid = 2;
-	// 座位号
-	int32 seatid = 3;
 }
 
 // DISMISS_ROOM = 102;

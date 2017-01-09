@@ -12,8 +12,7 @@ var RoomProxy = (function (_super) {
         var body = {
             "head": App.Head
         };
-        RoomManager.clearRoomInfo();
-        this.writeAndFlush(Cmd.ROOM_LEAVE, body);
+        this.writeAndFlush(Cmd.ROOM_DISMISS, body);
     };
     p.leaveRoom = function () {
         var body = {
@@ -29,6 +28,7 @@ var RoomProxy = (function (_super) {
         this.writeAndFlush(Cmd.ROOM_PLAYER_INFO_GET, body);
     };
     p.dismissRoomSuccess = function (obj) {
+        RoomManager.clearRoomInfo();
         this.applyFunc(RoomConst.ROOM_DISMISS_RESP, obj);
     };
     p.leaveRoomSuccess = function (obj) {

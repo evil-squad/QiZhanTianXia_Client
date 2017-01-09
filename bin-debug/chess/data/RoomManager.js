@@ -17,6 +17,25 @@ var RoomManager = (function () {
         }
         return this._players.push(player);
     };
+    RoomManager.removePlayer = function (uid) {
+        var count = RoomManager.playerCount;
+        for (var i = 0; i < count; i++) {
+            if (this._players[i].uid == uid) {
+                this._players.splice(i);
+                return true;
+            }
+        }
+        return false;
+    };
+    RoomManager.getPlayer = function (uid) {
+        var count = RoomManager.playerCount;
+        for (var i = 0; i < count; i++) {
+            if (this._players[i].uid == uid) {
+                return this._players[i];
+            }
+        }
+        return null;
+    };
     RoomManager.parsePlayers = function (players, source) {
         Log.trace("parse", source);
         RoomManager.clearPlayers();
@@ -24,9 +43,8 @@ var RoomManager = (function () {
             RoomManager.addPlayer(new PlayerInfo(players[i]));
         }
     };
-    RoomManager.setRoomInfo = function (roomId, seatId) {
+    RoomManager.setRoomInfo = function (roomId) {
         this._roomId = roomId;
-        this._seatId = seatId;
     };
     RoomManager.clearPlayers = function () {
         this._players = [];

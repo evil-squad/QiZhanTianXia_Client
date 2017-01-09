@@ -12,13 +12,15 @@ class LoginProxy extends BaseProxy{
      * @param userName
      * @param pwd
      */
-    public login(openId:string, code:number):void{
-        var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId });
+    public login(openId:string, code:number, nick:string):void{
+        //var nick = "nick"+Math.floor(Math.random()*10);
+        var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId, nick: nick });
         var wechat = App.lookupProtoMessage(Msg.WECHAT).create({ code: code });
         var body = {
             "head": App.Head,
             "debug": debug,
-            "wechat": wechat
+            "type":0//DEBUG:0,WECHAT:1
+            //"wechat": wechat
         };
         this.writeAndFlush(Cmd.LOGIN, body);
     }
@@ -41,6 +43,7 @@ class LoginProxy extends BaseProxy{
      */
     public loginSuccess(obj:any):void{
         MainManager.setUserInfo(obj.player);
+        RoomManager.roomId = obj.roomid;
         this.applyFunc(LoginConst.LOGIN_RESP, obj);
     }
 

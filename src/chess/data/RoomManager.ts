@@ -19,11 +19,32 @@ class RoomManager {
         return uids;
 	}
 
-	public static addPlayer(player):number{
+	public static addPlayer(player:any):number{
 		if (this._players.length > RoomManager.MAX_PLAYER_CNT) {
             return -1;
         }
         return this._players.push(player);
+	}
+
+	public static removePlayer(uid:number):boolean{
+		var count:number = RoomManager.playerCount;
+		for(var i=0; i<count; i++){
+			if(this._players[i].uid == uid){
+				this._players.splice(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static getPlayer(uid:number):PlayerInfo{
+		var count:number = RoomManager.playerCount;
+		for(var i=0; i<count; i++){
+			if(this._players[i].uid == uid){
+				return this._players[i];
+			}
+		}
+		return null;
 	}
 
 	public static parsePlayers(players:any,source:string):void{
@@ -34,9 +55,8 @@ class RoomManager {
         }
 	}
 
-	public static setRoomInfo(roomId:string,seatId:number){
+	public static setRoomInfo(roomId:string){
 		this._roomId = roomId;
-		this._seatId = seatId;
 	}
 
 	public static clearPlayers():void{

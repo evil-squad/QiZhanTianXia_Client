@@ -11,6 +11,8 @@ var LoginView = (function (_super) {
      */
     p.initUI = function () {
         _super.prototype.initUI.call(this);
+        this.openIdInput.text = "default_openid_" + egret.Capabilities.os;
+        this.nickInput.text = "nick" + Math.floor(Math.random() * 100);
         //this.passwordInput.displayAsPassword = true;
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
     };
@@ -53,6 +55,10 @@ var LoginView = (function (_super) {
      */
     p.onLogin = function () {
         RoomManager.roomId = this.roomIdInput.text;
+        var openId = this.openIdInput.text;
+        openId = openId == "" || openId == null ? "default_openid" + egret.Capabilities.os : openId;
+        var nick = this.nickInput.text;
+        nick = nick == "" || nick == null ? "nick" + Math.floor(Math.random() * 100) : nick;
         // if(roomId != null && roomId != ""){
         //     RoomManager.roomId = roomId;
         // }
@@ -66,9 +72,9 @@ var LoginView = (function (_super) {
         //     App.TipsUtils.showCenter("账号密码不能为空");
         //     return;
         // }
-        var openId = egret.Capabilities.os + "" + (Math.floor(Math.random() * 10));
+        //var openId = egret.Capabilities.os+""+(Math.floor(Math.random()*10));
         var code = "1";
-        this.applyFunc(LoginConst.LOGIN_REQ, openId, code);
+        this.applyFunc(LoginConst.LOGIN_REQ, openId, code, nick);
     };
     /**
      * 登陆成功处理

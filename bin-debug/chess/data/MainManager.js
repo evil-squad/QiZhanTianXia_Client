@@ -4,6 +4,8 @@ var MainManager = (function () {
     var d = __define,c=MainManager,p=c.prototype;
     MainManager.setUserInfo = function (player) {
         this._userInfo = new UserInfo(player);
+        this._userId = this._userInfo.uid;
+        App.Head.uid = this._userId;
     };
     d(MainManager, "userId"
         ,function () {

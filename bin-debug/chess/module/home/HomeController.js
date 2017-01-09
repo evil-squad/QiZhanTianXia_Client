@@ -27,9 +27,9 @@ var HomeController = (function (_super) {
     p.onEnter = function () {
         this.proxy.enterRoom();
     };
-    p.createResp = function (roomId, seatId) {
+    p.createResp = function (roomId) {
         this.homeView.createRoomSuccess();
-        App.TipsUtils.showCenter("创建房间 roomId:" + roomId + " seatId:" + seatId);
+        App.TipsUtils.showCenter("创建房间 roomId:" + roomId);
     };
     p.enterResp = function (obj) {
         RoomManager.parsePlayers(obj.players, "home");

@@ -14,6 +14,9 @@ class RoomController  extends BaseController{
         App.ViewManager.register(ViewConst.RoomUI, this.roomUIView);
 
 		this.registerFunc(RoomConst.NOTIFY, this.notify, this);
+		App.MessageCenter.addListener(NotifyConst.PLAYER_ENTER,this.onPlayersChange, this);
+		App.MessageCenter.addListener(NotifyConst.PLAYER_LEAVE,this.onPlayersChange, this);
+		App.MessageCenter.addListener(NotifyConst.ROOM_START,this.onRoomStart, this);
 	}
 
 	public addEvents():void{
@@ -69,4 +72,13 @@ class RoomController  extends BaseController{
 			RoomManager.addPlayer(obj.player_enter.enterer);
         }
     }
+
+	//
+	private onPlayersChange(obj:any):void{
+		this.roomUIView.refreshView();
+	}
+
+	private onRoomStart(obj:any):void{
+		App.TipsUtils.showCenter("牌局开始");
+	}
 }

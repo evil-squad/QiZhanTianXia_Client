@@ -47,5 +47,4 @@ message TalkReq {
 	P2RRecver p2r_recver = 8;
 }
 message TalkResp {
-
 }

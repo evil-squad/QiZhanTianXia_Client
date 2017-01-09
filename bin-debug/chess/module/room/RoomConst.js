@@ -10,6 +10,7 @@ var RoomConst = (function () {
     RoomConst.ROOM_PLAYERS_GET_RESP = "room.get.players.room.resp";
     RoomConst.ROOM_DISMISS_REQ = "room.dismiss.room.req";
     RoomConst.ROOM_DISMISS_RESP = "room.dismiss.room.resp";
+    RoomConst.NOTIFY = "room.notify";
     return RoomConst;
 }());
 egret.registerClass(RoomConst,'RoomConst');

@@ -86,7 +86,7 @@
     },
     {
       "path": "resource/skins/LoginSkin.exml",
-      "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<e:Skin class=\"LoginSkin\" width=\"400\" height=\"300\" xmlns:e=\"http://ns.egret.com/eui\" xmlns:w=\"http://ns.egret.com/wing\">\n\t<e:TextInput id=\"roomIdInput\" y=\"89\" horizontalCenter=\"0\" prompt=\"输入房间号\"/>\n\t<e:Button id=\"enterBtn\" label=\"进入游戏/房间\" y=\"177\" horizontalCenter=\"0\"/>\n</e:Skin>"
+      "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<e:Skin class=\"LoginSkin\" width=\"400\" height=\"385\" xmlns:e=\"http://ns.egret.com/eui\" xmlns:w=\"http://ns.egret.com/wing\">\n\t<e:TextInput id=\"roomIdInput\" y=\"89\" horizontalCenter=\"0\" prompt=\"输入房间号\"/>\n\t<e:TextInput id=\"nickInput\" y=\"213\" horizontalCenter=\"0\" prompt=\"输入昵称\" x=\"60\"/>\n\t<e:TextInput id=\"openIdInput\" y=\"152.5\" horizontalCenter=\"0\" prompt=\"输入OpenID\" x=\"70\"/>\n\t<e:Button id=\"enterBtn\" label=\"进入游戏/房间\" y=\"281\" horizontalCenter=\"0\"/>\n</e:Skin>"
     },
     {
       "path": "resource/skins/PanelSkin.exml",

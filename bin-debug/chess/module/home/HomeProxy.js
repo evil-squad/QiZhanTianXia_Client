@@ -30,8 +30,8 @@ var HomeProxy = (function (_super) {
         this.writeAndFlush(Cmd.ROOM_ENTER, body);
     };
     p.createRoomSuccess = function (obj) {
-        RoomManager.setRoomInfo(obj.roomid, obj.seatid);
-        this.applyFunc(HomeConst.ROOM_CREATE_RESP, RoomManager.roomId, RoomManager.seatId);
+        RoomManager.setRoomInfo(obj.roomid);
+        this.applyFunc(HomeConst.ROOM_CREATE_RESP, RoomManager.roomId);
     };
     p.enterRoomSuccess = function (obj) {
         this.applyFunc(HomeConst.ROOM_ENTER_RESP, obj);

@@ -80,10 +80,9 @@ var Main = (function (_super) {
     p.onThemeLoadComplete = function () {
         Log.trace(egret.getOption("roomid"));
         var roomid = egret.getOption("roomid");
-        var seatid = egret.getOption("seatid");
-        Log.trace("options:", roomid, seatid);
+        Log.trace("options:", roomid);
         if (roomid != undefined && roomid != null) {
-            RoomManager.setRoomInfo(roomid, parseInt(seatid));
+            RoomManager.setRoomInfo(roomid);
         }
         new Startup();
         //new RoomTest();
