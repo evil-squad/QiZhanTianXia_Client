@@ -66,4 +66,3 @@ var RoomController = (function (_super) {
     return RoomController;
 }(BaseController));
 egret.registerClass(RoomController,'RoomController');
-//# sourceMappingURL=RoomController.js.map

@@ -10,4 +10,3 @@ var ProtoConst = (function () {
     return ProtoConst;
 }());
 egret.registerClass(ProtoConst,'ProtoConst');
-//# sourceMappingURL=ProtoConst.js.map

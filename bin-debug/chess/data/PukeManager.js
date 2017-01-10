@@ -32,4 +32,3 @@ var PukeManager = (function () {
     return PukeManager;
 }());
 egret.registerClass(PukeManager,'PukeManager');
-//# sourceMappingURL=PukeManager.js.map

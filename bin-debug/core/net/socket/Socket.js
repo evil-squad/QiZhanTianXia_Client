@@ -161,4 +161,3 @@ var Socket = (function (_super) {
     return Socket;
 }(BaseClass));
 egret.registerClass(Socket,'Socket');
-//# sourceMappingURL=Socket.js.map

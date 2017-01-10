@@ -12,4 +12,3 @@ var Cmd = (function () {
     return Cmd;
 }());
 egret.registerClass(Cmd,'Cmd');
-//# sourceMappingURL=Cmd.js.map

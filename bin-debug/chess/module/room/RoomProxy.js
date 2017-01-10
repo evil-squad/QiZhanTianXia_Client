@@ -40,4 +40,3 @@ var RoomProxy = (function (_super) {
     return RoomProxy;
 }(BaseProxy));
 egret.registerClass(RoomProxy,'RoomProxy');
-//# sourceMappingURL=RoomProxy.js.map

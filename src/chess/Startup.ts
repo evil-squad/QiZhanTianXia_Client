@@ -14,7 +14,7 @@ class Startup {
         App.Init();
 
         //音乐音效处理
-        App.SoundManager.setBgOn(true);
+        App.SoundManager.setBgOn(false);
         App.SoundManager.setEffectOn(!App.DeviceUtils.IsHtml5 || !App.DeviceUtils.IsMobile);
         App.SceneManager.runScene(SceneConsts.Enter);
     }

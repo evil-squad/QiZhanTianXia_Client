@@ -10,4 +10,3 @@ var HomeConst = (function () {
     return HomeConst;
 }());
 egret.registerClass(HomeConst,'HomeConst');
-//# sourceMappingURL=HomeConst.js.map

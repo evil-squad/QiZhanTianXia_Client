@@ -48,4 +48,3 @@ var UTFMsg = (function () {
     return UTFMsg;
 }());
 egret.registerClass(UTFMsg,'UTFMsg',["BaseMsg"]);
-//# sourceMappingURL=UTFMsg.js.map

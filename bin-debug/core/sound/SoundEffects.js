@@ -42,4 +42,3 @@ var SoundEffects = (function (_super) {
     return SoundEffects;
 }(BaseSound));
 egret.registerClass(SoundEffects,'SoundEffects');
-//# sourceMappingURL=SoundEffects.js.map

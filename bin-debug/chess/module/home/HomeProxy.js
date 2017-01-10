@@ -39,4 +39,3 @@ var HomeProxy = (function (_super) {
     return HomeProxy;
 }(BaseProxy));
 egret.registerClass(HomeProxy,'HomeProxy');
-//# sourceMappingURL=HomeProxy.js.map

@@ -49,4 +49,3 @@ var PlayerInfo = (function () {
     return PlayerInfo;
 }());
 egret.registerClass(PlayerInfo,'PlayerInfo');
-//# sourceMappingURL=PlayerInfo.js.map

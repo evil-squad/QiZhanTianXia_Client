@@ -30,4 +30,3 @@ var MahjongManager = (function () {
     return MahjongManager;
 }());
 egret.registerClass(MahjongManager,'MahjongManager');
-//# sourceMappingURL=MahjongManager.js.map

@@ -40,4 +40,3 @@ var MahjongItem = (function (_super) {
     return MahjongItem;
 }(BaseMahjongItem));
 egret.registerClass(MahjongItem,'MahjongItem');
-//# sourceMappingURL=MahjongItem.js.map

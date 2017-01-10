@@ -38,4 +38,3 @@ var HomeController = (function (_super) {
     return HomeController;
 }(BaseController));
 egret.registerClass(HomeController,'HomeController');
-//# sourceMappingURL=HomeController.js.map

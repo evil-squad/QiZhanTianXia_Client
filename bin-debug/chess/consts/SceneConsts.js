@@ -17,4 +17,3 @@ var SceneConsts;
      */
     SceneConsts[SceneConsts["LOADING"] = 4] = "LOADING";
 })(SceneConsts || (SceneConsts = {}));
-//# sourceMappingURL=SceneConsts.js.map

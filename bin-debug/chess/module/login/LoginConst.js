@@ -9,4 +9,3 @@ var LoginConst = (function () {
     return LoginConst;
 }());
 egret.registerClass(LoginConst,'LoginConst');
-//# sourceMappingURL=LoginConst.js.map

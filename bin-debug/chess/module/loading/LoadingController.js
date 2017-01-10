@@ -15,4 +15,3 @@ var LoadingController = (function (_super) {
     return LoadingController;
 }(BaseController));
 egret.registerClass(LoadingController,'LoadingController');
-//# sourceMappingURL=LoadingController.js.map

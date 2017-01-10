@@ -92,4 +92,3 @@ var Http = (function (_super) {
     return Http;
 }(BaseClass));
 egret.registerClass(Http,'Http');
-//# sourceMappingURL=Http.js.map

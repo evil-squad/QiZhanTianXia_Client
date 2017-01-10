@@ -11,4 +11,3 @@ var NotifyType = (function () {
     return NotifyType;
 }());
 egret.registerClass(NotifyType,'NotifyType');
-//# sourceMappingURL=NotifyType.js.map

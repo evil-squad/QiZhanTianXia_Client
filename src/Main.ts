@@ -84,12 +84,12 @@ class Main extends egret.DisplayObjectContainer{
      * 主题文件加载完成
      */
     private onThemeLoadComplete(): void {
-        Log.trace(egret.getOption("roomid"));
-        let roomid = egret.getOption("roomid");
-        Log.trace("options:",roomid);
-        if(roomid != undefined && roomid != null){
-            RoomManager.setRoomInfo(roomid);
-        }
+        // Log.trace(egret.getOption("roomid"));
+        // let roomid = egret.getOption("roomid");
+        // Log.trace("options:",roomid);
+        // if(roomid != undefined && roomid != null){
+        //     RoomManager.setRoomInfo(roomid);
+        // }
         new Startup();
         //new RoomTest();
     }

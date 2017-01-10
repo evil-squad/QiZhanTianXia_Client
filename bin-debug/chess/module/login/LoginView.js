@@ -86,4 +86,3 @@ var LoginView = (function (_super) {
     return LoginView;
 }(BaseEuiView));
 egret.registerClass(LoginView,'LoginView');
-//# sourceMappingURL=LoginView.js.map

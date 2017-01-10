@@ -51,4 +51,3 @@ var LoginController = (function (_super) {
     return LoginController;
 }(BaseController));
 egret.registerClass(LoginController,'LoginController');
-//# sourceMappingURL=LoginController.js.map

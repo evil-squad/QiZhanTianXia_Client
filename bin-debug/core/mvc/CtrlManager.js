@@ -84,4 +84,3 @@ var CtrlManager = (function (_super) {
     return CtrlManager;
 }(BaseClass));
 egret.registerClass(CtrlManager,'CtrlManager');
-//# sourceMappingURL=CtrlManager.js.map

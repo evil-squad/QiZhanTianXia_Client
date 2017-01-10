@@ -7,4 +7,3 @@ var ControllerConst;
     ControllerConst[ControllerConst["Room"] = 10004] = "Room";
     ControllerConst[ControllerConst["RoomEnter"] = 10005] = "RoomEnter";
 })(ControllerConst || (ControllerConst = {}));
-//# sourceMappingURL=ControllerConst.js.map

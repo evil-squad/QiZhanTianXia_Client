@@ -150,4 +150,3 @@ var ByteArrayMsgByProtobuf = (function (_super) {
     return ByteArrayMsgByProtobuf;
 }(ByteArrayMsg));
 egret.registerClass(ByteArrayMsgByProtobuf,'ByteArrayMsgByProtobuf');
-//# sourceMappingURL=ByteArrayMsgByProtobuf.js.map

@@ -31,6 +31,7 @@ var game_file_list = [
 	"bin-debug/chess/consts/ViewConst.js",
 	"bin-debug/chess/data/MahjongManager.js",
 	"bin-debug/chess/data/MainManager.js",
+	"bin-debug/chess/data/ProtoManager.js",
 	"bin-debug/chess/data/PukeManager.js",
 	"bin-debug/chess/data/RoomManager.js",
 	"bin-debug/chess/mahjong/BMahjongBar.js",

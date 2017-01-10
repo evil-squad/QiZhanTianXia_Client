@@ -72,4 +72,3 @@ var SoundBg = (function (_super) {
     return SoundBg;
 }(BaseSound));
 egret.registerClass(SoundBg,'SoundBg');
-//# sourceMappingURL=SoundBg.js.map

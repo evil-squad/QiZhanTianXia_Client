@@ -8,4 +8,3 @@ var ViewConst;
     ViewConst[ViewConst["RoomUI"] = 20001] = "RoomUI";
     ViewConst[ViewConst["RoomEnter"] = 20002] = "RoomEnter";
 })(ViewConst || (ViewConst = {}));
-//# sourceMappingURL=ViewConst.js.map

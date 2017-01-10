@@ -50,4 +50,3 @@ var ServerChooseView = (function (_super) {
     return ServerChooseView;
 }(BaseEuiView));
 egret.registerClass(ServerChooseView,'ServerChooseView');
-//# sourceMappingURL=ServerChooseView.js.map

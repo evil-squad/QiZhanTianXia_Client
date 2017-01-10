@@ -31,4 +31,3 @@ var RoomTest = (function () {
     return RoomTest;
 }());
 egret.registerClass(RoomTest,'RoomTest');
-//# sourceMappingURL=RoomTest.js.map

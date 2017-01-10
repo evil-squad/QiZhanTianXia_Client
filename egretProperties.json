@@ -1,39 +1,41 @@
 {
-  "native": {
-    "path_ignore": []
-  },
-  "publish": {
-    "web": 0,
-    "native": 1,
-    "path": "bin-release"
-  },
-  "egret_version": "3.2.3",
-  "modules": [
-    {
-      "name": "egret"
-    },
-    {
-      "name": "game"
-    },
-    {
-      "name": "res"
-    },
-    {
+	"native": {
+		"path_ignore": [],
+		"ios_path": "../QiZhanTianXia_IOS",
+		"android_path": "../QiZhanTianXia_Android"
+	},
+	"publish": {
+		"web": 0,
+		"native": 1,
+		"path": "bin-release"
+	},
+	"egret_version": "3.2.3",
+	"modules": [
+		{
+			"name": "egret"
+		},
+		{
+			"name": "game"
+		},
+		{
+			"name": "res"
+		},
+		{
 			"name": "eui"
 		},
-    {
-      "name": "tween"
-    },
-    {
-      "name": "socket"
-    },
-    {
-      "name": "protobuf",
-      "path": "libs/modules/protobuf"
-    },
-    {
-      "name": "WeixinAPI",
-      "path": "libs/modules/WeixinAPI"
-    }
-  ]
+		{
+			"name": "tween"
+		},
+		{
+			"name": "socket"
+		},
+		{
+			"name": "protobuf",
+			"path": "libs/modules/protobuf"
+		},
+		{
+			"name": "WeixinAPI",
+			"path": "libs/modules/WeixinAPI"
+		}
+	]
 }

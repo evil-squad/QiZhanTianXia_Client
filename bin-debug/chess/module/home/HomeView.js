@@ -115,4 +115,3 @@ var HomeView = (function (_super) {
     return HomeView;
 }(BaseEuiView));
 egret.registerClass(HomeView,'HomeView');
-//# sourceMappingURL=HomeView.js.map

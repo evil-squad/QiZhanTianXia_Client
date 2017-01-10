@@ -148,4 +148,3 @@ var BaseProxy = (function () {
     return BaseProxy;
 }());
 egret.registerClass(BaseProxy,'BaseProxy');
-//# sourceMappingURL=BaseProxy.js.map

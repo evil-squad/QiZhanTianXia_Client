@@ -24,4 +24,3 @@ var UTFMsgByJson = (function (_super) {
     return UTFMsgByJson;
 }(UTFMsg));
 egret.registerClass(UTFMsgByJson,'UTFMsgByJson');
-//# sourceMappingURL=UTFMsgByJson.js.map

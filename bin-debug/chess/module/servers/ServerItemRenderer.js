@@ -14,4 +14,3 @@ var ServerItemRenderer = (function (_super) {
     return ServerItemRenderer;
 }(eui.ItemRenderer));
 egret.registerClass(ServerItemRenderer,'ServerItemRenderer');
-//# sourceMappingURL=ServerItemRenderer.js.map

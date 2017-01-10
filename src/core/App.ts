@@ -17,16 +17,21 @@ class App {
         //实例化Http请求
         App.Http.initServer(App.GlobalData.HttpSerever);
         //实例化ProtoBuf和Socket请求
-        protobuf.load("resource/proto/package.proto?" + Math.random()).then(function (root) {
+        protobuf.load("../resource/proto/package.proto", ProtoManager.getProtoContents(), null,  function (err, root) {
+            Log.trace("err------------------"+err);
+            Log.trace("root------------------"+root);
+             Log.trace("root---------------------------------------");
+            Log.trace(root.files);
+            Log.trace(root.nested);
             App.ProtoRoot = root;
         });
-        Log.trace(App.GlobalData.ReqConfig,App.GlobalData.RespConfig);
         App.ReqConfig = RES.getRes(App.GlobalData.ReqConfig);
         App.RespConfig = RES.getRes(App.GlobalData.RespConfig);
         App.Socket.initServer(App.GlobalData.SocketServer, App.GlobalData.SocketPort, new ByteArrayMsgByProtobuf());
     }
 
     public static lookupProtoMessage(key:string){
+        Log.trace("ProtoRoot--------------"+App.ProtoRoot);
         return App.ProtoRoot.lookup(key);
     }
 

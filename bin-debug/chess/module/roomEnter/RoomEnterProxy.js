@@ -20,4 +20,3 @@ var RoomEnterProxy = (function (_super) {
     return RoomEnterProxy;
 }(BaseProxy));
 egret.registerClass(RoomEnterProxy,'RoomEnterProxy');
-//# sourceMappingURL=RoomEnterProxy.js.map

@@ -78,12 +78,12 @@ var Main = (function (_super) {
      * 主题文件加载完成
      */
     p.onThemeLoadComplete = function () {
-        Log.trace(egret.getOption("roomid"));
-        var roomid = egret.getOption("roomid");
-        Log.trace("options:", roomid);
-        if (roomid != undefined && roomid != null) {
-            RoomManager.setRoomInfo(roomid);
-        }
+        // Log.trace(egret.getOption("roomid"));
+        // let roomid = egret.getOption("roomid");
+        // Log.trace("options:",roomid);
+        // if(roomid != undefined && roomid != null){
+        //     RoomManager.setRoomInfo(roomid);
+        // }
         new Startup();
         //new RoomTest();
     };
@@ -105,4 +105,3 @@ var Main = (function (_super) {
     return Main;
 }(egret.DisplayObjectContainer));
 egret.registerClass(Main,'Main');
-//# sourceMappingURL=Main.js.map

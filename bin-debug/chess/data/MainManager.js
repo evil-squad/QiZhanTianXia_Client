@@ -20,4 +20,3 @@ var MainManager = (function () {
     return MainManager;
 }());
 egret.registerClass(MainManager,'MainManager');
-//# sourceMappingURL=MainManager.js.map

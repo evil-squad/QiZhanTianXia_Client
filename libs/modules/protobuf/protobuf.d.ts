@@ -1,6 +1,6 @@
 
 declare module protobuf {
-    export function load(filePath: string):any;
+    export function load(filename:string, contents: any, options:any, callback:any):any;
     // export class Field{
     //     public constructor(name,id,type);
     // }

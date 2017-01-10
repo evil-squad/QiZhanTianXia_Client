@@ -42,4 +42,3 @@ var AverageUtils = (function () {
     return AverageUtils;
 }());
 egret.registerClass(AverageUtils,'AverageUtils');
-//# sourceMappingURL=AverageUtils.js.map

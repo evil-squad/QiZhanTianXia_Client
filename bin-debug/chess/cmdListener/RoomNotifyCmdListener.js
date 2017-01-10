@@ -88,4 +88,3 @@ var RoomNotifyCmdListener = (function (_super) {
     return RoomNotifyCmdListener;
 }(BaseProxy));
 egret.registerClass(RoomNotifyCmdListener,'RoomNotifyCmdListener');
-//# sourceMappingURL=RoomNotifyCmdListener.js.map

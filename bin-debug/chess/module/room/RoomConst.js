@@ -14,4 +14,3 @@ var RoomConst = (function () {
     return RoomConst;
 }());
 egret.registerClass(RoomConst,'RoomConst');
-//# sourceMappingURL=RoomConst.js.map

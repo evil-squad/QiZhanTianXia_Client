@@ -39,4 +39,3 @@ var SocketConst = (function () {
     return SocketConst;
 }());
 egret.registerClass(SocketConst,'SocketConst');
-//# sourceMappingURL=SocketConst.js.map

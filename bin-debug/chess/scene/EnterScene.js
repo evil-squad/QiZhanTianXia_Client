@@ -37,4 +37,3 @@ var EnterScene = (function (_super) {
     return EnterScene;
 }(BaseScene));
 egret.registerClass(EnterScene,'EnterScene');
-//# sourceMappingURL=EnterScene.js.map

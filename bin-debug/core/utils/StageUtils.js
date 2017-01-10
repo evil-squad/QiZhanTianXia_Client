@@ -73,4 +73,3 @@ var StageUtils = (function (_super) {
     return StageUtils;
 }(BaseClass));
 egret.registerClass(StageUtils,'StageUtils');
-//# sourceMappingURL=StageUtils.js.map

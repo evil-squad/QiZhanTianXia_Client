@@ -26,4 +26,3 @@ var Msg = (function () {
     return Msg;
 }());
 egret.registerClass(Msg,'Msg');
-//# sourceMappingURL=Msg.js.map

@@ -81,4 +81,3 @@ var RoomUIView = (function (_super) {
     return RoomUIView;
 }(BaseEuiView));
 egret.registerClass(RoomUIView,'RoomUIView');
-//# sourceMappingURL=RoomUIView.js.map

@@ -49,4 +49,3 @@ var LoginProxy = (function (_super) {
     return LoginProxy;
 }(BaseProxy));
 egret.registerClass(LoginProxy,'LoginProxy');
-//# sourceMappingURL=LoginProxy.js.map
