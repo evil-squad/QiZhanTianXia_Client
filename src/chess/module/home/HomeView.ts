@@ -115,7 +115,6 @@ class HomeView extends BaseEuiView{
         this.playSound();
     }
 
-
     private menuBtnChangeHandler(e:egret.Event):void{
         this.playSound();
         if(this.menu){
