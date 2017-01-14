@@ -11,6 +11,7 @@ class ProtoManager {
 		data.push(RES.getRes("srvmetapb"));
 		data.push(RES.getRes("storepb"));
 		data.push(RES.getRes("talkpb"));
+		data.push(RES.getRes("gmpb"));
 		
 		return data;
 	}

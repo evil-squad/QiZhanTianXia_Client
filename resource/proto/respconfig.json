@@ -9,8 +9,12 @@
 
     "105" : "cspb.GetRoomPlayerInfoResp",
     "106" : "cspb.RoomNotify",
+    "107" : "cspb.AskDismissRoomResp",
+    "108" : "cspb.ReplyDismissRoomResp",
 
     "9" : "talkpb.TextMsg",
 
-    "99" : "roompb.EnterRoomReq"
+    "99" : "roompb.EnterRoomReq",
+
+    "901" : "gmpb.GmMsg"
 }

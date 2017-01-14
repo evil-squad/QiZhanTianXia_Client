@@ -9,8 +9,8 @@ class RoomTest {
      * 资源组加载完成
      */
     private onResourceLoadComplete():void {
-        this.initModule();
         App.Init();
+        this.initModule();
 
         //音乐音效处理
         App.SoundManager.setBgOn(true);

@@ -3,7 +3,8 @@ class RoomProxy  extends BaseProxy{
         super($controller);
 
         //注册从服务器返回消息的监听
-       this.receiveServerMsg(Cmd.ROOM_DISMISS, this.dismissRoomSuccess, this);
+        this.receiveServerMsg(Cmd.ROOM_DISMISS, this.dismissRoomSuccess, this);
+        this.receiveServerMsg(Cmd.ROOM_ASK_DISMISS, this.askDismissSuccess, this);        
         this.receiveServerMsg(Cmd.ROOM_LEAVE, this.leaveRoomSuccess, this);
         this.receiveServerMsg(Cmd.ROOM_PLAYER_INFO_GET, this.getRoomPlayersInfoSuccess, this);
     }
@@ -13,6 +14,13 @@ class RoomProxy  extends BaseProxy{
             "head": App.Head
         };
         this.writeAndFlush(Cmd.ROOM_DISMISS, body);
+	}
+
+    public askDismissRoom(){
+		var body = {
+            "head": App.Head
+        };
+        this.writeAndFlush(Cmd.ROOM_ASK_DISMISS, body);
 	}
 
 	public leaveRoom():void{
@@ -34,6 +42,10 @@ class RoomProxy  extends BaseProxy{
         RoomManager.clearRoomInfo();
 		this.applyFunc(RoomConst.ROOM_DISMISS_RESP, obj);
 	}
+
+    public askDismissSuccess(obj:any){
+        this.applyFunc(RoomConst.ROOM_ASK_DISMISS_RESP, obj.waitSeconds);
+    }
 
 	public leaveRoomSuccess(obj:any){
 		this.applyFunc(RoomConst.ROOM_LEAVE_RESP, obj);

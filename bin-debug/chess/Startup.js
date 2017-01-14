@@ -9,9 +9,9 @@ var Startup = (function () {
      * 资源组加载完成
      */
     p.onResourceLoadComplete = function () {
+        App.Init();
         this.initModule();
         this.initListener();
-        App.Init();
         //音乐音效处理
         App.SoundManager.setBgOn(false);
         App.SoundManager.setEffectOn(!App.DeviceUtils.IsHtml5 || !App.DeviceUtils.IsMobile);
@@ -32,6 +32,7 @@ var Startup = (function () {
         App.ControllerManager.register(ControllerConst.Home, new HomeController());
         App.ControllerManager.register(ControllerConst.Room, new RoomController());
         App.ControllerManager.register(ControllerConst.RoomEnter, new RoomEnterController());
+        App.ControllerManager.register(ControllerConst.ReplyDismiss, new ReplyDismissController());
     };
     p.initListener = function () {
         new RoomNotifyCmdListener(null);
@@ -39,3 +40,4 @@ var Startup = (function () {
     return Startup;
 }());
 egret.registerClass(Startup,'Startup');
+//# sourceMappingURL=Startup.js.map

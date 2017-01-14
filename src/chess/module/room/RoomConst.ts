@@ -11,5 +11,11 @@ class RoomConst {
 	public static ROOM_DISMISS_REQ:string = "room.dismiss.room.req";
     public static ROOM_DISMISS_RESP:string = "room.dismiss.room.resp";
 
+    public static ROOM_ASK_DISMISS_REQ:string = "room.ask.dismiss.room.req";
+    public static ROOM_ASK_DISMISS_RESP:string = "room.ask.dismiss.room.resp";
+
+    public static ROOM_REPLY_DISMISS_REQ:string = "room.reply.dismiss.room.req";
+    public static ROOM_REPLY_DISMISS_RESP:string = "room.reply.dismiss.room.resp";
+
 	 public static NOTIFY:string = "room.notify";
 }

@@ -9,3 +9,4 @@ var ErrorInfo = (function () {
     return ErrorInfo;
 }());
 egret.registerClass(ErrorInfo,'ErrorInfo');
+//# sourceMappingURL=ErrorInfo.js.map

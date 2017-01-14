@@ -8,3 +8,4 @@ var RoomCloseReqson = (function () {
     return RoomCloseReqson;
 }());
 egret.registerClass(RoomCloseReqson,'RoomCloseReqson');
+//# sourceMappingURL=RoomCloseReqson.js.map

@@ -106,4 +106,14 @@ enum ERR {
 	NOT_ENOUGH_ROOMID = 2032;
 	// 绑定 roomid 和 roomsrvid
 	FAILED_BINDING_ROOMID_WITH_SRVID = 2033;
+	// 找不到可用的房间服务器(严重错误)
+	NOFOUND_AVA_ROOMSRV = 2034;
+	// 没有开始的房间不能申请解散(只有房主能解散)
+	CANNOT_ASK_DISMISS_NOT_START_ROOM = 2035;
+	// 已经有人申请了解散房间, 此时不能重复申请解散
+	ROOM_IS_ALREADY_ASKED_DISMISS = 2036;
+	// 不能应答没有开始的解散房间(BUG?)
+	CANNOT_REPLY_DISMISS_NOT_START_ROOM = 2037;
+	// 不能应答没有发起解散决议的房间(BUG?)
+	CANNOT_REPLY_NON_ASKING_DISMISS_ROOM = 2038;
 }

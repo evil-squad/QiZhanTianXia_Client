@@ -7,3 +7,4 @@ var BasePukeItem = (function (_super) {
     return BasePukeItem;
 }(eui.Component));
 egret.registerClass(BasePukeItem,'BasePukeItem');
+//# sourceMappingURL=BasePukeItem.js.map

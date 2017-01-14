@@ -6,8 +6,11 @@ var NotifyType = (function () {
     NotifyType.ROOM_CLOSE = 1;
     NotifyType.PLAYER_ENTER = 2;
     NotifyType.PLAYER_LEAVE = 3;
-    NotifyType.ROOM_DISMISS_REQ = 4;
+    NotifyType.ASK_DISMISS_ROOM = 4;
     NotifyType.ROOM_START = 5;
+    NotifyType.REPLY_DISMISS_ROOM = 5;
+    NotifyType.FAIL_DISMISS_ROOM = 5;
     return NotifyType;
 }());
 egret.registerClass(NotifyType,'NotifyType');
+//# sourceMappingURL=NotifyType.js.map

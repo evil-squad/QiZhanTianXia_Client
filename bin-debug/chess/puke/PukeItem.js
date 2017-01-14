@@ -40,3 +40,4 @@ var PukeItem = (function (_super) {
     return PukeItem;
 }(BasePukeItem));
 egret.registerClass(PukeItem,'PukeItem');
+//# sourceMappingURL=PukeItem.js.map

@@ -10,3 +10,4 @@ var BaseEuiLayer = (function (_super) {
     return BaseEuiLayer;
 }(eui.Group));
 egret.registerClass(BaseEuiLayer,'BaseEuiLayer');
+//# sourceMappingURL=BaseEuiLayer.js.map

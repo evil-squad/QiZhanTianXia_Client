@@ -19,6 +19,8 @@ class HomeController extends BaseController{
         //注册S2C消息
         this.registerFunc(HomeConst.ROOM_CREATE_RESP, this.createResp, this);
         this.registerFunc(HomeConst.ROOM_ENTER_RESP, this.enterResp, this);
+
+        this.registerFunc(HomeConst.GM, this.gmReq, this);
     }
 
     public removeEvents():void{
@@ -26,6 +28,7 @@ class HomeController extends BaseController{
         this.removeFunc(HomeConst.ROOM_ENTER_REQ);
         this.removeFunc(HomeConst.ROOM_CREATE_RESP);
         this.removeFunc(HomeConst.ROOM_ENTER_RESP);
+        this.removeFunc(HomeConst.GM);
     }
 
     private onCreate():void{
@@ -34,6 +37,10 @@ class HomeController extends BaseController{
 
     private onEnter():void{
         this.proxy.enterRoom();
+    }
+
+    private gmReq(cmd:number,body:string){
+        this.proxy.gmReq(cmd,body);
     }
 
     private createResp(roomId:string):void{

@@ -14,18 +14,23 @@ var HomeController = (function (_super) {
         //注册S2C消息
         this.registerFunc(HomeConst.ROOM_CREATE_RESP, this.createResp, this);
         this.registerFunc(HomeConst.ROOM_ENTER_RESP, this.enterResp, this);
+        this.registerFunc(HomeConst.GM, this.gmReq, this);
     };
     p.removeEvents = function () {
         this.removeFunc(HomeConst.ROOM_CREATE_REQ);
         this.removeFunc(HomeConst.ROOM_ENTER_REQ);
         this.removeFunc(HomeConst.ROOM_CREATE_RESP);
         this.removeFunc(HomeConst.ROOM_ENTER_RESP);
+        this.removeFunc(HomeConst.GM);
     };
     p.onCreate = function () {
         this.proxy.createRoom();
     };
     p.onEnter = function () {
         this.proxy.enterRoom();
+    };
+    p.gmReq = function (cmd, body) {
+        this.proxy.gmReq(cmd, body);
     };
     p.createResp = function (roomId) {
         this.homeView.createRoomSuccess();
@@ -38,3 +43,4 @@ var HomeController = (function (_super) {
     return HomeController;
 }(BaseController));
 egret.registerClass(HomeController,'HomeController');
+//# sourceMappingURL=HomeController.js.map

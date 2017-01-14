@@ -9,9 +9,10 @@ class Startup {
      * 资源组加载完成
      */
     private onResourceLoadComplete():void {
+        App.Init();
+
         this.initModule();
         this.initListener();
-        App.Init();
 
         //音乐音效处理
         App.SoundManager.setBgOn(false);
@@ -35,6 +36,7 @@ class Startup {
         App.ControllerManager.register(ControllerConst.Home, new HomeController());
         App.ControllerManager.register(ControllerConst.Room, new RoomController());
         App.ControllerManager.register(ControllerConst.RoomEnter, new RoomEnterController());
+        App.ControllerManager.register(ControllerConst.ReplyDismiss, new ReplyDismissController());
     }
 
     private initListener():void{

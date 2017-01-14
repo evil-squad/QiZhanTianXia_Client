@@ -29,6 +29,14 @@ var HomeProxy = (function (_super) {
         // Message.roomid = RoomManager.roomId;
         this.writeAndFlush(Cmd.ROOM_ENTER, body);
     };
+    p.gmReq = function (cmd, msg) {
+        var body = {
+            "head": App.Head,
+            "cmd": cmd,
+            "text": msg
+        };
+        this.writeAndFlush(Cmd.GM, body);
+    };
     p.createRoomSuccess = function (obj) {
         RoomManager.setRoomInfo(obj.roomid);
         this.applyFunc(HomeConst.ROOM_CREATE_RESP, RoomManager.roomId);
@@ -39,3 +47,4 @@ var HomeProxy = (function (_super) {
     return HomeProxy;
 }(BaseProxy));
 egret.registerClass(HomeProxy,'HomeProxy');
+//# sourceMappingURL=HomeProxy.js.map

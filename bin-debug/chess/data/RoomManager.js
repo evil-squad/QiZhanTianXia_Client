@@ -98,3 +98,4 @@ var RoomManager = (function () {
     return RoomManager;
 }());
 egret.registerClass(RoomManager,'RoomManager');
+//# sourceMappingURL=RoomManager.js.map

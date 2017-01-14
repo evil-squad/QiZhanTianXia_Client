@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-//import "errpb/err.proto";
-//import "roompb/roompb.proto";
-//import "storepb/storepb.proto";
+import "errpb/err.proto";
+import "roompb/roompb.proto";
+import "storepb/storepb.proto";
 
 package cspb;
 
@@ -32,6 +32,8 @@ enum CMD {
 	LEAVE_ROOM = 104;
 	GET_ROOM_PLAYER_INFO = 105;
 	ROOM_NOTIFY = 106;
+	ASK_DISMISS_ROOM = 107;
+	REPLY_DISMISS_ROOM = 108;
 }
 
 // 包头, 每个 Req/Resp 的第一个字段都是它.
@@ -119,6 +121,8 @@ message LeaveRoomReq {
 }
 message LeaveRoomResp {
 	Head head = 1;
+	// true: 保留 head.Uid 的房间号
+	bool reserve = 2;
 }
 
 // GET_PLAYER_INFO_ROOM = 105;
@@ -138,4 +142,24 @@ message RoomNotify {
 	Head head = 1;
 	// 参考 roompb.Notify 的定义
 	roompb.Notify notify = 2;
+}
+
+// ASK_DISMISS_ROOM = 107;
+message AskDismissRoomReq {
+	Head head = 1;
+}
+message AskDismissRoomResp {
+	Head head = 1;
+	// 等待回复的剩余时间, 时间到还没有决议,
+	// 服务器就强行解散房间;
+	int32 wait_seconds = 2;
+}
+
+// REPLY_DISMISS_ROOM = 108;
+message ReplyDismissRoomReq {
+	Head head = 1;
+	bool agree = 2;
+}
+message ReplyDismissRoomResp {
+	Head head = 1;
 }

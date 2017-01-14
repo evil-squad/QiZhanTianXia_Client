@@ -4,6 +4,7 @@ var RoomProxy = (function (_super) {
         _super.call(this, $controller);
         //注册从服务器返回消息的监听
         this.receiveServerMsg(Cmd.ROOM_DISMISS, this.dismissRoomSuccess, this);
+        this.receiveServerMsg(Cmd.ROOM_ASK_DISMISS, this.askDismissSuccess, this);
         this.receiveServerMsg(Cmd.ROOM_LEAVE, this.leaveRoomSuccess, this);
         this.receiveServerMsg(Cmd.ROOM_PLAYER_INFO_GET, this.getRoomPlayersInfoSuccess, this);
     }
@@ -13,6 +14,12 @@ var RoomProxy = (function (_super) {
             "head": App.Head
         };
         this.writeAndFlush(Cmd.ROOM_DISMISS, body);
+    };
+    p.askDismissRoom = function () {
+        var body = {
+            "head": App.Head
+        };
+        this.writeAndFlush(Cmd.ROOM_ASK_DISMISS, body);
     };
     p.leaveRoom = function () {
         var body = {
@@ -31,6 +38,9 @@ var RoomProxy = (function (_super) {
         RoomManager.clearRoomInfo();
         this.applyFunc(RoomConst.ROOM_DISMISS_RESP, obj);
     };
+    p.askDismissSuccess = function (obj) {
+        this.applyFunc(RoomConst.ROOM_ASK_DISMISS_RESP, obj.waitSeconds);
+    };
     p.leaveRoomSuccess = function (obj) {
         this.applyFunc(RoomConst.ROOM_LEAVE_RESP, obj);
     };
@@ -40,3 +50,4 @@ var RoomProxy = (function (_super) {
     return RoomProxy;
 }(BaseProxy));
 egret.registerClass(RoomProxy,'RoomProxy');
+//# sourceMappingURL=RoomProxy.js.map

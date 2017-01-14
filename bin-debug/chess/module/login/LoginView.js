@@ -2,7 +2,12 @@ var LoginView = (function (_super) {
     __extends(LoginView, _super);
     function LoginView($controller, $parent) {
         _super.call(this, $controller, $parent);
-        this.skinName = "resource/skins/LoginSkin.exml";
+        if (App.DeviceUtils.IsMobile) {
+            this.skinName = "resource/skins/vmobile/LoginViewMSkin.exml";
+        }
+        else {
+            this.skinName = "resource/skins/LoginSkin.exml";
+        }
     }
     var d = __define,c=LoginView,p=c.prototype;
     /**
@@ -86,3 +91,4 @@ var LoginView = (function (_super) {
     return LoginView;
 }(BaseEuiView));
 egret.registerClass(LoginView,'LoginView');
+//# sourceMappingURL=LoginView.js.map

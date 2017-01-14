@@ -21,3 +21,4 @@ var MahjongInfo = (function () {
     return MahjongInfo;
 }());
 egret.registerClass(MahjongInfo,'MahjongInfo');
+//# sourceMappingURL=MahjongInfo.js.map

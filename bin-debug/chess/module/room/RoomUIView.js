@@ -2,7 +2,12 @@ var RoomUIView = (function (_super) {
     __extends(RoomUIView, _super);
     function RoomUIView($controller, $parent) {
         _super.call(this, $controller, $parent);
-        this.skinName = "resource/skins/RoomUISkin.exml";
+        if (App.DeviceUtils.IsMobile) {
+            this.skinName = "resource/skins/vmobile/RoomViewMSkin.exml";
+        }
+        else {
+            this.skinName = "resource/skins/RoomUISkin.exml";
+        }
     }
     var d = __define,c=RoomUIView,p=c.prototype;
     p.initUI = function () {
@@ -25,7 +30,8 @@ var RoomUIView = (function (_super) {
         this.refreshView();
     };
     p.dismissBtnClickHandler = function (evt) {
-        this.applyFunc(RoomConst.ROOM_DISMISS_REQ);
+        //this.applyFunc(RoomConst.ROOM_DISMISS_REQ);
+        this.applyFunc(RoomConst.ROOM_ASK_DISMISS_REQ);
     };
     p.leaveClickHandler = function (evt) {
         this.applyFunc(RoomConst.ROOM_LEAVE_REQ);
@@ -81,3 +87,4 @@ var RoomUIView = (function (_super) {
     return RoomUIView;
 }(BaseEuiView));
 egret.registerClass(RoomUIView,'RoomUIView');
+//# sourceMappingURL=RoomUIView.js.map

@@ -11,3 +11,4 @@ var NotifyConst = (function () {
     return NotifyConst;
 }());
 egret.registerClass(NotifyConst,'NotifyConst');
+//# sourceMappingURL=NotifyConst.js.map

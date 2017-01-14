@@ -28,3 +28,4 @@ var RoomScene = (function (_super) {
     return RoomScene;
 }(BaseScene));
 egret.registerClass(RoomScene,'RoomScene');
+//# sourceMappingURL=RoomScene.js.map

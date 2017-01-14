@@ -48,3 +48,4 @@ var RoomEnterPanel = (function (_super) {
     return RoomEnterPanel;
 }(BasePanelView));
 egret.registerClass(RoomEnterPanel,'RoomEnterPanel');
+//# sourceMappingURL=RoomEnterPanel.js.map

@@ -7,3 +7,4 @@ var Menu = (function (_super) {
     return Menu;
 }(eui.Component));
 egret.registerClass(Menu,'Menu');
+//# sourceMappingURL=Menu.js.map

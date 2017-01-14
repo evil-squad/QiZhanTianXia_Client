@@ -57,3 +57,4 @@ var CenterTips = (function () {
     return CenterTips;
 }());
 egret.registerClass(CenterTips,'CenterTips',["BaseTips"]);
+//# sourceMappingURL=CenterTips.js.map

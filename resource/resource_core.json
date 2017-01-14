@@ -1,7 +1,7 @@
 {
     "groups":[
         {
-            "keys":"global, reqconfig, respconfig, cspb, errpb, roompb, srvmetapb, storepb, talkpb",
+            "keys":"global, reqconfig, respconfig, cspb, errpb, roompb, srvmetapb, storepb, talkpb, gmpb",
             "name":"preload_core"
         }
     ],
@@ -50,6 +50,11 @@
             "name":"talkpb",
             "type":"text",
             "url":"proto/talkpb/talkpb.proto"
+        },
+        {
+            "name":"gmpb",
+            "type":"text",
+            "url":"proto/gm/gmpb.proto"
         }
     ]
 }

@@ -60,3 +60,4 @@ var PukeBar = (function (_super) {
     return PukeBar;
 }(eui.Component));
 egret.registerClass(PukeBar,'PukeBar');
+//# sourceMappingURL=PukeBar.js.map

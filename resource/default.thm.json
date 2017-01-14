@@ -32,6 +32,7 @@
     "resource/skins/MenuSkin.exml",
     "resource/skins/MenuButtonSkin.exml",
     "resource/skins/GuiScreenSkin.exml",
+    "resource/skins/HomeViewDebugSkin.exml",
     "resource/skins/LoadingUISkin.exml",
     "resource/skins/LoginSkin.exml",
     "resource/skins/PanelSkin.exml",
@@ -41,6 +42,9 @@
     "resource/skins/ServerItemRendererSkin.exml",
     "resource/skins/TabBarButtonSkin.exml",
     "resource/skins/TabBarSkin.exml",
-    "resource/skins/TaskItemRendererSkin.exml"
+    "resource/skins/TaskItemRendererSkin.exml",
+    "resource/skins/vmobile/HomeViewMSkin.exml",
+    "resource/skins/vmobile/LoginViewMSkin.exml",
+    "resource/skins/vmobile/RoomViewMSkin.exml"
   ]
 }

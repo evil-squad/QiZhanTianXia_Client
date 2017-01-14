@@ -110,3 +110,4 @@ var DeviceUtils = (function (_super) {
     return DeviceUtils;
 }(BaseClass));
 egret.registerClass(DeviceUtils,'DeviceUtils');
+//# sourceMappingURL=DeviceUtils.js.map

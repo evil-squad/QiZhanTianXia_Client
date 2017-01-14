@@ -6,3 +6,4 @@ var HttpConst = (function () {
     return HttpConst;
 }());
 egret.registerClass(HttpConst,'HttpConst');
+//# sourceMappingURL=HttpConst.js.map

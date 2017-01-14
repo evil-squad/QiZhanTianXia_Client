@@ -7,6 +7,8 @@ var HomeConst = (function () {
     HomeConst.ROOM_ENTER_REQ = "home.enter.room.req";
     HomeConst.ROOM_ENTER_RESP = "home.enter.room.resp";
     HomeConst.NOTIFY = "home.notify";
+    HomeConst.GM = "home.room.gm";
     return HomeConst;
 }());
 egret.registerClass(HomeConst,'HomeConst');
+//# sourceMappingURL=HomeConst.js.map

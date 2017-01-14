@@ -21,26 +21,34 @@ class RoomController  extends BaseController{
 
 	public addEvents():void{
 		this.registerFunc(RoomConst.ROOM_DISMISS_REQ, this.onDismiss, this);
+		this.registerFunc(RoomConst.ROOM_ASK_DISMISS_REQ, this.onAskDismiss, this);
         this.registerFunc(RoomConst.ROOM_LEAVE_REQ, this.onLeave, this);
         this.registerFunc(RoomConst.ROOM_PLAYERS_GET_REQ, this.getPlayers, this);
 
         this.registerFunc(RoomConst.ROOM_DISMISS_RESP, this.dismissResp, this);
+		this.registerFunc(RoomConst.ROOM_ASK_DISMISS_RESP, this.askDismissResp, this);
         this.registerFunc(RoomConst.ROOM_LEAVE_RESP, this.leaveResp, this);
         this.registerFunc(RoomConst.ROOM_PLAYERS_GET_RESP, this.onGetPlayersResp, this);
 	}
 
 	public removeEvents():void{
 		this.removeFunc(RoomConst.ROOM_DISMISS_REQ);
+		this.removeFunc(RoomConst.ROOM_ASK_DISMISS_REQ);
 		this.removeFunc(RoomConst.ROOM_LEAVE_REQ);
 		this.removeFunc(RoomConst.ROOM_PLAYERS_GET_REQ);
 
 		this.removeFunc(RoomConst.ROOM_DISMISS_RESP);
+		this.removeFunc(RoomConst.ROOM_ASK_DISMISS_RESP);
 		this.removeFunc(RoomConst.ROOM_LEAVE_RESP);
 		this.removeFunc(RoomConst.ROOM_PLAYERS_GET_RESP);
 	}
 
 	private onDismiss(){
 		this.proxy.dismissRoom();
+	}
+
+	private onAskDismiss(){
+		this.proxy.askDismissRoom();
 	}
 
 	private onLeave(){
@@ -50,6 +58,11 @@ class RoomController  extends BaseController{
 	private dismissResp(){
 		App.TipsUtils.showCenter("解散房间");
         App.SceneManager.runScene(SceneConsts.Home);
+	}
+
+	private askDismissResp(wait_seconds:number){
+		App.TipsUtils.showCenter("发起解散,剩余时间:"+wait_seconds);
+        //App.SceneManager.runScene(SceneConsts.Home);
 	}
 
 	private getPlayers(){
@@ -80,5 +93,9 @@ class RoomController  extends BaseController{
 
 	private onRoomStart(obj:any):void{
 		App.TipsUtils.showCenter("牌局开始");
+		if(App.SceneManager.getCurrScene != SceneConsts.Room.valueOf){
+			//自动进入？
+			App.SceneManager.runScene(SceneConsts.Room);//进入房间
+		}
 	}
 }

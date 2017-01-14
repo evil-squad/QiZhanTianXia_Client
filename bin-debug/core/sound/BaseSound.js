@@ -75,3 +75,4 @@ var BaseSound = (function () {
     return BaseSound;
 }());
 egret.registerClass(BaseSound,'BaseSound');
+//# sourceMappingURL=BaseSound.js.map

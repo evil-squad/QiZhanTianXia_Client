@@ -4,5 +4,6 @@ enum ControllerConst{
     Home,
     Servers,
     Room,
-    RoomEnter
+    RoomEnter,
+    ReplyDismiss
 }

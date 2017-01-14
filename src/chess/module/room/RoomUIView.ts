@@ -3,7 +3,11 @@ class RoomUIView  extends BaseEuiView {
     public constructor($controller:BaseController, $parent:eui.Group){
         super($controller, $parent);
 
-         this.skinName = "resource/skins/RoomUISkin.exml";
+        if(App.DeviceUtils.IsMobile){
+            this.skinName = "resource/skins/vmobile/RoomViewMSkin.exml";
+        }else{
+            this.skinName = "resource/skins/RoomUISkin.exml";
+        }
     }
 
     private dismissBtn:eui.Button;
@@ -40,7 +44,10 @@ class RoomUIView  extends BaseEuiView {
     }
 
     private dismissBtnClickHandler(evt:egret.TouchEvent):void{
-        this.applyFunc(RoomConst.ROOM_DISMISS_REQ);
+        //直接解除或发起解除
+        //if(xx)//判断条件未明确
+        //this.applyFunc(RoomConst.ROOM_DISMISS_REQ);
+        this.applyFunc(RoomConst.ROOM_ASK_DISMISS_REQ);
     }
 
     private leaveClickHandler(evt:egret.TouchEvent):void{

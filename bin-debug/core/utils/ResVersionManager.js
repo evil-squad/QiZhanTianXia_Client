@@ -53,3 +53,4 @@ var ResVersionManager = (function (_super) {
     return ResVersionManager;
 }(BaseClass));
 egret.registerClass(ResVersionManager,'ResVersionManager');
+//# sourceMappingURL=ResVersionManager.js.map

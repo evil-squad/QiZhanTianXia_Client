@@ -7,5 +7,7 @@ class HomeConst {
     public static ROOM_ENTER_RESP:string = "home.enter.room.resp";
 
     public static NOTIFY:string = "home.notify";
+
+    public static GM:string = "home.room.gm";
     
 }

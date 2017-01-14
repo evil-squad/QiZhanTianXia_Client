@@ -50,3 +50,4 @@ var BasePanelView = (function (_super) {
     return BasePanelView;
 }(BaseEuiView));
 egret.registerClass(BasePanelView,'BasePanelView');
+//# sourceMappingURL=BasePanelView.js.map

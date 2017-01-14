@@ -11,3 +11,4 @@ var LoginModel = (function (_super) {
     return LoginModel;
 }(BaseModel));
 egret.registerClass(LoginModel,'LoginModel');
+//# sourceMappingURL=LoginModel.js.map

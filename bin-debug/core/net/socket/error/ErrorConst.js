@@ -53,3 +53,4 @@ var ErrorConst = (function () {
     return ErrorConst;
 }());
 egret.registerClass(ErrorConst,'ErrorConst');
+//# sourceMappingURL=ErrorConst.js.map

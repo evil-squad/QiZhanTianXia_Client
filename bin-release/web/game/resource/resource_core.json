@@ -1,7 +1,7 @@
 {
     "groups":[
         {
-            "keys":"global, reqconfig, respconfig, simplepb, cspb, errpb, roompb, storepb, talkpb",
+            "keys":"global, reqconfig, respconfig, cspb, errpb, roompb, srvmetapb, storepb, talkpb",
             "name":"preload_core"
         }
     ],
@@ -22,11 +22,6 @@
             "url":"proto/respconfig.json"
         },
         {
-            "name":"simplepb",
-            "type":"text",
-            "url":"proto/simple.proto"
-        },
-        {
             "name":"cspb",
             "type":"text",
             "url":"proto/cspb/cspb.proto"
@@ -35,6 +30,11 @@
             "name":"errpb",
             "type":"text",
             "url":"proto/errpb/err.proto"
+        },
+        {
+            "name":"srvmetapb",
+            "type":"text",
+            "url":"proto/srvmetapb/srvmetapb.proto"
         },
         {
             "name":"roompb",

@@ -25,3 +25,4 @@ var TipsUtils = (function (_super) {
     return TipsUtils;
 }(BaseClass));
 egret.registerClass(TipsUtils,'TipsUtils');
+//# sourceMappingURL=TipsUtils.js.map

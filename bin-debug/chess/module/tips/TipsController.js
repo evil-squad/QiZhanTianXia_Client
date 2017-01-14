@@ -5,3 +5,4 @@ var TipsController = (function () {
     return TipsController;
 }());
 egret.registerClass(TipsController,'TipsController');
+//# sourceMappingURL=TipsController.js.map

@@ -2,7 +2,15 @@ class HomeView extends BaseEuiView{
     public constructor($controller:BaseController, $parent:eui.Group) {
         super($controller, $parent);
 
-        this.skinName = "resource/skins/GuiScreenSkin.exml";
+        if(App.DebugUtils.isDebug){
+            this.skinName = "resource/skins/HomeViewDebugSkin.exml";
+        }else{
+            if(App.DeviceUtils.IsMobile){
+                this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
+            }else{
+                this.skinName = "resource/skins/GuiScreenSkin.exml";
+            }
+        }
     }
 
     public menuBtn:eui.ToggleButton;
@@ -23,6 +31,10 @@ class HomeView extends BaseEuiView{
 
     private crossEnterBtn:eui.Button;
 
+    private cmdInput:eui.TextInput;
+    private bodyInput:eui.TextInput;
+    private sendBtn:eui.Button;
+
     /**
      *对面板进行显示初始化，用于子类继承
      *
@@ -30,18 +42,21 @@ class HomeView extends BaseEuiView{
     public initUI():void{
         super.initUI();
         
-        this.menu.addEventListener(egret.TouchEvent.TOUCH_TAP,this.menuClickHandler,this);
-        this.menuBtn.addEventListener(egret.Event.CHANGE,this.menuBtnChangeHandler,this);
-        this.friendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.friendClickHandler,this);
-        this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shopClickHandler,this);
-        this.warehouseBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.warehouseClickHandler,this);
-        this.factoryBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.factoryClickHandler,this);
-        this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.moreClickHandler,this);
+        //this.menu.addEventListener(egret.TouchEvent.TOUCH_TAP,this.menuClickHandler,this);
+        //this.menuBtn.addEventListener(egret.Event.CHANGE,this.menuBtnChangeHandler,this);
+        //this.friendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.friendClickHandler,this);
+        //this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shopClickHandler,this);
+        //this.warehouseBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.warehouseClickHandler,this);
+        //this.factoryBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.factoryClickHandler,this);
+        //this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.moreClickHandler,this);
 
         this.createBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createClickHandler, this);
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
 
         this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
+        if(App.DebugUtils.isDebug){
+            this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
+        }
     }
 
     private playSound():void{
@@ -68,6 +83,13 @@ class HomeView extends BaseEuiView{
     public crossEnterClickHandler():void{
         //App.SceneManager.runScene(SceneConsts.Room);
         App.ViewManager.open(ViewConst.RoomEnter);
+    }
+
+    private sendClickHandler(e:egret.TouchEvent):void{
+        if(this.cmdInput != null && this.cmdInput.text != ""){
+            var cmd:number = parseInt(this.cmdInput.text);
+            this.applyFunc(HomeConst.GM, cmd, this.bodyInput.text);
+        }
     }
 
     private friendClickHandler(e:egret.TouchEvent):void{

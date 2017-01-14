@@ -37,3 +37,4 @@ var HomeScene = (function (_super) {
     return HomeScene;
 }(BaseScene));
 egret.registerClass(HomeScene,'HomeScene');
+//# sourceMappingURL=HomeScene.js.map

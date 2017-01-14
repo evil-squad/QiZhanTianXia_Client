@@ -8,3 +8,4 @@ var BaseSpriteLayer = (function (_super) {
     return BaseSpriteLayer;
 }(egret.DisplayObjectContainer));
 egret.registerClass(BaseSpriteLayer,'BaseSpriteLayer');
+//# sourceMappingURL=BaseSpriteLayer.js.map

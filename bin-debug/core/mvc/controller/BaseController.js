@@ -83,3 +83,4 @@ var BaseController = (function () {
     return BaseController;
 }());
 egret.registerClass(BaseController,'BaseController');
+//# sourceMappingURL=BaseController.js.map

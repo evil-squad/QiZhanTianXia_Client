@@ -15,22 +15,29 @@ var RoomController = (function (_super) {
     var d = __define,c=RoomController,p=c.prototype;
     p.addEvents = function () {
         this.registerFunc(RoomConst.ROOM_DISMISS_REQ, this.onDismiss, this);
+        this.registerFunc(RoomConst.ROOM_ASK_DISMISS_REQ, this.onAskDismiss, this);
         this.registerFunc(RoomConst.ROOM_LEAVE_REQ, this.onLeave, this);
         this.registerFunc(RoomConst.ROOM_PLAYERS_GET_REQ, this.getPlayers, this);
         this.registerFunc(RoomConst.ROOM_DISMISS_RESP, this.dismissResp, this);
+        this.registerFunc(RoomConst.ROOM_ASK_DISMISS_RESP, this.askDismissResp, this);
         this.registerFunc(RoomConst.ROOM_LEAVE_RESP, this.leaveResp, this);
         this.registerFunc(RoomConst.ROOM_PLAYERS_GET_RESP, this.onGetPlayersResp, this);
     };
     p.removeEvents = function () {
         this.removeFunc(RoomConst.ROOM_DISMISS_REQ);
+        this.removeFunc(RoomConst.ROOM_ASK_DISMISS_REQ);
         this.removeFunc(RoomConst.ROOM_LEAVE_REQ);
         this.removeFunc(RoomConst.ROOM_PLAYERS_GET_REQ);
         this.removeFunc(RoomConst.ROOM_DISMISS_RESP);
+        this.removeFunc(RoomConst.ROOM_ASK_DISMISS_RESP);
         this.removeFunc(RoomConst.ROOM_LEAVE_RESP);
         this.removeFunc(RoomConst.ROOM_PLAYERS_GET_RESP);
     };
     p.onDismiss = function () {
         this.proxy.dismissRoom();
+    };
+    p.onAskDismiss = function () {
+        this.proxy.askDismissRoom();
     };
     p.onLeave = function () {
         this.proxy.leaveRoom();
@@ -38,6 +45,10 @@ var RoomController = (function (_super) {
     p.dismissResp = function () {
         App.TipsUtils.showCenter("解散房间");
         App.SceneManager.runScene(SceneConsts.Home);
+    };
+    p.askDismissResp = function (wait_seconds) {
+        App.TipsUtils.showCenter("发起解散,剩余时间:" + wait_seconds);
+        //App.SceneManager.runScene(SceneConsts.Home);
     };
     p.getPlayers = function () {
         this.proxy.getRoomPlayersInfo(RoomManager.playerIds);
@@ -62,7 +73,12 @@ var RoomController = (function (_super) {
     };
     p.onRoomStart = function (obj) {
         App.TipsUtils.showCenter("牌局开始");
+        if (App.SceneManager.getCurrScene != SceneConsts.Room.valueOf) {
+            //自动进入？
+            App.SceneManager.runScene(SceneConsts.Room); //进入房间
+        }
     };
     return RoomController;
 }(BaseController));
 egret.registerClass(RoomController,'RoomController');
+//# sourceMappingURL=RoomController.js.map

@@ -19,6 +19,10 @@ class Msg {
 	public static LeaveRoomResp:string = "cspb.LeaveRoomResp";
 	public static GetRoomPlayerInfoReq:string = "cspb.GetRoomPlayerInfoReq";
 	public static GetRoomPlayerInfoResp:string = "cspb.GetRoomPlayerInfoResp";
+	public static AskDismissRoomReq:string = "cspb.AskDismissRoomReq";
+	public static AskDismissRoomResp:string = "cspb.AskDismissRoomResp";
+	public static ReplyDismissRoomReq:string = "cspb.ReplyDismissRoomReq";
+	public static ReplyDismissRoomResp:string = "cspb.ReplyDismissRoomResp";
 	public static RoomNotify:string = "cspb.RoomNotify";
 	public static TextMsg:string = "talkpb.TextMsg";
 	

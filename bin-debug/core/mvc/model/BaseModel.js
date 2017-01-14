@@ -11,3 +11,4 @@ var BaseModel = (function () {
     return BaseModel;
 }());
 egret.registerClass(BaseModel,'BaseModel');
+//# sourceMappingURL=BaseModel.js.map

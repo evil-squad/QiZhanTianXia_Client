@@ -6,3 +6,4 @@ var LoadingConst = (function () {
     return LoadingConst;
 }());
 egret.registerClass(LoadingConst,'LoadingConst');
+//# sourceMappingURL=LoadingConst.js.map

@@ -29,3 +29,4 @@ var AssetAdapter = (function () {
     return AssetAdapter;
 }());
 egret.registerClass(AssetAdapter,'AssetAdapter',["eui.IAssetAdapter"]);
+//# sourceMappingURL=AssetAdapter.js.map

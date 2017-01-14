@@ -104,3 +104,4 @@ var SoundManager = (function (_super) {
     return SoundManager;
 }(BaseClass));
 egret.registerClass(SoundManager,'SoundManager');
+//# sourceMappingURL=SoundManager.js.map

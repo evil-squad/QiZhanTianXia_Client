@@ -41,8 +41,12 @@ class Main extends egret.DisplayObjectContainer{
         //适配方式
         if(App.DeviceUtils.IsPC){
             App.StageUtils.setScaleMode(egret.StageScaleMode.SHOW_ALL);
+            App.StageUtils.getStage().stageWidth = 320;
+            App.StageUtils.getStage().stageHeight = 504;
         }else if(App.DeviceUtils.IsMobile){
             App.StageUtils.setScaleMode(egret.StageScaleMode.EXACT_FIT);
+        }else{
+            
         }
 
         //初始化

@@ -30,3 +30,4 @@ var UserInfo = (function () {
     return UserInfo;
 }());
 egret.registerClass(UserInfo,'UserInfo');
+//# sourceMappingURL=UserInfo.js.map

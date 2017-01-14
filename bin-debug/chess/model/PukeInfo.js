@@ -21,3 +21,4 @@ var PukeInfo = (function () {
     return PukeInfo;
 }());
 egret.registerClass(PukeInfo,'PukeInfo');
+//# sourceMappingURL=PukeInfo.js.map

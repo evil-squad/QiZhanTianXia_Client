@@ -10,8 +10,10 @@ var ProtoManager = (function () {
         data.push(RES.getRes("srvmetapb"));
         data.push(RES.getRes("storepb"));
         data.push(RES.getRes("talkpb"));
+        data.push(RES.getRes("gmpb"));
         return data;
     };
     return ProtoManager;
 }());
 egret.registerClass(ProtoManager,'ProtoManager');
+//# sourceMappingURL=ProtoManager.js.map

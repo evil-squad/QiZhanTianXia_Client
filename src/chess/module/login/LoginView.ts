@@ -8,7 +8,11 @@ class LoginView extends BaseEuiView {
     public constructor($controller:BaseController, $parent:eui.Group){
         super($controller, $parent);
 
-        this.skinName = "resource/skins/LoginSkin.exml";
+        if(App.DeviceUtils.IsMobile){
+            this.skinName = "resource/skins/vmobile/LoginViewMSkin.exml";
+        }else{
+            this.skinName = "resource/skins/LoginSkin.exml";
+        }
     }
 
     /**

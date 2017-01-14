@@ -2,7 +2,17 @@ var HomeView = (function (_super) {
     __extends(HomeView, _super);
     function HomeView($controller, $parent) {
         _super.call(this, $controller, $parent);
-        this.skinName = "resource/skins/GuiScreenSkin.exml";
+        if (App.DebugUtils.isDebug) {
+            this.skinName = "resource/skins/HomeViewDebugSkin.exml";
+        }
+        else {
+            if (App.DeviceUtils.IsMobile) {
+                this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
+            }
+            else {
+                this.skinName = "resource/skins/GuiScreenSkin.exml";
+            }
+        }
     }
     var d = __define,c=HomeView,p=c.prototype;
     /**
@@ -11,16 +21,19 @@ var HomeView = (function (_super) {
      */
     p.initUI = function () {
         _super.prototype.initUI.call(this);
-        this.menu.addEventListener(egret.TouchEvent.TOUCH_TAP, this.menuClickHandler, this);
-        this.menuBtn.addEventListener(egret.Event.CHANGE, this.menuBtnChangeHandler, this);
-        this.friendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.friendClickHandler, this);
-        this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.shopClickHandler, this);
-        this.warehouseBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.warehouseClickHandler, this);
-        this.factoryBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.factoryClickHandler, this);
-        this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.moreClickHandler, this);
+        //this.menu.addEventListener(egret.TouchEvent.TOUCH_TAP,this.menuClickHandler,this);
+        //this.menuBtn.addEventListener(egret.Event.CHANGE,this.menuBtnChangeHandler,this);
+        //this.friendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.friendClickHandler,this);
+        //this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shopClickHandler,this);
+        //this.warehouseBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.warehouseClickHandler,this);
+        //this.factoryBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.factoryClickHandler,this);
+        //this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.moreClickHandler,this);
         this.createBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createClickHandler, this);
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
         this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
+        if (App.DebugUtils.isDebug) {
+            this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
+        }
     };
     p.playSound = function () {
         App.SoundManager.playEffect("sound_dianji");
@@ -47,6 +60,12 @@ var HomeView = (function (_super) {
     p.crossEnterClickHandler = function () {
         //App.SceneManager.runScene(SceneConsts.Room);
         App.ViewManager.open(ViewConst.RoomEnter);
+    };
+    p.sendClickHandler = function (e) {
+        if (this.cmdInput != null && this.cmdInput.text != "") {
+            var cmd = parseInt(this.cmdInput.text);
+            this.applyFunc(HomeConst.GM, cmd, this.bodyInput.text);
+        }
     };
     p.friendClickHandler = function (e) {
         //App.ViewManager.open(ViewConst.Friend);
@@ -115,3 +134,4 @@ var HomeView = (function (_super) {
     return HomeView;
 }(BaseEuiView));
 egret.registerClass(HomeView,'HomeView');
+//# sourceMappingURL=HomeView.js.map

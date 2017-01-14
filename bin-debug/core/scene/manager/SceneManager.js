@@ -54,3 +54,4 @@ var SceneManager = (function (_super) {
     return SceneManager;
 }(BaseClass));
 egret.registerClass(SceneManager,'SceneManager');
+//# sourceMappingURL=SceneManager.js.map

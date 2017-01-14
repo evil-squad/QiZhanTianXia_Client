@@ -34,6 +34,15 @@ class HomeProxy extends BaseProxy{
         this.writeAndFlush(Cmd.ROOM_ENTER, body);
     }
 
+    public gmReq(cmd:number,msg:string){
+        var body = {
+            "head":App.Head,
+            "cmd":cmd,
+            "text":msg
+        };
+        this.writeAndFlush(Cmd.GM, body);
+    }
+
     private createRoomSuccess(obj:any):void{
         RoomManager.setRoomInfo(obj.roomid);
         this.applyFunc(HomeConst.ROOM_CREATE_RESP, RoomManager.roomId);

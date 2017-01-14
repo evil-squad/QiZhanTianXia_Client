@@ -9,8 +9,8 @@ var RoomTest = (function () {
      * 资源组加载完成
      */
     p.onResourceLoadComplete = function () {
-        this.initModule();
         App.Init();
+        this.initModule();
         //音乐音效处理
         App.SoundManager.setBgOn(true);
         App.SoundManager.setEffectOn(!App.DeviceUtils.IsHtml5 || !App.DeviceUtils.IsMobile);
@@ -31,3 +31,4 @@ var RoomTest = (function () {
     return RoomTest;
 }());
 egret.registerClass(RoomTest,'RoomTest');
+//# sourceMappingURL=RoomTest.js.map

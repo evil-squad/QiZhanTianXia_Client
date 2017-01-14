@@ -18,11 +18,6 @@ class App {
         App.Http.initServer(App.GlobalData.HttpSerever);
         //实例化ProtoBuf和Socket请求
         protobuf.load("../resource/proto/package.proto", ProtoManager.getProtoContents(), null,  function (err, root) {
-            Log.trace("err------------------"+err);
-            Log.trace("root------------------"+root);
-             Log.trace("root---------------------------------------");
-            Log.trace(root.files);
-            Log.trace(root.nested);
             App.ProtoRoot = root;
         });
         App.ReqConfig = RES.getRes(App.GlobalData.ReqConfig);
@@ -31,7 +26,6 @@ class App {
     }
 
     public static lookupProtoMessage(key:string){
-        Log.trace("ProtoRoot--------------"+App.ProtoRoot);
         return App.ProtoRoot.lookup(key);
     }
 

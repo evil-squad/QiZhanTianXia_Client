@@ -21,8 +21,13 @@ var Msg = (function () {
     Msg.LeaveRoomResp = "cspb.LeaveRoomResp";
     Msg.GetRoomPlayerInfoReq = "cspb.GetRoomPlayerInfoReq";
     Msg.GetRoomPlayerInfoResp = "cspb.GetRoomPlayerInfoResp";
+    Msg.AskDismissRoomReq = "cspb.AskDismissRoomReq";
+    Msg.AskDismissRoomResp = "cspb.AskDismissRoomResp";
+    Msg.ReplyDismissRoomReq = "cspb.ReplyDismissRoomReq";
+    Msg.ReplyDismissRoomResp = "cspb.ReplyDismissRoomResp";
     Msg.RoomNotify = "cspb.RoomNotify";
     Msg.TextMsg = "talkpb.TextMsg";
     return Msg;
 }());
 egret.registerClass(Msg,'Msg');
+//# sourceMappingURL=Msg.js.map

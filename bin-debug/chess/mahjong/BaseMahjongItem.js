@@ -7,3 +7,4 @@ var BaseMahjongItem = (function (_super) {
     return BaseMahjongItem;
 }(eui.Component));
 egret.registerClass(BaseMahjongItem,'BaseMahjongItem');
+//# sourceMappingURL=BaseMahjongItem.js.map

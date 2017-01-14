@@ -60,3 +60,4 @@ var BMahjongBar = (function (_super) {
     return BMahjongBar;
 }(eui.Component));
 egret.registerClass(BMahjongBar,'BMahjongBar');
+//# sourceMappingURL=BMahjongBar.js.map

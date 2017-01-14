@@ -9,3 +9,4 @@ var ServerChooseController = (function (_super) {
     return ServerChooseController;
 }(BaseController));
 egret.registerClass(ServerChooseController,'ServerChooseController');
+//# sourceMappingURL=ServerChooseController.js.map
