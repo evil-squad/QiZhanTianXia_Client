@@ -1,7 +1,11 @@
 class PukeBar extends eui.Component {
 
-	public static ITEM_WIDTH:number = 40;
-	public static ITEM_HEIGHT:number = 60;
+	public static ITEM_WIDTH:number = 100;
+	public static ITEM_HEIGHT:number = 120;
+
+    public static ITEM_STACKED_WIDTH:number = 60;
+
+    public static PUKE_MAX_COUNT:number = 5;
 
 	private _infos:Array<PukeInfo>;
 	private _items:Array<PukeItem>;
@@ -18,6 +22,22 @@ class PukeBar extends eui.Component {
 		this._infos = value;
         this.render();
 	}
+
+    public get pukeCount():number{
+		return this._infos.length;
+	}
+
+    public addItem(info:PukeInfo):void{
+        if(this._infos.length >= PukeBar.PUKE_MAX_COUNT){
+            App.TipsUtils.showCenter("最多为"+PukeBar.PUKE_MAX_COUNT+"张");
+            return;
+        }
+        this._infos.push(info);
+        var item:PukeItem = new PukeItem();
+        item.info = info;
+        this.addChild(item);
+        egret.Tween.get(item).to({ x: PukeBar.ITEM_STACKED_WIDTH * this._infos.length }, 500);
+    }
 
 	public switchItem(item:PukeItem){
 		if (this._curtItem == null) {
@@ -46,7 +66,7 @@ class PukeBar extends eui.Component {
             item = this._items[i];
             item.info = this._infos[i];
             this.addChild(item);
-            egret.Tween.get(item).to({ x: PukeBar.ITEM_WIDTH * i }, 1000);
+            egret.Tween.get(item).to({ x: PukeBar.ITEM_STACKED_WIDTH * i }, 1000);
         }
 	}
 

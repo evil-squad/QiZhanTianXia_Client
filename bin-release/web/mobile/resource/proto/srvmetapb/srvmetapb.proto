@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package srvmetapb;
+
+enum STYPE {
+	NONE = 0;
+	ONLINE = 1;
+	ROOM = 2;
+	DB = 3;
+	GM = 4;
+	SWITCH = 5;
+}
+
+message SrvMeta {
+	// 服务器类型
+	STYPE type = 1;
+	// 服务器ID
+	int32 sid = 2;
+	// 服务器实例ID
+	int64 iid = 3;
+}

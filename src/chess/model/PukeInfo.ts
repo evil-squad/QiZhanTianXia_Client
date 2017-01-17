@@ -1,6 +1,7 @@
 class PukeInfo {
 	private _id:number;
 	private _pid:number;
+	private _points:number;
 
 	public set id(value:number){
 		this._id = value;
@@ -16,5 +17,13 @@ class PukeInfo {
 
 	public get pid():number{
 		return this._pid;
+	}
+
+	public set points(value:number){
+		this._points = value;
+	}
+
+	public get points():number{
+		return this._points;
 	}
 }

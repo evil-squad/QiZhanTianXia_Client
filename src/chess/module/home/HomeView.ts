@@ -2,14 +2,14 @@ class HomeView extends BaseEuiView{
     public constructor($controller:BaseController, $parent:eui.Group) {
         super($controller, $parent);
 
-        if(App.DebugUtils.isDebug){
-            this.skinName = "resource/skins/HomeViewDebugSkin.exml";
+        // this.skinName = "resource/skins/GuiScreenSkin.exml";
+        // if(App.DebugUtils.isDebug){
+        //     this.skinName = "resource/skins/HomeViewDebugSkin.exml";
+        // }
+        if(App.DeviceUtils.IsMobile){
+             this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
         }else{
-            if(App.DeviceUtils.IsMobile){
-                this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
-            }else{
-                this.skinName = "resource/skins/GuiScreenSkin.exml";
-            }
+             this.skinName = "resource/skins/GuiScreenSkin.exml";
         }
     }
 
@@ -55,7 +55,7 @@ class HomeView extends BaseEuiView{
 
         this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
         if(App.DebugUtils.isDebug){
-            this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
+            //this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
         }
     }
 

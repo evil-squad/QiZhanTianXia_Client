@@ -21,7 +21,7 @@ var RoomManager = (function () {
         var count = RoomManager.playerCount;
         for (var i = 0; i < count; i++) {
             if (this._players[i].uid == uid) {
-                this._players.splice(i);
+                this._players.splice(i, 1);
                 return true;
             }
         }
@@ -40,7 +40,7 @@ var RoomManager = (function () {
         Log.trace("parse", source);
         RoomManager.clearPlayers();
         for (var i = 0; i < players.length; i++) {
-            RoomManager.addPlayer(new PlayerInfo(players[i]));
+            RoomManager.addPlayer(players[i]);
         }
     };
     RoomManager.setRoomInfo = function (roomId) {

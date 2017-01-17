@@ -31,6 +31,9 @@ class RoomNotifyCmdListener extends BaseProxy{
 			case NotifyType.FAIL_DISMISS_ROOM:
 				this.failDismissRoom(obj.notify);
 			break;
+			default:
+				App.TipsUtils.showCenter("未知通知："+obj.notify.type)
+			break;
 		}
 	}
 
@@ -38,17 +41,17 @@ class RoomNotifyCmdListener extends BaseProxy{
 		var roomCloseInfo = obj.roomClose;
 		if(RoomManager.hasRoomInfo && roomCloseInfo.roomid == RoomManager.roomId){
 			switch(roomCloseInfo.reason){
-				case RoomCloseReqson.EMPTY:
+				case RoomCloseReason.EMPTY:
 					App.TipsUtils.showCenter("房间无人");
 				break;
-				case RoomCloseReqson.DISMISS:
+				case RoomCloseReason.DISMISS:
 					App.TipsUtils.showCenter("房间已解散");
 				break;
-				case RoomCloseReqson.ROOMSRV_CLOSE:
+				case RoomCloseReason.ROOMSRV_CLOSE:
 					App.TipsUtils.showCenter("服务器停服");
 				break;
 			}
-			if(App.SceneManager.getCurrScene != SceneConsts.Home.valueOf){
+			if(App.SceneManager.getCurrScene() != SceneConsts.Home.valueOf()){
 				App.SceneManager.runScene(SceneConsts.Home);//返回主页
 			}
 			App.SceneManager.runScene(SceneConsts.Home);//返回Home页
@@ -61,7 +64,7 @@ class RoomNotifyCmdListener extends BaseProxy{
 		var playerEnterInfo = obj.playerEnter;
 		if(RoomManager.hasRoomInfo){
 			RoomManager.addPlayer(playerEnterInfo.enterer);
-			if(App.SceneManager.getCurrScene != SceneConsts.Room.valueOf){
+			if(App.SceneManager.getCurrScene() != SceneConsts.Room.valueOf()){
 				App.SceneManager.runScene(SceneConsts.Room);//进入房间
 			}else{//刷新房间
 				App.MessageCenter.dispatch(NotifyConst.PLAYER_ENTER);

@@ -14,6 +14,8 @@ var RoomConst = (function () {
     RoomConst.ROOM_ASK_DISMISS_RESP = "room.ask.dismiss.room.resp";
     RoomConst.ROOM_REPLY_DISMISS_REQ = "room.reply.dismiss.room.req";
     RoomConst.ROOM_REPLY_DISMISS_RESP = "room.reply.dismiss.room.resp";
+    RoomConst.ROOM_PUKE_GET_REQ = "room.puke.get.req";
+    RoomConst.ROOM_PUKE_STOP_REQ = "room.puke.stop.req";
     RoomConst.NOTIFY = "room.notify";
     return RoomConst;
 }());

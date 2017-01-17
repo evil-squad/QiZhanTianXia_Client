@@ -20,17 +20,17 @@ class PlayerInfo {
 	public constructor(pbObj:any) {
 		if (pbObj == null)
             return;
-        this._onlineId = pbObj.role_time;
+        this._onlineId = pbObj.roleTime;
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
 
-        this._seatId = pbObj.seatid;
-		this._obId = pbObj.obid;
+        this._seatId = pbObj.seatId;
+		this._obId = pbObj.obId;
         this._ob = pbObj.ob;
 
 		this._icon = pbObj.icon;
 		this._ip = pbObj.ip;
-		this._inRoom = pbObj.in_room;
+		this._inRoom = pbObj.inRoom;
 	}
 
 	public get uid():number{

@@ -12,6 +12,22 @@ var PukeBar = (function (_super) {
             this.render();
         }
     );
+    d(p, "pukeCount"
+        ,function () {
+            return this._infos.length;
+        }
+    );
+    p.addItem = function (info) {
+        if (this._infos.length >= PukeBar.PUKE_MAX_COUNT) {
+            App.TipsUtils.showCenter("最多为" + PukeBar.PUKE_MAX_COUNT + "张");
+            return;
+        }
+        this._infos.push(info);
+        var item = new PukeItem();
+        item.info = info;
+        this.addChild(item);
+        egret.Tween.get(item).to({ x: PukeBar.ITEM_STACKED_WIDTH * this._infos.length }, 500);
+    };
     p.switchItem = function (item) {
         if (this._curtItem == null) {
             this._curtItem = item;
@@ -38,7 +54,7 @@ var PukeBar = (function (_super) {
             item = this._items[i];
             item.info = this._infos[i];
             this.addChild(item);
-            egret.Tween.get(item).to({ x: PukeBar.ITEM_WIDTH * i }, 1000);
+            egret.Tween.get(item).to({ x: PukeBar.ITEM_STACKED_WIDTH * i }, 1000);
         }
     };
     p.sortFun = function (a, b) {
@@ -55,8 +71,10 @@ var PukeBar = (function (_super) {
             item.y = 0;
         }
     };
-    PukeBar.ITEM_WIDTH = 40;
-    PukeBar.ITEM_HEIGHT = 60;
+    PukeBar.ITEM_WIDTH = 100;
+    PukeBar.ITEM_HEIGHT = 120;
+    PukeBar.ITEM_STACKED_WIDTH = 60;
+    PukeBar.PUKE_MAX_COUNT = 5;
     return PukeBar;
 }(eui.Component));
 egret.registerClass(PukeBar,'PukeBar');

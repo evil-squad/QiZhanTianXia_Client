@@ -11,8 +11,29 @@ class PukeManager {
         ,
         501, 502];
 
+    private static points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0.5, 0.5, 0.5,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0.5, 0.5, 0.5,
+        ,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0.5, 0.5, 0.5,
+        ,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0.5, 0.5, 0.5,
+        ,
+        0.5, 0.5];
+
     private static PID_MIN = 101;
     private static PID_MAX = 502;
+
+    public static randomOne(index:number):PukeInfo{
+        var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
+        while (PukeManager.pids.indexOf(pid) == -1) {
+            pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
+        }
+        var info = new PukeInfo();
+        info.id = index;
+        info.pid = pid;
+        info.points = PukeManager.points[PukeManager.pids.indexOf(pid)];
+        return info;
+    }
 
 	public static random(count:number):Array<PukeInfo>{
 		var data = new Array();

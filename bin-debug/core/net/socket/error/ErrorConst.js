@@ -48,7 +48,17 @@ var ErrorConst = (function () {
         new ErrorInfo(2030, "存储玩家信息失败"),
         new ErrorInfo(2031, "进入房间返回0个玩家(至少应该包括房主)"),
         new ErrorInfo(2032, "房间ID用光了"),
-        new ErrorInfo(2033, "绑定 roomid 和 roomsrvid")
+        new ErrorInfo(2033, "绑定 roomid 和 roomsrvid"),
+        new ErrorInfo(2034, "找不到可用的房间服务器(严重错误)"),
+        new ErrorInfo(2035, "没有开始的房间不能申请解散(只有房主能解散)"),
+        new ErrorInfo(2036, "已经有人申请了解散房间, 此时不能重复申请解散"),
+        new ErrorInfo(2037, "不能应答没有开始的解散房间(BUG?)"),
+        new ErrorInfo(2038, "不能应答没有发起解散决议的房间(BUG?)"),
+        new ErrorInfo(2039, "房间记录了玩家, 但玩家记录的座位是空(RoomServer BUG)"),
+        new ErrorInfo(2040, "对 room 请求多次都不成功(目前尝试100次, 每次间隔10ms) "),
+        new ErrorInfo(2041, "房间服正忙, 请稍后再试"),
+        new ErrorInfo(2042, "房间服内部逻辑错误, 重复关闭房间"),
+        new ErrorInfo(2043, "房间(服)未知错误")
     ];
     return ErrorConst;
 }());

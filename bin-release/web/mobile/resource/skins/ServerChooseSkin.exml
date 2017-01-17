@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ServerChooseSkin" width="500" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:List id="serverList" width="400" height="200" horizontalCenter="0" verticalCenter="0" itemRendererSkinName="skins.ItemRendererSkin">
+		<e:ArrayCollection>
+			<e:Array>
+				<e:Object ip="120.24.252.143" port="8000/ws" label="测试服务器"/>
+				<e:Object ip="192.168.199.159" port="8089/ws" label="消息调试服务器（本地）"/>
+				<e:Object port="8089/ws" ip="182.92.158.208" label="消息调试服务器（线上）"/>
+			</e:Array>
+		</e:ArrayCollection>
+	</e:List>
+</e:Skin>

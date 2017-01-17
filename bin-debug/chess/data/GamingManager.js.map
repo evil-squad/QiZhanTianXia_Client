@@ -1,0 +1,1 @@
+{"version":3,"file":"GamingManager.js","sourceRoot":"","sources":["../../../src/chess/data/GamingManager.ts"],"names":[],"mappings":"AAAA;IACC;IACA,CAAC;;IAID,EAAkB,sBAAK;QAIvB;YACC,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC;QACpB,CAAC;QAND,WAAwB,KAAY;YACnC,IAAI,CAAC,MAAM,GAAG,KAAK,CAAC;QACrB,CAAC;MAAA;IAJc,oBAAM,GAAU,YAAY,CAAC,IAAI,CAAC;IAUlD,oBAAC;AAAD,CAAC,AAdD,IAcC;oBAdK,aAAa;AAclB"}

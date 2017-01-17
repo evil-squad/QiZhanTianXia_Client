@@ -2,7 +2,7 @@ class RoomManager {
 
 	public static MAX_PLAYER_CNT:number = 4;
 
-	private static _players:Array<PlayerInfo> = new Array<PlayerInfo>();
+	private static _players:Array<any> = new Array<any>();
 
 	private static _isOb:boolean = false;
 	private static _roomId:string;
@@ -30,7 +30,7 @@ class RoomManager {
 		var count:number = RoomManager.playerCount;
 		for(var i=0; i<count; i++){
 			if(this._players[i].uid == uid){
-				this._players.splice(i);
+				this._players.splice(i,1);
 				return true;
 			}
 		}
@@ -51,7 +51,7 @@ class RoomManager {
 		Log.trace("parse",source);
         RoomManager.clearPlayers();
         for (var i = 0; i < players.length; i++) {
-            RoomManager.addPlayer(new PlayerInfo(players[i]));
+            RoomManager.addPlayer(players[i]);
         }
 	}
 
@@ -67,7 +67,7 @@ class RoomManager {
 		return this._players.length;
 	}
 
-	public static get players():Array<PlayerInfo>{
+	public static get players():Array<any>{
 		return this._players;
 	}
 

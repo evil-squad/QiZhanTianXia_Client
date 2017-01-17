@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package storepb;
+
+message User {
+	string channel = 1;
+	string openid = 2;
+	int32 uid = 3;
+	string nick = 4;
+	bytes icon = 5;
+	int32 reg_time = 6;
+}
+
+message Player {
+	int32 uid = 1;
+	string nick = 2;
+	bytes icon = 3;
+	int32 last_login_time = 4;
+	int32 room_card = 5;
+}

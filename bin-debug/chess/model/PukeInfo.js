@@ -18,6 +18,14 @@ var PukeInfo = (function () {
             this._pid = value;
         }
     );
+    d(p, "points"
+        ,function () {
+            return this._points;
+        }
+        ,function (value) {
+            this._points = value;
+        }
+    );
     return PukeInfo;
 }());
 egret.registerClass(PukeInfo,'PukeInfo');

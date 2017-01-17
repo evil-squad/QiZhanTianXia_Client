@@ -9,7 +9,12 @@
 	<e:Label id="bottomPlayerLabel" text="3" x="137" y="486" textColor="0xf41818"/>
 	<e:TextInput id="msgInput" width="435" height="20" x="321" y="614" enabled="true"/>
 	<e:Button id="sendBtn" label="发送" x="762" y="597"/>
-	<e:Button id="refreshBtn" label="刷新" x="740" y="128"/>
-	<e:Button id="inviteBtn" label="邀请" x="865" y="128"/>
-	<e:Label id="roomLabel" text="房间" x="470" y="349"/>
+	<e:Button id="refreshBtn" label="刷新" x="898" y="501"/>
+	<e:Button id="inviteBtn" label="邀请" x="898" y="589"/>
+	<e:Label id="roomLabel" text="房间" x="21" y="50"/>
+	<e:Button id="readyBtn" label="准备" x="256" y="528"/>
+	<e:Button id="getBtn" label="要牌" x="488.5" y="528"/>
+	<e:Button id="stopBtn" label="停牌" x="623" y="528"/>
+	<e:Button id="bettingBtn" label="下注" x="370" y="528"/>
+	<e:Label id="stateLbl" text="状态" x="440" y="486" textColor="0x1bb55c"/>
 </e:Skin>

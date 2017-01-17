@@ -5,7 +5,7 @@ var MainManager = (function () {
     MainManager.setUserInfo = function (player) {
         this._userInfo = new UserInfo(player);
         this._userId = this._userInfo.uid;
-        App.Head.uid = this._userId;
+        App.Head.uid = player.uid;
     };
     d(MainManager, "userId"
         ,function () {

@@ -39,8 +39,6 @@ var Main = (function (_super) {
         //适配方式
         if (App.DeviceUtils.IsPC) {
             App.StageUtils.setScaleMode(egret.StageScaleMode.SHOW_ALL);
-            App.StageUtils.getStage().stageWidth = 320;
-            App.StageUtils.getStage().stageHeight = 504;
         }
         else if (App.DeviceUtils.IsMobile) {
             App.StageUtils.setScaleMode(egret.StageScaleMode.EXACT_FIT);
@@ -82,12 +80,10 @@ var Main = (function (_super) {
      * 主题文件加载完成
      */
     p.onThemeLoadComplete = function () {
-        // Log.trace(egret.getOption("roomid"));
-        // let roomid = egret.getOption("roomid");
-        // Log.trace("options:",roomid);
-        // if(roomid != undefined && roomid != null){
-        //     RoomManager.setRoomInfo(roomid);
-        // }
+        var roomid = egret.getOption("roomid");
+        if (roomid != undefined && roomid != null) {
+            RoomManager.setRoomInfo(roomid);
+        }
         new Startup();
         //new RoomTest();
     };

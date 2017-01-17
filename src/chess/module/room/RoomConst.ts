@@ -17,5 +17,8 @@ class RoomConst {
     public static ROOM_REPLY_DISMISS_REQ:string = "room.reply.dismiss.room.req";
     public static ROOM_REPLY_DISMISS_RESP:string = "room.reply.dismiss.room.resp";
 
+    public static ROOM_PUKE_GET_REQ:string = "room.puke.get.req";
+    public static ROOM_PUKE_STOP_REQ:string = "room.puke.stop.req";
+
 	 public static NOTIFY:string = "room.notify";
 }

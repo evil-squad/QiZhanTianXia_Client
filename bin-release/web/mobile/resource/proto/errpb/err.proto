@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+package errpb;
+
+enum ERR {
+	OK = 0;
+
+	// 1 ~ 1000: system/internal error
+	FAILED_DECODE = 1;
+	FAILED_ENCODE = 2;
+	INTERNAL_SRV = 3;
+	NOFOUND_METADATA = 4;
+	NOFOUND_UID = 5;
+	INVALID_UID = 6;
+	NOFOUND_SESSION = 7;
+	INVALID_SESSION = 8;
+	FORBID_ENTERGAME= 9;
+	NET_RECV = 10;
+	NET_SEND = 11;
+	FAILED_RPC = 12;
+	// session 对不上了, 说明grpc至少有一端重启过了,
+	// roomsvr 能根据不同的session匹配情况判断是哪方重启.
+
+	// 因为 roomsrv重启/超时导致 session 不匹配
+	ROOMSRV_RST = 13;
+	// 代码中遇到了不可能到的地方
+	IMPOSSIBLE_HERE = 14;
+
+	// >1001: svc logic error
+	// 重复登录
+	DUP_LOGIN = 1001;
+	// 找不到这个玩家
+	NOFOUND_PLAYER = 1002;
+	// 还没有登录(不能做相关操作)
+	NOT_LOGIN = 1003;
+	// 创建房间失败 (TODO: delete这个笼统的错误码, 错误码统一后, 用roomserver返回的错误码替换)
+	FAILED_CREATE_ROOM = 1004;
+
+	// room err
+	// 找不到对应的 online session(没成功建立NotifyChan就发起了其它请求?)
+	ROOM_INTERNAL_NOFOUND_SESSION = 2000;
+	// 玩家已经在房间服务器了
+	DUP_ADD_ROOM_PLAYER = 2001;
+	// 房间满座
+	ROOM_SEAT_FULL = 2002;
+	// 房间观察者满座
+	ROOM_OB_FULL = 2003;
+	// 房间已存在, 不能再创建相同ID的房间
+	ROOM_EXIST = 2004;
+	// 房间不存在, 不能加入
+	ROOM_NOT_EXIST = 2005;
+	// 房间服务器里根据online_id没有找到online(获取session失败)
+	ROOM_NOFOUND_ONLINE = 2006;
+	// 重复注册 online
+	ROOM_DUP_REGISTER = 2007;
+	// 玩家不在任何房间
+	PLAYER_NOT_IN_ROOM = 2008;
+	// 玩家不在当前打牌/离开的房间
+	PLAYER_NOT_IN_THIS_ROOM = 2009;
+	// 找不到房间
+	NOFOUND_ROOM = 2010;
+	// 玩家记录的座位号在 p.room 里面对应座位上的人不是 p;
+	PLAYER_LOST_SEAT_INDEX = 2011;
+	// 玩家记录的ob号在 p.room 里面对应ob位上的人不是 p;
+	PLAYER_LOST_OB_INDEX = 2012;
+	// 玩家记录了 p.room, 但没有记录 p.seat 也没有记录 p.ob;
+	PLAYER_LOST_ROOM_INDEX = 2013;
+	// ob 不能发起解散房间的请求
+	OB_CANT_ASK_DISMISS_ROOM = 2014;
+	// 玩家已经绑定了房间, 不能再创建/加入别的房间了
+	PLAYER_ALREADY_BINDING_ROOM = 2015;
+	// 房间已经关闭
+	ROOM_IS_CLOSED = 2016;
+	// 无法申请 roomid (因为room_idgen获取不到,
+	// 可能原因: uid重复, 或已经没有roomid可申请)
+	CANNOT_GET_ROOMID = 2017;
+	// 无效的 roomid
+	INVALID_ROOMID = 2018;
+	// 不能进入房间(被房间服拒绝)
+	CANNOT_ENTER_ROOM = 2019;
+	// 找不到 UID 绑定的房间
+	NOFOUND_UID_BINDING_ROOM = 2020;
+	// 不是创建者不能直接解散房间
+	NON_OWNER_CANNOT_DISMISS_ROOM = 2021;
+	// 不能直接解散开始的房间, 必须投票(ask dismiss)
+	CANNOT_DISMISS_STARTED_ROOM = 2022;
+	// 不能离开已经开始的房间
+	CANNOT_LEAVE_STARTED_ROOM = 2023;
+	// 无效的 debug 登陆请求(空请求或空openid)
+	INVALID_DEBUG_LOGIN_REQUEST = 2024;
+	// 不支持的登陆方式
+	UNSUPPORTED_LOGIN_TYPE = 2025;
+	// 获取UserInfo失败(NotFound错误除外)
+	FAILED_LOAD_USERINFO = 2026;
+	// 获取新Uid失败
+	FAILED_GET_NEW_UID = 2027;
+	// 存储新 UserInfo 失败
+	FAILED_STORE_USERINFO = 2028;
+	// 获取玩家信息失败(NotFound错误除外)
+	FAILED_LOAD_PLAYER = 2029;
+	// 存储玩家信息失败
+	FAILED_STORE_PLAYER = 2030;
+	// 进入房间返回0个玩家(至少应该包括房主)
+	ENTER_ROOM_RESP_ZERO_PLAYER = 2031;
+	// 房间ID用光了
+	NOT_ENOUGH_ROOMID = 2032;
+	// 绑定 roomid 和 roomsrvid
+	FAILED_BINDING_ROOMID_WITH_SRVID = 2033;
+	// 找不到可用的房间服务器(严重错误)
+	NOFOUND_AVA_ROOMSRV = 2034;
+	// 没有开始的房间不能申请解散(只有房主能解散)
+	CANNOT_ASK_DISMISS_NOT_START_ROOM = 2035;
+	// 已经有人申请了解散房间, 此时不能重复申请解散
+	ROOM_IS_ALREADY_ASKED_DISMISS = 2036;
+	// 不能应答没有开始的解散房间(BUG?)
+	CANNOT_REPLY_DISMISS_NOT_START_ROOM = 2037;
+	// 不能应答没有发起解散决议的房间(BUG?)
+	CANNOT_REPLY_NON_ASKING_DISMISS_ROOM = 2038;
+}

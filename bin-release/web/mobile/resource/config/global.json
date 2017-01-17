@@ -1,0 +1,13 @@
+{
+    "IsDebug":true,
+    "HttpSerever":"http://www.baidu.com",
+    "SocketServer":"10.0.3.111",
+    "SocketPort":"10001/ws",
+    "ProtoErr":"errpb",
+    "ProtoCs":"cspb",
+    "ProtoRoom":"roompb",
+    "ProtoStore":"storepb",
+    "ProtoTalk":"talkpb",
+    "ReqConfig":"reqconfig",
+    "RespConfig":"respconfig"
+}

@@ -2,16 +2,15 @@ var HomeView = (function (_super) {
     __extends(HomeView, _super);
     function HomeView($controller, $parent) {
         _super.call(this, $controller, $parent);
-        if (App.DebugUtils.isDebug) {
-            this.skinName = "resource/skins/HomeViewDebugSkin.exml";
+        // this.skinName = "resource/skins/GuiScreenSkin.exml";
+        // if(App.DebugUtils.isDebug){
+        //     this.skinName = "resource/skins/HomeViewDebugSkin.exml";
+        // }
+        if (App.DeviceUtils.IsMobile) {
+            this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
         }
         else {
-            if (App.DeviceUtils.IsMobile) {
-                this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
-            }
-            else {
-                this.skinName = "resource/skins/GuiScreenSkin.exml";
-            }
+            this.skinName = "resource/skins/GuiScreenSkin.exml";
         }
     }
     var d = __define,c=HomeView,p=c.prototype;
@@ -32,7 +31,6 @@ var HomeView = (function (_super) {
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
         this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
         if (App.DebugUtils.isDebug) {
-            this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
         }
     };
     p.playSound = function () {

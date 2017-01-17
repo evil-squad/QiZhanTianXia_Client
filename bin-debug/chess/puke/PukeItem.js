@@ -6,8 +6,8 @@ var PukeItem = (function (_super) {
         this._status = 0;
         this._img = new egret.Bitmap();
         this.addChild(this._img);
-        this._img.width = BMahjongBar.ITEM_WIDTH;
-        this._img.height = BMahjongBar.ITEM_HEIGHT;
+        this._img.width = PukeBar.ITEM_WIDTH;
+        this._img.height = PukeBar.ITEM_HEIGHT;
     }
     var d = __define,c=PukeItem,p=c.prototype;
     d(p, "info",undefined

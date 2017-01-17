@@ -10,8 +10,8 @@ class PukeItem extends BasePukeItem {
 		this._status = 0;
         this._img = new egret.Bitmap();
         this.addChild(this._img);
-        this._img.width = BMahjongBar.ITEM_WIDTH;
-        this._img.height = BMahjongBar.ITEM_HEIGHT;
+        this._img.width = PukeBar.ITEM_WIDTH;
+        this._img.height = PukeBar.ITEM_HEIGHT;
 	}
 
 	public set info(value:PukeInfo){
