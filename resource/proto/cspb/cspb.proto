@@ -26,14 +26,34 @@ enum CMD {
 	LOGIN = 1;
 
 	// room
+	// 创建房间
 	CREATE_ROOM = 101;
+	// (房主)解散房间
 	DISMISS_ROOM = 102;
+	// 进入房间
 	ENTER_ROOM = 103;
+	// 离开房间
 	LEAVE_ROOM = 104;
+	// 获取房间玩家信息(暂未实现)
 	GET_ROOM_PLAYER_INFO = 105;
+	// 房间通知
 	ROOM_NOTIFY = 106;
+	// 请求解散房间
 	ASK_DISMISS_ROOM = 107;
+	// 应答解散房间
 	REPLY_DISMISS_ROOM = 108;
+
+	// game
+	// 玩家点开始按钮, 表示准备好开局
+	READY_FOR_START = 201;
+	// 下注
+	BET = 202;
+	// 要牌
+	HIT = 203;
+	// 请求停牌
+	STAND = 204;
+	// 请求牌局数据(可能由于掉线需要重新拉取)
+	GET_GAME_DATA = 205;
 }
 
 // 包头, 每个 Req/Resp 的第一个字段都是它.
@@ -162,4 +182,59 @@ message ReplyDismissRoomReq {
 }
 message ReplyDismissRoomResp {
 	Head head = 1;
+}
+
+// =================== game ===================
+
+// READY_FOR_START = 201;
+message ReadyForStartReq {
+	Head head = 1;
+}
+message ReadyForStartResp {
+	Head head = 1;
+}
+
+// BET = 202;
+message BetReq {
+	Head head = 1;
+	int32 bet = 2;
+}
+message BetResp {
+	Head head = 1;
+}
+
+// HIT = 203;
+message HitReq {
+	Head head = 1;
+}
+message HitResp {
+	Head head = 1;
+	// 新拿到的手牌
+	roompb.Card card = 2;
+}
+
+// STAND = 204;
+message StandReq {
+	Head head = 1;
+}
+message StandResp {
+	Head head = 1;
+}
+
+// GET_GAME_DATA = 205;
+message GetGameDataReq {
+	Head head = 1;
+}
+message GetGameDataResp {
+	Head head = 1;
+	// 第几局
+	int32 round_id = 2;
+	// 本局状态
+	roompb.RoundState state = 3;
+	// 倒计时多少秒 (暂时没填)
+	int32 countdown_seconds = 4;
+	// uid的手牌(如果uid参加了本局比赛的话, 否则就是空)
+	roompb.HandInfo hand = 5;
+	// 当前局的玩家的第一张(翻开的)手牌
+	repeated roompb.HandInfo cur_round_hands = 6;
 }

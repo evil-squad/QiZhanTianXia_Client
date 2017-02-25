@@ -3,6 +3,10 @@ class PukeInfo {
 	private _pid:number;
 	private _points:number;
 
+	public constructor(pid:number) {
+		this._pid = pid;
+	}
+
 	public set id(value:number){
 		this._id = value;
 	}

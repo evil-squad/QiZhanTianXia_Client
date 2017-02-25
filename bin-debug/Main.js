@@ -63,7 +63,7 @@ var Main = (function (_super) {
         App.ResourceUtils.addConfig("resource/default.res.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_core.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_ui.json", "resource/");
-        App.ResourceUtils.addConfig("resource/resource_battle.json", "resource/");
+        //App.ResourceUtils.addConfig("resource/resource_battle.json", "resource/");
         //App.ResourceUtils.addConfig("resource/resource_mj.json", "resource/");
         App.ResourceUtils.addConfig("resource/resource_puke.json", "resource/");
         App.ResourceUtils.loadConfig(this.onConfigComplete, this);

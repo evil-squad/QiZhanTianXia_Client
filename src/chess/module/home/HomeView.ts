@@ -2,15 +2,14 @@ class HomeView extends BaseEuiView{
     public constructor($controller:BaseController, $parent:eui.Group) {
         super($controller, $parent);
 
-        // this.skinName = "resource/skins/GuiScreenSkin.exml";
-        // if(App.DebugUtils.isDebug){
-        //     this.skinName = "resource/skins/HomeViewDebugSkin.exml";
-        // }
         if(App.DeviceUtils.IsMobile){
              this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
         }else{
              this.skinName = "resource/skins/GuiScreenSkin.exml";
         }
+
+        //this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
+        //this.skinName = "resource/skins/HomeViewDebugSkin.exml";
     }
 
     public menuBtn:eui.ToggleButton;
@@ -54,7 +53,7 @@ class HomeView extends BaseEuiView{
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
 
         this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
-        if(App.DebugUtils.isDebug){
+        if(App.DeviceUtils.IsPC){
             //this.sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.sendClickHandler, this);
         }
     }
@@ -81,7 +80,6 @@ class HomeView extends BaseEuiView{
     }
 
     public crossEnterClickHandler():void{
-        //App.SceneManager.runScene(SceneConsts.Room);
         App.ViewManager.open(ViewConst.RoomEnter);
     }
 

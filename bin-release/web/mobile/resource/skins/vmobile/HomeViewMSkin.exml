@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="HomeViewMSkin" width="320" height="504" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Button id="createBtn" label="创建房间" x="104.5" y="227"/>
-	<e:Button id="enterBtn" label="进入房间" x="110" y="323"/>
-	<e:Button id="crossEnterBtn" label="输入房间号" x="94" y="422"/>
-	<e:Label id="roomLabel" text="房间" x="114" y="134" textColor="0xE53939"/>
-	<e:Label id="nameDisplay" text="_羽" horizontalCenter="-104.5" verticalCenter="-210.5" textColor="0x389C89" size="21" bold="true"/>
-	<e:Label id="coinsDisplay" text="coins" x="130.5" y="26.5" textColor="0x2d8fb5"/>
-</e:Skin>

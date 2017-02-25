@@ -12,6 +12,12 @@
     "107" : "cspb.AskDismissRoomReq",
     "108" : "cspb.ReplyDismissRoomReq",
 
+    "201" : "cspb.ReadyForStartReq",
+    "202" : "cspb.BetReq",
+    "203" : "cspb.HitReq",
+    "204" : "cspb.StandReq",
+    "205" : "cspb.GetGameDataReq",
+
     "99" : "roompb.EnterRoomReq",
 
     "901" : "gmpb.GmMsg"

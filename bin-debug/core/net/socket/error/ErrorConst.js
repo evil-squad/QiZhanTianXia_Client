@@ -11,6 +11,20 @@ var ErrorConst = (function () {
         return "未知错误";
     };
     ErrorConst.list = [
+        new ErrorInfo(1, "FAILED_DECODE"),
+        new ErrorInfo(2, "FAILED_ENCODE"),
+        new ErrorInfo(3, "INTERNAL_SRV"),
+        new ErrorInfo(4, "NOFOUND_METADATA"),
+        new ErrorInfo(5, "NOFOUND_UID"),
+        new ErrorInfo(6, "INVALID_UID"),
+        new ErrorInfo(7, "NOFOUND_SESSION"),
+        new ErrorInfo(8, "INVALID_SESSION"),
+        new ErrorInfo(9, "FORBID_ENTERGAME"),
+        new ErrorInfo(10, "NET_RECV"),
+        new ErrorInfo(11, "NET_SEND"),
+        new ErrorInfo(12, "FAILED_RPC"),
+        new ErrorInfo(13, "ROOMSRV_RST"),
+        new ErrorInfo(14, "IMPOSSIBLE_HERE"),
         new ErrorInfo(1001, "重复登录"),
         new ErrorInfo(1002, "找不到这个玩家"),
         new ErrorInfo(1003, "还没有登录(不能做相关操作)"),
@@ -58,7 +72,17 @@ var ErrorConst = (function () {
         new ErrorInfo(2040, "对 room 请求多次都不成功(目前尝试100次, 每次间隔10ms) "),
         new ErrorInfo(2041, "房间服正忙, 请稍后再试"),
         new ErrorInfo(2042, "房间服内部逻辑错误, 重复关闭房间"),
-        new ErrorInfo(2043, "房间(服)未知错误")
+        new ErrorInfo(2043, "房间(服)未知错误"),
+        new ErrorInfo(2044, "无效的下注(金额<=0)"),
+        new ErrorInfo(2045, "房间牌局(状态)拒绝报名(报名已结束)"),
+        new ErrorInfo(2046, "不能在没开始的房间下注"),
+        new ErrorInfo(2047, "当前局不在下注状态"),
+        new ErrorInfo(2048, "当前局不在玩牌状态"),
+        new ErrorInfo(2049, "(达到持牌上限) 不能再要牌了"),
+        new ErrorInfo(2050, "已停牌的玩家不能再要牌了"),
+        new ErrorInfo(2051, "玩家没有参加本局游戏"),
+        new ErrorInfo(2052, "不能在没开始的房间玩牌(要牌/停牌)"),
+        new ErrorInfo(2053, "不能获得没开始房间的牌局信息")
     ];
     return ErrorConst;
 }());

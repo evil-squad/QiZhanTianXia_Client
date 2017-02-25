@@ -5,5 +5,7 @@ enum ControllerConst{
     Servers,
     Room,
     RoomEnter,
-    ReplyDismiss
+    ReplyDismiss,
+    Settlement,
+    Bet
 }

@@ -22,7 +22,7 @@ class LoginView extends BaseEuiView {
     public initUI():void{
         super.initUI();
 
-        this.openIdInput.text = "default_openid_"+egret.Capabilities.os;
+        this.openIdInput.text = "openid_1_"+egret.Capabilities.os;
         this.nickInput.text = "nick"+Math.floor(Math.random()*100);
 
         //this.passwordInput.displayAsPassword = true;

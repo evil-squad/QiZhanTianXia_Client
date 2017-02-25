@@ -2,34 +2,6 @@ var PukeManager = (function () {
     function PukeManager() {
     }
     var d = __define,c=PukeManager,p=c.prototype;
-    PukeManager.randomOne = function (index) {
-        var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-        while (PukeManager.pids.indexOf(pid) == -1) {
-            pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-        }
-        var info = new PukeInfo();
-        info.id = index;
-        info.pid = pid;
-        info.points = PukeManager.points[PukeManager.pids.indexOf(pid)];
-        return info;
-    };
-    PukeManager.random = function (count) {
-        var data = new Array();
-        var info;
-        var index = 1;
-        while (data.length < count) {
-            var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-            while (PukeManager.pids.indexOf(pid) == -1) {
-                pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-            }
-            info = new PukeInfo();
-            info.id = index;
-            info.pid = pid;
-            data.push(info);
-            index++;
-        }
-        return data;
-    };
     PukeManager.pids = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113,
         201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213,
         ,

@@ -23,33 +23,33 @@ class PukeManager {
     private static PID_MIN = 101;
     private static PID_MAX = 502;
 
-    public static randomOne(index:number):PukeInfo{
-        var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-        while (PukeManager.pids.indexOf(pid) == -1) {
-            pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-        }
-        var info = new PukeInfo();
-        info.id = index;
-        info.pid = pid;
-        info.points = PukeManager.points[PukeManager.pids.indexOf(pid)];
-        return info;
-    }
+    // public static randomOne(index:number):PukeInfo{
+    //     var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
+    //     while (PukeManager.pids.indexOf(pid) == -1) {
+    //         pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
+    //     }
+    //     var info = new PukeInfo();
+    //     info.id = index;
+    //     info.pid = pid;
+    //     info.points = PukeManager.points[PukeManager.pids.indexOf(pid)];
+    //     return info;
+    // }
 
-	public static random(count:number):Array<PukeInfo>{
-		var data = new Array();
-        var info;
-        var index = 1;
-        while (data.length < count) {
-            var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-            while (PukeManager.pids.indexOf(pid) == -1) {
-                pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
-            }
-            info = new PukeInfo();
-            info.id = index;
-            info.pid = pid;
-            data.push(info);
-            index++;
-        }
-        return data;
-	}
+	// public static random(count:number):Array<PukeInfo>{
+	// 	var data = new Array();
+    //     var info;
+    //     var index = 1;
+    //     while (data.length < count) {
+    //         var pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
+    //         while (PukeManager.pids.indexOf(pid) == -1) {
+    //             pid = Math.floor(Math.random() * PukeManager.PID_MAX) + PukeManager.PID_MIN;
+    //         }
+    //         info = new PukeInfo();
+    //         info.id = index;
+    //         info.pid = pid;
+    //         data.push(info);
+    //         index++;
+    //     }
+    //     return data;
+	// }
 }

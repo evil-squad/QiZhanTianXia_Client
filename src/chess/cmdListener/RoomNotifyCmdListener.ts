@@ -7,38 +7,73 @@ class RoomNotifyCmdListener extends BaseProxy{
 
 	private onRoomNotify(obj:any):void{
 
+		App.TipsUtils.showTips("[通知]"+obj.notify.type+" "+NotifyType.getDesc(parseInt(obj.notify.type)),Direction.TOP);
+		Log.trace("-------------------"+"[通知]"+obj.notify.type+" "+NotifyType.getDesc(parseInt(obj.notify.type)));
+		
 		switch(obj.notify.type){
 			case NotifyType.NOOP:
-			break;
+				break;
 			case NotifyType.ROOM_CLOSE:
 				this.closeRoom(obj.notify);
-			break;
+				break;
 			case NotifyType.PLAYER_ENTER:// 进入通知: 房间所有人(不包括进入者自己)
 				this.playerEnter(obj.notify);
-			break;
+				break;
 			case NotifyType.PLAYER_LEAVE:// 离开通知: 房间所有人(不包括退出者自己)
 				this.playerLeave(obj.notify);
-			break;
+				break;
 			case NotifyType.ASK_DISMISS_ROOM:// 解散通知: 不包括解散者自己, 包括ob
 				this.askDismissRoom(obj.notify);
+				break;
+			case NotifyType.PLAYER_READY:
+				this.playerReady(obj.notify);
 			break;
 			case NotifyType.ROOM_START:
 				this.startRoom(obj.notify);
-			break;
+				break;
 			case NotifyType.REPLY_DISMISS_ROOM:
 				this.replyDismissRoom(obj.notify);
-			break;
+				break;
 			case NotifyType.FAIL_DISMISS_ROOM:
 				this.failDismissRoom(obj.notify);
-			break;
+				break;
+
+			case NotifyType.GO_NEXT_ROUND:
+				this.goNextRound(obj.notify);
+				break;
+			case NotifyType.ROUND_START:
+				this.roundStart(obj.notify);
+				break;
+			case NotifyType.BETTING_START:
+				this.bettingStart(obj.notify);
+				break;
+			case NotifyType.PLAYER_BET:
+				this.playerBet(obj.notify);
+				break;
+			case NotifyType.PLAYING_START:
+				this.playingStart(obj.notify);
+				break;
+			case NotifyType.PLAYER_STAND:
+				this.playerStand(obj.notify);
+				break;
+			case NotifyType.ROUND_FINISH:
+				this.roundFinish(obj.notify);
+				break;
+			case NotifyType.GAME_FINISH:
+				this.gameFinish(obj.notify);
+				break;
 			default:
 				App.TipsUtils.showCenter("未知通知："+obj.notify.type)
-			break;
+				break;
 		}
 	}
 
 	private closeRoom(obj:any):void{
 		var roomCloseInfo = obj.roomClose;
+
+		RoomManager.clearPlayers();
+		RoomManager.clearRoomInfo();
+
 		if(RoomManager.hasRoomInfo && roomCloseInfo.roomid == RoomManager.roomId){
 			switch(roomCloseInfo.reason){
 				case RoomCloseReason.EMPTY:
@@ -136,5 +171,101 @@ class RoomNotifyCmdListener extends BaseProxy{
 		}else{
 			App.TipsUtils.showCenter("解除失败，原因未知，reason="+reason);
 		}
+	}
+
+	//
+	private goNextRound(obj:any):void{
+		var go_next_round = obj.goNextRound;
+		var room_id = go_next_round.roomid;
+		var round_id = go_next_round.roundId;
+		//App.TipsUtils.showCenter("开始第"+round_id+"局");
+		App.MessageCenter.dispatch(NotifyConst.GO_NEXT_ROUND,room_id,round_id);//-------------------转到下一局
+	}
+
+	private playerReady(obj:any):void{
+		var player_ready = obj.playerReady;
+		var uid = player_ready.uid;//已准备的玩家uid
+		var player = RoomManager.getPlayer(uid);
+		if(player != null){
+			App.MessageCenter.dispatch(NotifyConst.PLAYER_READY,player);//-------------------牌友已准备好，刷新显示
+		}else{
+			App.TipsUtils.showCenter("uid错误，不存在此玩家，uid="+uid);
+		}
+	}
+
+	private roundStart(obj:any):void{
+		var round_start = obj.roundStart;
+		var round_id = round_start.roundId;// 第几局
+		var countdown_seconds = round_start.countdownSeconds;// 倒计时多少秒
+		var banker = round_start.banker;// 庄家 uid
+		var bankerPlayer = RoomManager.getPlayer(banker);
+		if(bankerPlayer != null){
+			App.TipsUtils.showCenter("开始第"+round_id+"局，倒计时："+countdown_seconds);
+			App.MessageCenter.dispatch(NotifyConst.ROUND_START,round_id,countdown_seconds,bankerPlayer);//-------------------牌局开始，倒计时
+		}else{
+			App.TipsUtils.showCenter("庄家uid错误，不存在此庄家，uid="+banker)
+		}
+	}
+
+	private bettingStart(obj:any):void{
+		var betting_start = obj.bettingStart;
+		var countdown_seconds = betting_start.countdownSeconds;
+		App.TipsUtils.showCenter("下注，倒计时："+countdown_seconds);//-------------------刷新下注倒计时
+		App.MessageCenter.dispatch(NotifyConst.BETTING_START,countdown_seconds);
+	}
+
+	private playerBet(obj:any):void{
+		var player_bet = obj.playerBet;
+		var uid = player_bet.uid;
+		var bet = player_bet.bet;// 下注数
+		var player = RoomManager.getPlayer(uid);
+		if(player != null){
+			App.TipsUtils.showCenter(player.nick+"下注"+bet)
+			App.MessageCenter.dispatch(NotifyConst.PLAYER_BET,player,bet);//-------------------刷新用户下注信息
+		}else{
+			App.TipsUtils.showCenter("下注玩家uid错误，不存在此玩家，uid="+uid)
+		}
+	}
+
+	private playingStart(obj:any):void{
+		var playing_start = obj.playingStart;
+		var countdown_seconds = playing_start.countdownSeconds;
+		var bets = playing_start.bets;
+		var hands = playing_start.hands;
+		App.TipsUtils.showCenter("开始要牌，倒计时："+countdown_seconds);
+		App.MessageCenter.dispatch(NotifyConst.PLAYING_START,countdown_seconds,bets,hands);//-------------------刷新要牌倒计时
+	}
+
+	private playerStand(obj:any):void{
+		var player_stand = obj.playerStand;
+		var uid = player_stand.uid;
+		var player = RoomManager.getPlayer(uid);
+		if(player != null){
+			App.TipsUtils.showCenter(player.nick+"停牌");
+			App.MessageCenter.dispatch(NotifyConst.PLAYER_STAND,player);//-------------------刷新停牌
+		}else{
+			App.TipsUtils.showCenter("停牌玩家uid错误，不存在此玩家，uid="+uid);
+		}
+	}
+
+	private roundFinish(obj:any):void{
+		var round_finish = obj.roundFinish;
+		var roundId:number = round_finish.roundId;
+		var maxCatUid:number = round_finish.maxCatUid;
+		var settlements = round_finish.settlements;
+		var count = settlements.length;
+		for(var i=0; i<count; i++){
+			
+		}
+		App.MessageCenter.dispatch(NotifyConst.ROUND_FINISH,roundId,maxCatUid,settlements);//-------------------牌局结束，重置页面
+	}
+
+	private gameFinish(obj:any):void{
+		var game_finish = obj.gameFinish;
+		var roomid = game_finish.roomid;
+		if(roomid != RoomManager.roomId){
+			App.TipsUtils.showCenter("房间结束，房间号错误，roomID:"+roomid)
+		}
+		App.MessageCenter.dispatch(NotifyConst.GAME_FINISH);//-------------------游戏结束，回到首页
 	}
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RoomSeatItemSkin" width="120" height="240" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="nickLbl" text="2" textColor="0xF70E09" horizontalCenter="0" top="2" textAlign="center"/>
+	<e:Label id="stateLbl" text="状态" textColor="0x1BB55C" horizontalCenter="0" textAlign="center" top="40"/>
+	<e:Label id="betLbl" text="下注" horizontalCenter="0" textAlign="center" top="80" textColor="0xc9a426"/>
+	<e:Group id="container" anchorOffsetX="0" anchorOffsetY="0" bottom="0" left="0" right="0" top="120"/>
+</e:Skin>

@@ -27,38 +27,25 @@ service Room {
 	rpc AskDismissRoom(AskDismissRoomReq) returns (AskDismissRoomResp) {}
 	// 应答解散房间
 	rpc ReplyDismissRoom(ReplyDismissRoomReq) returns (ReplyDismissRoomResp) {}
-	// 换座位? 座位空好换, 座位有人要协商?
+	// 玩家点开始按钮, 表示准备好开局
+	rpc ReadyForStart(ReadyForStartReq) returns (ReadyForStartResp) {}
+	// 下注
+	rpc Bet(BetReq) returns (BetResp) {}
+	// 要牌
+	rpc Hit(HitReq) returns (HitResp) {}
+	// 请求停牌
+	rpc Stand(StandReq) returns (StandResp) {}
+	// 请求牌局数据
+	rpc GetGameData(GetGameDataReq) returns (GetGameDataResp) {}
 }
-
-/*
-message RegisterReq {
-	int32 online_id = 1;
-	// true: 如果之前有注册, 就先注销它
-	bool force = 2;
-}
-message RegisterResp {
-	errpb.ERR errcode = 1;
-	int64 session = 2;
-}
-
-message UnregisterReq {
-	int64 session = 1;
-}
-message UnregisterResp {
-}
-
-message KeepaliveReq {
-	int64 session = 1;
-}
-message KeepaliveResp {
-}
-*/
 
 message GetLoadInfoReq {
+	int32 online_id = 1;
 }
 message GetLoadInfoResp {
-	int32 player_num = 1;
-	int32 room_num = 2;
+	int64 player_num = 1;
+	int64 room_num = 2;
+	int64 inroom_player_num = 3;
 }
 
 message CreateRoomReq {
@@ -101,10 +88,12 @@ enum LEAVE_REASON {
 }
 
 message LeaveRoomReq {
+	// 房间号
+	string roomid = 1;
 	// 离开者id
-	int32 uid = 1;
+	int32 uid = 2;
 	// 离开的原因
-	LEAVE_REASON reason = 2;
+	LEAVE_REASON reason = 3;
 }
 message LeaveRoomResp {
 	// 错误码
@@ -114,10 +103,10 @@ message LeaveRoomResp {
 }
 
 message DismissRoomReq {
-	// 解散者
-	int32 uid = 1;
 	// 解散的房间号(房间号和uid二选一, uid优先)
-	string roomid = 2;
+	string roomid = 1;
+	// 解散者
+	int32 uid = 2;
 	// 强行关闭
 	bool force = 3;
 }
@@ -136,7 +125,8 @@ message GetPlayerInfoResp {
 }
 
 message AskDismissRoomReq {
-	int32 uid = 1;
+	string roomid = 1;
+	int32 uid = 2;
 }
 message AskDismissRoomResp {
 	errpb.ERR errcode = 1;
@@ -146,11 +136,70 @@ message AskDismissRoomResp {
 }
 
 message ReplyDismissRoomReq {
-	int32 uid = 1;
-	bool agree = 2;
+	string roomid = 1;
+	int32 uid = 2;
+	bool agree = 3;
 }
 message ReplyDismissRoomResp {
 	errpb.ERR errcode = 1;
+}
+
+// 已准备
+message ReadyForStartReq {
+	string roomid = 1;
+	int32 uid = 2;
+}
+message ReadyForStartResp {
+	errpb.ERR errcode = 1;
+}
+
+// 下注
+message BetReq {
+	string roomid = 1;
+	int32 uid = 2;
+	int32 bet = 3;
+}
+message BetResp {
+	errpb.ERR errcode = 1;
+}
+
+// 要牌
+message HitReq {
+	string roomid = 1;
+	int32 uid = 2;
+}
+message HitResp {
+	errpb.ERR errcode = 1;
+	// 新拿到的手牌
+	Card card = 2;
+}
+
+// 停牌
+message StandReq {
+	string roomid = 1;
+	int32 uid = 2;
+}
+message StandResp {
+	errpb.ERR errcode = 1;
+}
+
+// 获得游戏数据
+message GetGameDataReq {
+	string roomid = 1;
+	int32 uid = 2;
+}
+message GetGameDataResp {
+	errpb.ERR errcode = 1;
+	// 第几局
+	int32 round_id = 2;
+	// 本局状态
+	RoundState state = 3;
+	// 倒计时多少秒 (暂时没填)
+	int32 countdown_seconds = 4;
+	// uid的手牌(如果uid参加了本局比赛的话, 否则就是空)
+	HandInfo hand = 5;
+	// 当前局的玩家的第一张(翻开的)手牌
+	repeated HandInfo cur_round_hands = 6;
 }
 
 // 通知源 或 通知接受者的类型
@@ -172,12 +221,31 @@ enum NOTIFY {
 	PLAYER_LEAVE = 3;
 	// 有人提出解散房间
 	ASK_DISMISS_ROOM = 4;
-	// 人齐了, 牌局开始
-	ROOM_START = 5;
 	// 应答解散提议的通知
-	REPLY_DISMISS_ROOM = 6;
+	REPLY_DISMISS_ROOM = 5;
 	// 解散房间失败
-	FAIL_DISMISS_ROOM = 7;
+	FAIL_DISMISS_ROOM = 6;
+
+	// 玩家已准备(报名)
+	PLAYER_READY = 7;
+	// 游戏开始(意味着要扣房卡)
+	ROOM_START = 8;
+	// 切换到下一局
+	GO_NEXT_ROUND = 9;
+	// 一局开始, 开始倒计时, 接受其他参加者发起PLAYER_READY(报名)
+	ROUND_START = 10;
+	// 报名结束(倒计时结束或全部房间中的玩家已报名), 开始下注倒计时
+	BETTING_START = 11;
+	// 玩家下注
+	PLAYER_BET = 12;
+	// 下注结束, 开始要牌
+	PLAYING_START = 13;
+	// 玩家已经停牌
+	PLAYER_STAND = 14;
+	// 当所有人都停牌或倒计时结束, 一局结束(通知胜负和分数结算)
+	ROUND_FINISH = 15;
+	// 房卡用完, 最终结束(游戏过程被存储, 房间会被回收)
+	GAME_FINISH = 16;
 }
 enum ROOM_CLOSE_REASON {
 	// 房间空闲超时(指:没有玩家, 但可能还有ob)
@@ -200,9 +268,101 @@ message Notify {
 	PlayerEnterNotify player_enter = 6;
 	PlayerLeaveNotify player_leave = 7;
 	AskDismissNotify ask_dismiss = 8;
-	RoomStartNotify room_start = 9;
-	ReplyDismissNotify reply_dismiss = 10;
-	FailDismissNotify fail_dismiss = 11;
+	ReplyDismissNotify reply_dismiss = 9;
+	FailDismissNotify fail_dismiss = 10;
+
+	PlayerReadyNotify player_ready = 11;
+	RoomStartNotify room_start = 12;
+	GoNextRoundNotify go_next_round = 13;
+	RoundStartNotify round_start = 14;
+	BettingStartNotify betting_start = 15;
+	PlayerBetNotify player_bet = 16;
+	PlayingStartNotify playing_start = 17;
+	PlayerStandNotify player_stand = 18;
+	RoundFinishNotify round_finish = 19;
+	GameFinishNotify game_finish = 20;
+}
+// PLAYER_READY
+message PlayerReadyNotify {
+	// 已准备的玩家uid
+	int32 uid = 1;
+}
+// NOTIFY_ROOM_START
+message RoomStartNotify {
+	string roomid = 1;
+	// 房主(用于扣卡)
+	int32 owner = 2;
+}
+// GO_NEXT_ROUND
+message GoNextRoundNotify {
+	string roomid = 1;
+	// 切换到第几局(0,1,...)
+	int32 round_id = 2;
+}
+// ROUND_START
+message RoundStartNotify {
+	// 第几局
+	int32 round_id = 1;
+	// 倒计时多少秒
+	int32 countdown_seconds = 2;
+	// 庄家 uid
+	int32 banker = 3;
+}
+// BETTING_START
+message BettingStartNotify {
+	// 第几局
+	int32 round_id = 1;
+	// 倒计时多少秒
+	int32 countdown_seconds = 2;
+}
+// PLAYER_BET
+message PlayerBetNotify {
+	// 下注者uid
+	int32 uid = 1;
+	// 本次下注数
+	int32 bet = 2;
+	// 总下注数
+	int32 total_bet = 3;
+}
+// PLAYING_START
+message PlayingStartNotify {
+	// 第几局
+	int32 round_id = 1;
+	// 倒计时多少秒
+	int32 countdown_seconds = 2;
+	// 每个人的下注情况(包括强制下注)
+	repeated BetInfo bets = 3;
+	// 每个人的手牌信息
+	repeated HandInfo hands = 4;
+}
+// PLAYER_STAND
+message PlayerStandNotify {
+	// 停牌者uid
+	int32 uid = 1;
+}
+// ROUND_FINISH
+message RoundFinishNotify {
+	// 第几局
+	int32 round_id = 1;
+	// 最大牌型的uid
+	int32 max_cat_uid = 2;
+	// 每个人的结算
+	repeated RoundSettlement settlements = 3;
+}
+// 一局的结算
+message RoundSettlement {
+	// 结算者uid
+	int32 uid = 1;
+	// 牌型
+	HandCat handcat = 2;
+	// 手牌
+	repeated Card cards = 3;
+	// 本局得分(负分表示扣钱, 正分表示挣钱)
+	int64 Score = 4;
+}
+// GAME_FINISH
+message GameFinishNotify {
+	string roomid = 1;
 }
 // NOTIFY_ROOM_CLOSED
 message RoomCloseNotify {
@@ -237,10 +397,6 @@ message AskDismissNotify {
 	int32 ask_second = 2;
 	int32 wait_seconds = 3;
 }
-// NOTIFY_ROOM_START
-message RoomStartNotify {
-	string roomid = 1;
-}
 // NOTIFY_REPLY_DISMISS_ROOM
 message ReplyDismissNotify {
 	// 应答者
@@ -260,9 +416,71 @@ message PlayerInfo {
 	int32 uid = 2;
 	string nick = 3;
 	int32 seatid = 5;
-	int32 obid = 6;
-	bool ob = 7;
 	bytes icon = 8;
 	string ip = 9;
 	bool in_room = 10;
+}
+
+// game define
+
+enum HandCat {
+	// 初始状态 (目前没有用到)
+	Init = 0;
+	// 爆牌: 点数相加>10点半(value>21)
+	Burst = 1;
+	// 平牌: 没有爆牌, 且以上什么都不是
+	Flat = 2;
+	// 十点半: <5张, 且点数相加=10点半(Value=21)
+	TenHalf = 3;
+	// 五小: 5张未爆, 且有点牌
+	FiveXiao = 4;
+	// 人五小: 5张未爆，且所有牌都是J,Q,K,小王,大王中的牌
+	RFiveXiao = 5;
+	// 天王: 5张未爆，且点数正好10点半
+	TianWang = 6;
+	// 6小: 6张未爆
+	SixXiao = 7;
+	// 7小: 7张未爆
+	SevenXiao = 8;
+	// 8小: 8张未爆
+	EightXiao = 9;
+	// 9小: 9张未爆
+	NineXiao = 10;
+	// 大天王: 九张未爆，并且点数正好10点半;
+	DaTianWang = 11;
+}
+
+enum RoundState {
+	// 本局刚初始化, 接受报名
+	Inited = 0;
+	// 本局刚开始, 报名计时开始, 接受报名
+	Start = 1;
+	// 本局开始下注
+	Betting = 2;
+	// 本局开始玩牌(要牌/停牌)
+	Playing = 3;
+	// 本局完成(玩牌计时结束/全部停牌)
+	Finish = 4;
+}
+
+// 下注信息
+message BetInfo {
+	int32 uid = 1;
+	int32 bet = 2;
+}
+
+// 牌的花色点数
+message Card {
+	// CardID
+	int32 ID = 1;
+	// 花色
+	string Kind = 2;
+	// 点数
+	string Point = 3;
+}
+
+// 手牌信息
+message HandInfo {
+	int32 uid = 1;
+	repeated Card cards = 2;
 }

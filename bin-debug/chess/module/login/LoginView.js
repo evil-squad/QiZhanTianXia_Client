@@ -16,7 +16,7 @@ var LoginView = (function (_super) {
      */
     p.initUI = function () {
         _super.prototype.initUI.call(this);
-        this.openIdInput.text = "default_openid_" + egret.Capabilities.os;
+        this.openIdInput.text = "openid_1_" + egret.Capabilities.os;
         this.nickInput.text = "nick" + Math.floor(Math.random() * 100);
         //this.passwordInput.displayAsPassword = true;
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);

@@ -19,6 +19,9 @@ class CenterTips implements BaseTips {
 		return this._status;
 	}
 
+	public showForDirection(message:string, parent:egret.DisplayObjectContainer, direction:number):void{
+	}
+
 	public show(message:string, parent:egret.DisplayObjectContainer, autoHide:boolean, delayHide:number):void{
 		if(parent != null){
 			this._status = 1;

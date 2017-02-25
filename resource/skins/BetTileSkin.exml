@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BetTileSkin" width="300" height="200" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Button id="tBtn" label="20" x="28" y="25"/>
+	<e:Button id="fBtn" label="50" x="169" y="25"/>
+	<e:Button id="ohBtn" label="100" x="28" y="119"/>
+	<e:Button id="thBtn" label="200" x="169" y="119"/>
+</e:Skin>

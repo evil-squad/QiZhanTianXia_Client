@@ -47,15 +47,26 @@
 	<script egret="game" src="bin-debug/core/mvc/proxy/BaseProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/cmdListener/RoomNotifyCmdListener.js"></script>
 	<script egret="game" src="bin-debug/chess/components/Menu.js"></script>
+	<script egret="game" src="bin-debug/chess/components/puke/BasePukeItem.js"></script>
+	<script egret="game" src="bin-debug/chess/components/puke/PukeBar.js"></script>
+	<script egret="game" src="bin-debug/chess/components/puke/PukeItem.js"></script>
+	<script egret="game" src="bin-debug/chess/components/room/RoomSeatBar.js"></script>
+	<script egret="game" src="bin-debug/chess/components/room/RoomSeatItem.js"></script>
+	<script egret="game" src="bin-debug/chess/components/settlement/SettlementItem.js"></script>
+	<script egret="game" src="bin-debug/chess/components/settlement/SettlementList.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/Cmd.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/ControllerConst.js"></script>
+	<script egret="game" src="bin-debug/chess/consts/Direction.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/GamingStates.js"></script>
+	<script egret="game" src="bin-debug/chess/consts/HandCat.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/HttpConst.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/Msg.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/NotifyConst.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/NotifyType.js"></script>
+	<script egret="game" src="bin-debug/chess/consts/PlayerSeat.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/ProtoConst.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/RoomCloseReason.js"></script>
+	<script egret="game" src="bin-debug/chess/consts/RoundState.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/SceneConsts.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/ViewConst.js"></script>
 	<script egret="game" src="bin-debug/chess/data/GamingManager.js"></script>
@@ -73,8 +84,14 @@
 	<script egret="game" src="bin-debug/chess/model/UserInfo.js"></script>
 	<script egret="game" src="bin-debug/core/mvc/view/BaseEuiView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/base/BasePanelView.js"></script>
-	<script egret="game" src="bin-debug/chess/module/home/HomeConst.js"></script>
+	<script egret="game" src="bin-debug/chess/module/bet/BetConst.js"></script>
 	<script egret="game" src="bin-debug/core/mvc/controller/BaseController.js"></script>
+	<script egret="game" src="bin-debug/chess/module/bet/BetController.js"></script>
+	<script egret="game" src="bin-debug/chess/module/bet/BetEvent.js"></script>
+	<script egret="game" src="bin-debug/chess/module/bet/BetPanel.js"></script>
+	<script egret="game" src="bin-debug/chess/module/bet/BetProxy.js"></script>
+	<script egret="game" src="bin-debug/chess/module/bet/BetTile.js"></script>
+	<script egret="game" src="bin-debug/chess/module/home/HomeConst.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeView.js"></script>
@@ -103,12 +120,12 @@
 	<script egret="game" src="bin-debug/chess/module/servers/ServerChooseController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/servers/ServerChooseView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/servers/ServerItemRenderer.js"></script>
+	<script egret="game" src="bin-debug/chess/module/settlement/SettlementController.js"></script>
+	<script egret="game" src="bin-debug/chess/module/settlement/SettlementPanel.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/BaseTips.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/CenterTips.js"></script>
+	<script egret="game" src="bin-debug/chess/module/tips/NormalTips.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/TipsController.js"></script>
-	<script egret="game" src="bin-debug/chess/puke/BasePukeItem.js"></script>
-	<script egret="game" src="bin-debug/chess/puke/PukeBar.js"></script>
-	<script egret="game" src="bin-debug/chess/puke/PukeItem.js"></script>
 	<script egret="game" src="bin-debug/core/scene/base/BaseScene.js"></script>
 	<script egret="game" src="bin-debug/chess/scene/EnterScene.js"></script>
 	<script egret="game" src="bin-debug/chess/scene/HomeScene.js"></script>
@@ -162,8 +179,8 @@
          data-orientation="auto"
          data-scale-mode="showAll"
          data-frame-rate="30"
-         data-content-width="1000"
-         data-content-height="640"
+         data-content-width="320"
+         data-content-height="504"
          data-show-paint-rect="false"
          data-multi-fingered="2"
          data-show-fps="false" data-show-log="false"

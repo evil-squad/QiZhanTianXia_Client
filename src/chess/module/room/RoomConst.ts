@@ -20,5 +20,23 @@ class RoomConst {
     public static ROOM_PUKE_GET_REQ:string = "room.puke.get.req";
     public static ROOM_PUKE_STOP_REQ:string = "room.puke.stop.req";
 
-	 public static NOTIFY:string = "room.notify";
+	public static NOTIFY:string = "room.notify";
+
+    public static READY_FOR_START_REQ:string = "room.ready.for.start.req";
+    public static READY_FOR_START_RESP:string = "room.ready.for.start.resp";
+
+    public static BET_REQ:string = "room.bet.req";
+    public static BET_RESP:string = "room.bet.resp";
+
+    public static HIT_REQ:string = "room.bit.req";
+    public static HIT_RESP:string = "room.bit.resp";
+
+    public static STAND_REQ:string = "room.stand.req";
+    public static STAND_RESP:string = "room.stand.resp";
+
+    public static GET_GAME_DATA_REQ:string = "room.get.game.data.req";
+    public static GET_GAME_DATA_RESP:string = "room.get.game.data.resp";
+
+    public static GM:string = "room.room.gm";
+
 }

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="LoginSkin" width="400" height="385" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:TextInput id="roomIdInput" y="89" horizontalCenter="0" prompt="输入房间号"/>
-	<e:TextInput id="nickInput" y="213" horizontalCenter="0" prompt="输入昵称" x="60"/>
-	<e:TextInput id="openIdInput" y="152.5" horizontalCenter="0" prompt="输入OpenID" x="70"/>
-	<e:Button id="enterBtn" label="进入游戏/房间" y="281" horizontalCenter="0"/>
-</e:Skin>

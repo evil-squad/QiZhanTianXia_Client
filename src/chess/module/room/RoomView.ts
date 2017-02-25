@@ -30,9 +30,11 @@ class RoomView extends BaseEuiView {
 		this.bbar.data = data;
 	}
 
-	public getOnePuke():PukeInfo{
-		//this._pukes.push();
-		var info:PukeInfo = PukeManager.randomOne(this._pukes.length);
+	public revert():void{
+		this.bbar.revert();
+	}
+
+	public getOnePuke(info:PukeInfo):PukeInfo{
 		this.bbar.addItem(info);
 		return info;
 	}

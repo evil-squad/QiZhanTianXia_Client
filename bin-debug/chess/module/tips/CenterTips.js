@@ -12,6 +12,8 @@ var CenterTips = (function () {
     p.getStatus = function () {
         return this._status;
     };
+    p.showForDirection = function (message, parent, direction) {
+    };
     p.show = function (message, parent, autoHide, delayHide) {
         if (parent != null) {
             this._status = 1;

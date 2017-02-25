@@ -3,6 +3,7 @@ var TipsUtils = (function (_super) {
     function TipsUtils() {
         _super.call(this);
         this._ctips = new Array();
+        this._dtips = new Array();
     }
     var d = __define,c=TipsUtils,p=c.prototype;
     p.showCenter = function (message) {
@@ -21,6 +22,20 @@ var TipsUtils = (function (_super) {
             this._ctips.push(tips);
         }
         tips.show(message, LayerManager.UI_Tips, true, 4);
+    };
+    p.showTips = function (message, direction) {
+        var tips = null;
+        for (var i = 0; i < this._dtips.length; i++) {
+            if (this._dtips[i].getStatus() == 0) {
+                tips = this._dtips[i];
+                break;
+            }
+        }
+        if (tips == null) {
+            tips = new NormalTips();
+            this._dtips.push(tips);
+        }
+        tips.showForDirection(message, LayerManager.UI_Tips, direction);
     };
     return TipsUtils;
 }(BaseClass));

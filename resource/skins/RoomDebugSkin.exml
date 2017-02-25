@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RoomUISkin" width="1000" height="650" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image width="1000" height="650" x="0" y="0" source="map_jpg"/>
+	<e:TextInput id="cmdInput" y="250" horizontalCenter="-110" prompt="命令号" anchorOffsetX="0" width="82" restrict="0-9"/>
+	<e:Button id="leaveBtn" label="退出" x="865" y="55"/>
+	<e:Button id="dismissBtn" label="解散" x="742" y="55"/>
+	<e:Label id="myLabel" text="1" x="202" y="471" bold="true" textColor="0xf70c0c"/>
+	<e:TextInput id="msgInput" width="435" height="20" x="321" y="614" enabled="true"/>
+	<e:Button id="sendBtn" label="发送" x="762" y="597"/>
+	<e:Button id="refreshBtn" label="刷新" x="898" y="501"/>
+	<e:Button id="inviteBtn" label="邀请" x="898" y="589"/>
+	<e:Label id="roomLabel" text="房间" x="21" y="50"/>
+	<e:Button id="readyBtn" label="准备" x="256" y="528"/>
+	<e:Button id="getBtn" label="要牌" x="488.5" y="528"/>
+	<e:Button id="stopBtn" label="停牌" x="623" y="528"/>
+	<e:Button id="bettingBtn" label="下注" x="370" y="528"/>
+	<e:Label id="myStateLbl" text="状态" x="440" y="486" textColor="0x1bb55c"/>
+	<e:Label id="messageLbl" text="状态" x="401" y="311" textColor="0x1BB55C"/>
+	<e:Button id="gmBtn" label="发送" x="495" y="247"/>
+</e:Skin>

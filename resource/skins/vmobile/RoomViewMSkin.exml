@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="RoomUISkin" width="320" height="504" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image width="320" height="504" x="0" y="0" source="vmobile_jpg"/>
-	<e:Button id="leaveBtn" label="退出" x="187.5" y="103"/>
-	<e:Button id="dismissBtn" label="解散" x="47" y="105"/>
-	<e:Label id="topPlayerLabel" text="1" x="137" y="40" bold="true" textColor="0xf70c0c"/>
-	<e:Label id="leftPlayerLabel" text="2" x="30" y="225" textColor="0xf70e09"/>
-	<e:Label id="rightPlayerLabel" text="4" x="321" y="210" textColor="0xf20c0c"/>
-	<e:Label id="bottomPlayerLabel" text="3" x="88.5" y="403" textColor="0xf41818"/>
-	<e:TextInput id="msgInput" width="135" height="20" x="19" y="445" enabled="true"/>
-	<e:Button id="sendBtn" label="发送" x="187.5" y="420"/>
-	<e:Button id="refreshBtn" label="刷新" x="125" y="255"/>
-	<e:Button id="inviteBtn" label="邀请" x="125" y="329"/>
-	<e:Label id="roomLabel" text="房间" x="124" y="180" textColor="0x40d685"/>
+	<e:Image fillMode="scale" left="0" right="0" top="0" bottom="0" source="home_jpg"/>
+	<e:Button id="leaveBtn" label="退出" x="220" y="60"/>
+	<e:Button id="dismissBtn" label="解散" x="220" y="0"/>
+	<e:Label id="myLabel" text="1" x="13" y="341" bold="true" textColor="0xF70C0C"/>
+	<e:Label id="roomLabel" text="房间" x="0" y="0"/>
+	<e:Label id="roundLabel" text="牌局" x="0" y="37"/>
+	<e:Button id="readyBtn" label="准备" x="40" y="386"/>
+	<e:Button id="getBtn" label="要牌" x="40" y="446"/>
+	<e:Button id="stopBtn" label="停牌" x="172" y="446"/>
+	<e:Button id="bettingBtn" label="下注" x="172" y="386"/>
+	<e:Label id="myStateLbl" text="状态" y="341" textColor="0x1BB55C" horizontalCenter="-11"/>
+	<e:Label id="myBetLbl" text="下注" y="341" horizontalCenter="72" textColor="0xC5CE14" x="10"/>
+	<e:Label id="messageLbl" text="状态" textColor="0x1BB55C" horizontalCenter="0" verticalCenter="0"/>
 </e:Skin>

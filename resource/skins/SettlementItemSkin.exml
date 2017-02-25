@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettlementItemSkin" width="320" height="40" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="nickLbl" text="2" textColor="0xF70E09" textAlign="center" verticalCenter="0" left="5"/>
+	<e:Label id="handcatLbl" text="手牌" textColor="0x1BB55C" horizontalCenter="0" textAlign="center" verticalCenter="0"/>
+	<e:Label id="scoreLbl" text="分数" textColor="0x1BB55C" textAlign="center" verticalCenter="0" right="5"/>
+</e:Skin>

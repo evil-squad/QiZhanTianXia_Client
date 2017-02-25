@@ -7,6 +7,11 @@ var RoomProxy = (function (_super) {
         this.receiveServerMsg(Cmd.ROOM_ASK_DISMISS, this.askDismissSuccess, this);
         this.receiveServerMsg(Cmd.ROOM_LEAVE, this.leaveRoomSuccess, this);
         this.receiveServerMsg(Cmd.ROOM_PLAYER_INFO_GET, this.getRoomPlayersInfoSuccess, this);
+        this.receiveServerMsg(Cmd.READY_FOR_START, this.onReadyForStart, this);
+        this.receiveServerMsg(Cmd.BET, this.onBet, this);
+        this.receiveServerMsg(Cmd.HIT, this.onHit, this);
+        this.receiveServerMsg(Cmd.STAND, this.onStand, this);
+        this.receiveServerMsg(Cmd.GET_GAME_DATA, this.onGetGameData, this);
     }
     var d = __define,c=RoomProxy,p=c.prototype;
     p.dismissRoom = function () {
@@ -46,6 +51,62 @@ var RoomProxy = (function (_super) {
     };
     p.getRoomPlayersInfoSuccess = function (obj) {
         this.applyFunc(RoomConst.ROOM_PLAYERS_GET_RESP, obj);
+    };
+    //
+    p.readyForStartReq = function () {
+        var body = {
+            "head": App.Head
+        };
+        this.writeAndFlush(Cmd.READY_FOR_START, body);
+    };
+    p.betReq = function (bet) {
+        var body = {
+            "head": App.Head,
+            "bet": bet
+        };
+        this.writeAndFlush(Cmd.BET, body);
+    };
+    p.hitReq = function () {
+        var body = {
+            "head": App.Head
+        };
+        this.writeAndFlush(Cmd.HIT, body);
+    };
+    p.standReq = function () {
+        var body = {
+            "head": App.Head
+        };
+        this.writeAndFlush(Cmd.STAND, body);
+    };
+    p.getGameDataReq = function () {
+        var body = {
+            "head": App.Head
+        };
+        this.writeAndFlush(Cmd.GET_GAME_DATA, body);
+    };
+    //
+    p.onReadyForStart = function (obj) {
+        this.applyFunc(RoomConst.READY_FOR_START_RESP, obj);
+    };
+    p.onBet = function (obj) {
+        this.applyFunc(RoomConst.BET_RESP, obj);
+    };
+    p.onHit = function (obj) {
+        this.applyFunc(RoomConst.HIT_RESP, obj);
+    };
+    p.onStand = function (obj) {
+        this.applyFunc(RoomConst.STAND_RESP, obj);
+    };
+    p.onGetGameData = function (obj) {
+        this.applyFunc(RoomConst.GET_GAME_DATA_RESP, obj);
+    };
+    p.gmReq = function (cmd, msg) {
+        var body = {
+            "head": App.Head,
+            "cmd": cmd,
+            "text": msg
+        };
+        this.writeAndFlush(Cmd.GM, body);
     };
     return RoomProxy;
 }(BaseProxy));

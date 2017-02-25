@@ -13,6 +13,7 @@ class RoomScene extends BaseScene{
         super.onEnter();
 
         this.addLayerAt(LayerManager.Room_Main, 0);
+        this.addLayer(LayerManager.UI_Popup);
         this.addLayer(LayerManager.UI_Tips);
         
         App.ViewManager.open(ViewConst.RoomUI);

@@ -7,5 +7,7 @@ enum ViewConst{
     Room = 20000,
     RoomUI,
     RoomEnter,
-    ReplyDismiss
+    ReplyDismiss,
+    Settlement,
+    Bet
 }

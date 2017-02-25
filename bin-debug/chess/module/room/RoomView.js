@@ -25,9 +25,10 @@ var RoomView = (function (_super) {
     p.refreshView = function (data) {
         this.bbar.data = data;
     };
-    p.getOnePuke = function () {
-        //this._pukes.push();
-        var info = PukeManager.randomOne(this._pukes.length);
+    p.revert = function () {
+        this.bbar.revert();
+    };
+    p.getOnePuke = function (info) {
         this.bbar.addItem(info);
         return info;
     };

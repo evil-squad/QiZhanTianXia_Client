@@ -1,7 +1,0 @@
-
-
-import "errpb/err.proto";
-import "cspb/cspb.proto";
-import "roompb/roompb.proto";
-import "storepb/storepb.proto";
-import "talkpb/talkpb.proto";

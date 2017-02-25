@@ -50,6 +50,8 @@ declare module skins{
 	class VSliderSkin extends eui.Skin{
 	}
 }
+declare class BetTileSkin extends eui.Skin{
+}
 declare class GuiScreenSkin extends eui.Skin{
 }
 declare class LoadingUISkin extends eui.Skin{
@@ -64,11 +66,15 @@ declare class PanelSkin extends eui.Skin{
 }
 declare class RoomUISkin extends eui.Skin{
 }
+declare class RoomSeatItemSkin extends eui.Skin{
+}
 declare class SaleItemSkin extends eui.Skin{
 }
 declare class ServerChooseSkin extends eui.Skin{
 }
 declare class ServerItemRendererSkin extends eui.Skin{
+}
+declare class SettlementItemSkin extends eui.Skin{
 }
 declare class TabBarButtonSkin extends eui.Skin{
 }

@@ -10,4 +10,16 @@ class Cmd {
     public static ROOM_NOTIFY:number = 106;
     public static ROOM_ASK_DISMISS:number = 107;
     public static ROOM_REPLY_DISMISS:number = 108;
+
+    // game
+	// 玩家点开始按钮, 表示准备好开局
+	public static READY_FOR_START:number = 201;
+	// 下注
+	public static BET:number = 202;
+	// 要牌
+	public static HIT:number = 203;
+	// 请求停牌
+	public static STAND:number = 204;
+	// 请求牌局数据(可能由于掉线需要重新拉取)
+	public static GET_GAME_DATA:number = 205;
 }

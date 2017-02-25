@@ -1,5 +1,6 @@
 var PukeInfo = (function () {
-    function PukeInfo() {
+    function PukeInfo(pid) {
+        this._pid = pid;
     }
     var d = __define,c=PukeInfo,p=c.prototype;
     d(p, "id"

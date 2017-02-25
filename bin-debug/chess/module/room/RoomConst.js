@@ -17,6 +17,17 @@ var RoomConst = (function () {
     RoomConst.ROOM_PUKE_GET_REQ = "room.puke.get.req";
     RoomConst.ROOM_PUKE_STOP_REQ = "room.puke.stop.req";
     RoomConst.NOTIFY = "room.notify";
+    RoomConst.READY_FOR_START_REQ = "room.ready.for.start.req";
+    RoomConst.READY_FOR_START_RESP = "room.ready.for.start.resp";
+    RoomConst.BET_REQ = "room.bet.req";
+    RoomConst.BET_RESP = "room.bet.resp";
+    RoomConst.HIT_REQ = "room.bit.req";
+    RoomConst.HIT_RESP = "room.bit.resp";
+    RoomConst.STAND_REQ = "room.stand.req";
+    RoomConst.STAND_RESP = "room.stand.resp";
+    RoomConst.GET_GAME_DATA_REQ = "room.get.game.data.req";
+    RoomConst.GET_GAME_DATA_RESP = "room.get.game.data.resp";
+    RoomConst.GM = "room.room.gm";
     return RoomConst;
 }());
 egret.registerClass(RoomConst,'RoomConst');

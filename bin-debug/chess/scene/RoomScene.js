@@ -13,6 +13,7 @@ var RoomScene = (function (_super) {
     p.onEnter = function () {
         _super.prototype.onEnter.call(this);
         this.addLayerAt(LayerManager.Room_Main, 0);
+        this.addLayer(LayerManager.UI_Popup);
         this.addLayer(LayerManager.UI_Tips);
         App.ViewManager.open(ViewConst.RoomUI);
         App.ViewManager.open(ViewConst.Room);

@@ -35,6 +35,8 @@ enum ERR {
 	NOT_LOGIN = 1003;
 	// 创建房间失败 (TODO: delete这个笼统的错误码, 错误码统一后, 用roomserver返回的错误码替换)
 	FAILED_CREATE_ROOM = 1004;
+	// 房卡不够(不能创建房间)
+	NOT_ENOUGH_ROOMCARD = 1005;
 
 	// room err
 	// 找不到对应的 online session(没成功建立NotifyChan就发起了其它请求?)
@@ -51,7 +53,7 @@ enum ERR {
 	ROOM_NOT_EXIST = 2005;
 	// 房间服务器里根据online_id没有找到online(获取session失败)
 	ROOM_NOFOUND_ONLINE = 2006;
-	// 重复注册 online
+	// 重复注册 room
 	ROOM_DUP_REGISTER = 2007;
 	// 玩家不在任何房间
 	PLAYER_NOT_IN_ROOM = 2008;
@@ -116,4 +118,34 @@ enum ERR {
 	CANNOT_REPLY_DISMISS_NOT_START_ROOM = 2037;
 	// 不能应答没有发起解散决议的房间(BUG?)
 	CANNOT_REPLY_NON_ASKING_DISMISS_ROOM = 2038;
+	// 房间记录了玩家, 但玩家记录的座位是空(RoomServer BUG)
+	ROOM_PLAYER_SEAT_IS_NIL = 2039;
+	// 对 room 请求多次都不成功(目前尝试100次, 每次间隔10ms) 
+	ROOM_CANNOT_SERVE = 2040;
+	// 房间服正忙, 请稍后再试
+	ROOM_BUSY_EAGAIN = 2041;
+	// 房间服内部逻辑错误, 重复关闭房间
+	ROOMSRV_INTERNAL_DUPCLOSE= 2042;
+	// 房间(服)未知错误
+	ROOMSRV_UNKNOWN_ERROR = 2043;
+	// 无效的下注(金额<=0)
+	INVALID_BET = 2044;
+	// 房间牌局(状态)拒绝报名(报名已结束)
+	ROOM_ROUND_DENY_READY = 2045;
+	// 不能在没开始的房间下注
+	CANNOT_BET_IN_NOT_START_ROOM = 2046;
+	// 当前局不在下注状态
+	ROOM_ROUND_NOT_BETTING_STATE = 2047;
+	// 当前局不在玩牌状态
+	ROOM_ROUND_NOT_PLAYING_STATE = 2048;
+	// (达到持牌上限) 不能再要牌了
+	CANNOT_HIT_MORE_CARD = 2049;
+	// 已停牌的玩家不能再要牌了
+	STAND_PLAYER_CANNOT_HIT = 2050;
+	// 玩家没有参加本局游戏
+	PLAYER_NOT_IN_CUR_ROUND = 2051;
+	// 不能在没开始的房间玩牌(要牌/停牌)
+	CANNOT_PLAY_IN_NOT_START_ROOM = 2052;
+	// 不能获得没开始房间的牌局信息
+	CANNOT_GET_GAME_DATA_IN_NOT_START_ROOM = 2053;
 }
