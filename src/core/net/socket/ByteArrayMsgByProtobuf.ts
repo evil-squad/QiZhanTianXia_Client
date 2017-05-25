@@ -78,16 +78,34 @@ class ByteArrayMsgByProtobuf extends ByteArrayMsg {
         obj.cmd = cmdId; //this.getRespMsg(cmdId);
         var Message = this.getMessage(this.getRespMsg(obj.cmd));
         obj.body = Message.decode(body);
-        Log.trace("收到数据：","[cmd:"+obj.cmd+"] ", obj.body, obj.body.head);
+        //Log.trace("收到数据：","[cmd:"+obj.cmd+"] ", obj.body);
+        Log.trace("收到数据：",obj.body);
         if (obj.body != undefined
             && obj.body.head != undefined) {
             if (obj.body.head.err != undefined && obj.body.head.err != 0) {
-                App.TipsUtils.showCenter("[" + obj.body.head.err + "]" + ErrorConst.getDetail(obj.body.head.err));
-                return;
+                if(obj.body.head.err == ErrorConst.RELOAD_CODE){
+                    App.Socket.cutoff();
+                    return;
+                }else if(obj.body.head.err == ErrorConst.NOT_IN_ROOM || obj.body.head.err == ErrorConst.NOFOUND_ROOM){
+                    if(!MainManager.logged){
+                        MainManager.logged = true;
+                        socket.clear();
+                        return;
+                    }else{
+                         App.TipsUtils.showCenter("[" + obj.body.head.err + "]" + ErrorConst.getDetail(obj.body.head.err));
+                        socket.clear();
+                        return;
+                    }
+                }else{
+                    App.TipsUtils.showCenter("[" + obj.body.head.err + "]" + ErrorConst.getDetail(obj.body.head.err));
+                    socket.clear();
+                    return;
+                }
             }
         }
         else {
             App.TipsUtils.showCenter("数据错误:" + this.getErrMsg(obj));
+            socket.clear();
             return;
         }
         if (obj) {

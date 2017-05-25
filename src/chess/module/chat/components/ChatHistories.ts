@@ -1,0 +1,4 @@
+class ChatHistories {
+	public constructor() {
+	}
+}

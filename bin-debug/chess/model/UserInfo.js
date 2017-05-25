@@ -3,13 +3,14 @@
  */
 var UserInfo = (function () {
     function UserInfo(pbObj) {
+        this._roomCard = 0;
         if (pbObj == null)
             return;
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
         this._icon = pbObj.icon;
-        this._lastLoginTime = pbObj.last_login_time;
-        this._roomCard = pbObj.room_card;
+        this._lastLoginTime = pbObj.lastLoginTime;
+        this._roomCard = pbObj.roomCard;
     }
     var d = __define,c=UserInfo,p=c.prototype;
     d(p, "uid"

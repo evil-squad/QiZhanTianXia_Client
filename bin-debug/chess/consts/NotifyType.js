@@ -16,6 +16,9 @@ var NotifyType = (function () {
             case NotifyType.ROUND_START: return "一局开始了";
             case NotifyType.BETTING_START: return "报名结束，可以开始下注了";
             case NotifyType.PLAYER_BET: return "有玩家下注了";
+            case NotifyType.UPDATE_CUR_BETTING_UID: return "更新当前可下注玩家";
+            case NotifyType.UPDATE_CUR_PLAYING_UID: return "更新当前可要牌玩家";
+            case NotifyType.PLAYER_HIT: return "玩家获得一张可见牌";
             case NotifyType.PLAYING_START: return "下注结束，可以要牌了";
             case NotifyType.PLAYER_STAND: return "有玩家已经停牌/爆牌了";
             case NotifyType.ROUND_FINISH: return "一局结束了";
@@ -45,12 +48,18 @@ var NotifyType = (function () {
     NotifyType.PLAYER_BET = 12;
     // 下注结束, 开始要牌
     NotifyType.PLAYING_START = 13;
+    // 更新当前可下注玩家
+    NotifyType.UPDATE_CUR_BETTING_UID = 14;
+    // 更新当前可要牌玩家
+    NotifyType.UPDATE_CUR_PLAYING_UID = 15;
+    // 玩家获得一张可见牌
+    NotifyType.PLAYER_HIT = 16;
     // 玩家已经停牌
-    NotifyType.PLAYER_STAND = 14;
+    NotifyType.PLAYER_STAND = 17;
     // 当所有人都停牌或倒计时结束, 一局结束(通知胜负和分数结算)
-    NotifyType.ROUND_FINISH = 15;
+    NotifyType.ROUND_FINISH = 18;
     // 房卡用完, 最终结束(游戏过程被存储, 房间会被回收)
-    NotifyType.GAME_FINISH = 16;
+    NotifyType.GAME_FINISH = 19;
     return NotifyType;
 }());
 egret.registerClass(NotifyType,'NotifyType');

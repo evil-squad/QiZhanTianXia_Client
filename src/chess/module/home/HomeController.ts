@@ -45,11 +45,14 @@ class HomeController extends BaseController{
 
     private createResp(roomId:string):void{
         this.homeView.createRoomSuccess();
-        App.TipsUtils.showCenter("创建房间 roomId:" + roomId);
+        App.TipsUtils.showCenter("创建成功");
+
+        this.proxy.enterRoom();
     }
 
     private enterResp(obj:any):void{
         RoomManager.parsePlayers(obj.players,"home");
+        RoomManager.parseGameInfo(obj.gameInfo);
         App.SceneManager.runScene(SceneConsts.Room);
     }
 

@@ -42,6 +42,8 @@ class PukeItem extends BasePukeItem {
 	private refresh(){
 		if (this._info != null) {
             this._img.texture = RES.getRes("puke" + this._info.pid);
-        }
+        }else{
+			this._img.texture = RES.getRes("puke_bg");
+		}
 	}
 }

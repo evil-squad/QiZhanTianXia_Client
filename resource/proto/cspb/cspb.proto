@@ -133,6 +133,8 @@ message EnterRoomResp {
 	Head head = 1;
 	// 座位情况
 	repeated roompb.PlayerInfo players = 2;
+	// 牌局信息
+	roompb.GameInfo game_info = 3;
 }
 
 // LEAVE_ROOM = 104;

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="RoomSeatItemSkin" width="120" height="240" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Label id="nickLbl" text="2" textColor="0xF70E09" horizontalCenter="0" top="2" textAlign="center"/>
-	<e:Label id="stateLbl" text="状态" textColor="0x1BB55C" horizontalCenter="0" textAlign="center" top="40"/>
-	<e:Label id="betLbl" text="下注" horizontalCenter="0" textAlign="center" top="80" textColor="0xc9a426"/>
-	<e:Group id="container" anchorOffsetX="0" anchorOffsetY="0" bottom="0" left="0" right="0" top="120"/>
+<e:Skin class="RoomSeatItemSkin" width="117" height="170" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image width="117" height="117" x="0" source="room_seat_item_png" top="20"/>
+	<e:Image height="28" left="0" right="0" bottom="0" source="room_seat_bottom_bg_png"/>
+	<e:Label id="nickLbl" text="2" horizontalCenter="0" top="-5" textAlign="center" size="20" textColor="0xffffff"/>
+	<e:Group id="container" anchorOffsetX="0" anchorOffsetY="0" width="60" x="80" height="60" y="80">
+	</e:Group>
+	<e:Label id="stateLbl" text="状态" textAlign="center" size="20" left="0" right="0" bottom="3" textColor="0xe5c627"/>
+	<e:Label id="pointsLbl" text="1" size="20" textColor="0x230808" textAlign="center" verticalAlign="middle" y="-80" x="53"/>
+	<e:Group id="betContainer" width="110" height="40" x="3" y="-46" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image left="0" right="0" top="0" bottom="0" source="room_seat_bet_bg_png"/>
+		<e:Label id="betLbl" text="下注" textAlign="center" textColor="0xc9a426" size="18" left="40" right="0" bottom="0" top="0" verticalAlign="middle"/>
+	</e:Group>
 </e:Skin>

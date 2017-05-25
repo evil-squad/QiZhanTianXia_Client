@@ -3,7 +3,7 @@ class PukeBar extends eui.Component {
 	public static ITEM_WIDTH:number = 100;
 	public static ITEM_HEIGHT:number = 120;
 
-    public static ITEM_STACKED_WIDTH:number = 60;
+    public static ITEM_STACKED_WIDTH:number = 130;
 
     public static PUKE_MAX_COUNT:number = 5;
 
@@ -37,6 +37,11 @@ class PukeBar extends eui.Component {
         item.info = info;
         this.addChild(item);
         egret.Tween.get(item).to({ x: PukeBar.ITEM_STACKED_WIDTH * this._infos.length }, 500);
+    }
+
+    public showHiddenPuke(info:PukeInfo):void{
+        var item:PukeItem = this.getChildAt(0) as PukeItem;
+        item.info = info;
     }
 
 	public switchItem(item:PukeItem){

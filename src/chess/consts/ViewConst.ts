@@ -9,5 +9,6 @@ enum ViewConst{
     RoomEnter,
     ReplyDismiss,
     Settlement,
-    Bet
+    Bet,
+    Chat
 }

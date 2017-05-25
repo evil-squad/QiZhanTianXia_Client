@@ -10,5 +10,6 @@ var ViewConst;
     ViewConst[ViewConst["ReplyDismiss"] = 20003] = "ReplyDismiss";
     ViewConst[ViewConst["Settlement"] = 20004] = "Settlement";
     ViewConst[ViewConst["Bet"] = 20005] = "Bet";
+    ViewConst[ViewConst["Chat"] = 20006] = "Chat";
 })(ViewConst || (ViewConst = {}));
 //# sourceMappingURL=ViewConst.js.map

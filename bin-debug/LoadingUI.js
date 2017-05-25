@@ -34,6 +34,8 @@ var LoadingUI = (function (_super) {
     }
     var d = __define,c=LoadingUI,p=c.prototype;
     p.createView = function () {
+        this.background = new eui.Image("enter_loading_bg_png");
+        this.addChild(this.background);
         this.textField = new egret.TextField();
         this.addChild(this.textField);
         this.textField.y = 300;

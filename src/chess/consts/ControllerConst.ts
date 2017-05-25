@@ -7,5 +7,6 @@ enum ControllerConst{
     RoomEnter,
     ReplyDismiss,
     Settlement,
-    Bet
+    Bet,
+    Chat
 }

@@ -1,6 +1,6 @@
 class Socket extends BaseClass {
-    private _needReconnect:boolean = false;
-    private _maxReconnectCount = 10;
+    private _needReconnect:boolean = true;
+    private _maxReconnectCount = 20;
 
     private _reconnectCount:number = 0;
     private _connectFlag:boolean;
@@ -9,6 +9,8 @@ class Socket extends BaseClass {
     private _socket:egret.WebSocket;
     private _msg:BaseMsg;
     private _isConnecting:boolean;
+
+    private _timer:egret.Timer;
 
     /**
      * 构造函数
@@ -41,6 +43,9 @@ class Socket extends BaseClass {
      * 服务器连接成功
      */
     private onSocketOpen():void {
+        if(this._reconnectCount != 0){
+            MainManager.autologin();
+        }
         this._reconnectCount = 0;
 
         if (this._connectFlag) {
@@ -123,10 +128,11 @@ class Socket extends BaseClass {
      * 重新连接
      */
     private reconnect():void {
+        Log.trace("reconnect");
         this.close();
         this._reconnectCount++;
         if (this._reconnectCount < this._maxReconnectCount) {
-            this.connect();
+            this.startTimer(this._reconnectCount);
         } else {
             this._reconnectCount = 0;
             if (this._connectFlag) {
@@ -135,6 +141,26 @@ class Socket extends BaseClass {
                 App.MessageCenter.dispatch(SocketConst.SOCKET_NOCONNECT);
             }
         }
+    }
+    
+    private startTimer(reconnectCount:number):void{
+        //创建一个计时器对象
+        var timer:egret.Timer = new egret.Timer(reconnectCount*500,1);
+        //注册事件侦听器
+        timer.addEventListener(egret.TimerEvent.TIMER,this.timerFunc,this);
+        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.timerComFunc,this);
+        //开始计时
+        timer.start();
+    }
+
+    private timerFunc()
+    {
+        console.log("计时");
+        this.connect();
+    }
+    private timerComFunc()
+    {
+        console.log("计时结束");
     }
 
     /**
@@ -158,6 +184,10 @@ class Socket extends BaseClass {
         this._socket = null;
         this._isConnecting = false;
         this._connectFlag = false;
+    }
+
+    public cutoff():void{
+        this._socket.close();
     }
 
     /**

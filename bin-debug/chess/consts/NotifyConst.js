@@ -22,6 +22,12 @@ var NotifyConst = (function () {
     NotifyConst.PLAYER_BET = "NotifyType.PLAYER_BET";
     // 下注结束, 开始要牌
     NotifyConst.PLAYING_START = "NotifyType.PLAYING_START";
+    // 更新当前可下注玩家
+    NotifyConst.UPDATE_CUR_BETTING_UID = "NotifyType.UPDATE_CUR_BETTING_UID";
+    // 更新当前可要牌玩家
+    NotifyConst.UPDATE_CUR_PLAYING_UID = "NotifyType.UPDATE_CUR_PLAYING_UID";
+    // 玩家获得一张可见牌
+    NotifyConst.PLAYER_HIT = "PLAYER_HIT";
     // 玩家已经停牌
     NotifyConst.PLAYER_STAND = "NotifyType.PLAYER_STAND";
     // 当所有人都停牌或倒计时结束, 一局结束(通知胜负和分数结算)

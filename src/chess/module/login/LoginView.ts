@@ -8,11 +8,12 @@ class LoginView extends BaseEuiView {
     public constructor($controller:BaseController, $parent:eui.Group){
         super($controller, $parent);
 
-        if(App.DeviceUtils.IsMobile){
-            this.skinName = "resource/skins/vmobile/LoginViewMSkin.exml";
-        }else{
-            this.skinName = "resource/skins/LoginSkin.exml";
-        }
+        this.skinName = "resource/skins/LoginSkin.exml";
+        // if(App.DeviceUtils.IsMobile){
+        //     this.skinName = "resource/skins/vmobile/LoginViewMSkin.exml";
+        // }else{
+        //     this.skinName = "resource/skins/LoginSkin.exml";
+        // }
     }
 
     /**
@@ -22,7 +23,7 @@ class LoginView extends BaseEuiView {
     public initUI():void{
         super.initUI();
 
-        this.openIdInput.text = "openid_1_"+egret.Capabilities.os;
+        this.openIdInput.text = "openid_3_"+egret.Capabilities.os;
         this.nickInput.text = "nick"+Math.floor(Math.random()*100);
 
         //this.passwordInput.displayAsPassword = true;
@@ -84,7 +85,7 @@ class LoginView extends BaseEuiView {
         // }
 
         //var openId = egret.Capabilities.os+""+(Math.floor(Math.random()*10));
-        var code = "1";
+        var code = "2";
         
         this.applyFunc(LoginConst.LOGIN_REQ, openId, code, nick);
     }

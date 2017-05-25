@@ -35,10 +35,23 @@ class GamingStates {
 	 * 下注结束, 开始要牌：13
 	 */
 	public static PLAYING_START:number = 32;
+
 	/**
-	 * 要牌中
+	 * 要牌中：某玩家要牌，其他玩家等待
 	 */
-	//public static GETTING:number = 4;
+	public static SWITCH_BETTING:number = 33;
+	/**
+	 * 要牌中：某玩家要牌，其他玩家等待
+	 */
+	public static SWITCH_BET_WAITING:number = 34;
+	/**
+	 * 要牌中：某玩家要牌，其他玩家等待
+	 */
+	public static SWITCH_GETTING:number = 4;
+	/**
+	 * 要牌中：某玩家要牌，其他玩家等待
+	 */
+	public static SWITCH_GET_WAITING:number = 41;
 	/**
 	 * 游戏中/他人要牌中
 	 */

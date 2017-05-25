@@ -1,6 +1,5 @@
 class BasePanelView extends BaseEuiView {
     public closeBtn:eui.Button;
-    public iconDisplay:eui.Image;
     public button:eui.Image;
     public contentGroup:eui.Group;
 
@@ -12,22 +11,15 @@ class BasePanelView extends BaseEuiView {
         this.skinName = "resource/skins/PanelSkin.exml";
     }
 
-    public set icon(value:string){
-        this._icon = value;
-        if(this.iconDisplay){
-            this.iconDisplay.source = this._icon;
-        }
-    }
-
     public get icon():string{
         return this._icon;
     }
 
     public set btn(value:string){
-        this._btn = value;
-        if(this.button){
-            this.button.source = this._btn;
-        }
+         this._btn = value;
+         if(this.button){
+             this.button.source = this._btn;
+         }
     }
 
     public get btn():string{
@@ -49,7 +41,6 @@ class BasePanelView extends BaseEuiView {
      */
     public initData():void{
         super.initData();
-        this.iconDisplay.source = this._icon;
         this.button.source = this._btn;
     }
 

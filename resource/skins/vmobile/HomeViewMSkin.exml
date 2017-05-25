@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="HomeViewMSkin" width="320" height="504" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image left="0" right="0" top="0" bottom="0" fillMode="scale" source="home_jpg"/>
-	<e:Button id="createBtn" label="创建房间" y="227" horizontalCenter="0"/>
-	<e:Button id="enterBtn" label="进入房间" y="323" horizontalCenter="0"/>
-	<e:Button id="crossEnterBtn" label="输入房间号" y="422" horizontalCenter="0"/>
-	<e:Label id="roomLabel" text="房间" y="134" textColor="0xE53939" horizontalCenter="0"/>
-	<e:Label id="nameDisplay" text="_羽" horizontalCenter="-104.5" verticalCenter="-210.5" size="21" bold="true" textColor="0xd3e8e3"/>
-	<e:Label id="coinsDisplay" text="coins" x="130.5" y="26.5" textColor="0xc5d5db"/>
+<e:Skin class="HomeViewMSkin" width="420" height="760" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image left="0" right="0" top="0" bottom="0" fillMode="scale" source="vhome_bg_png"/>
+	<e:Button id="createBtn" label="创建房间" y="355" horizontalCenter="0"/>
+	<e:Button id="enterBtn" label="进入房间" y="572" horizontalCenter="0"/>
+	<e:Button id="crossEnterBtn" label="输入房间号" y="710" horizontalCenter="-12"/>
+	<e:Label id="roomLabel" text="房间" y="11.5" textColor="0xE53939" horizontalCenter="-108"/>
+	<e:Label id="nameDisplay" text="_羽" horizontalCenter="-154.5" verticalCenter="-239.5" size="21" bold="true" textColor="0x389c89"/>
+	<e:Label id="coinsDisplay" text="coins" x="210" y="11.5" size="21" textColor="0x389c89"/>
+	<e:Label id="uidLabel" text="uid" x="110" y="140.5" size="21" textColor="0x389C89" bold="true"/>
 </e:Skin>

@@ -2,12 +2,12 @@ var HomeView = (function (_super) {
     __extends(HomeView, _super);
     function HomeView($controller, $parent) {
         _super.call(this, $controller, $parent);
-        if (App.DeviceUtils.IsMobile) {
-            this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
-        }
-        else {
-            this.skinName = "resource/skins/GuiScreenSkin.exml";
-        }
+        this.skinName = "resource/skins/GuiScreenSkin.exml";
+        // if(App.DeviceUtils.IsMobile){
+        //      this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
+        // }else{
+        //      this.skinName = "resource/skins/GuiScreenSkin.exml";
+        // }
         //this.skinName = "resource/skins/vmobile/HomeViewMSkin.exml";
         //this.skinName = "resource/skins/HomeViewDebugSkin.exml";
     }
@@ -27,7 +27,6 @@ var HomeView = (function (_super) {
         //this.moreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.moreClickHandler,this);
         this.createBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createClickHandler, this);
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterClickHandler, this);
-        this.crossEnterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.crossEnterClickHandler, this);
         if (App.DeviceUtils.IsPC) {
         }
     };
@@ -112,16 +111,17 @@ var HomeView = (function (_super) {
     };
     p.refreshView = function () {
         this.nameDisplay.text = MainManager.userInfo.nick;
-        this.coinsDisplay.text = "" + MainManager.userInfo.roomCard;
+        this.uidLabel.text = "" + MainManager.userInfo.uid;
+        this.coinsDisplay.text = "房卡：" + MainManager.userInfo.roomCard;
         if (RoomManager.hasRoomInfo) {
             this.createBtn.enabled = false;
-            this.enterBtn.enabled = true;
-            this.enterBtn.label = "进入【" + RoomManager.roomId + "】房间";
+            //this.enterBtn.enabled = true;
+            this.enterBtn.label = "进入房间";
             this.roomLabel.text = "房间号：" + RoomManager.roomId;
         }
         else {
             this.createBtn.enabled = true;
-            this.enterBtn.enabled = false;
+            //this.enterBtn.enabled = false;
             this.enterBtn.label = "进入房间";
             this.roomLabel.text = "房间";
         }

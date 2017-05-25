@@ -39,6 +39,7 @@ class Startup {
         App.ControllerManager.register(ControllerConst.ReplyDismiss, new ReplyDismissController());
         App.ControllerManager.register(ControllerConst.Settlement, new SettlementController());
         App.ControllerManager.register(ControllerConst.Bet, new BetController());
+        App.ControllerManager.register(ControllerConst.Chat, new ChatController());
     }
 
     private initListener():void{

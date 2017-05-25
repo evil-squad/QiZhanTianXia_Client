@@ -9,12 +9,6 @@ var BasePanelView = (function (_super) {
         ,function () {
             return this._icon;
         }
-        ,function (value) {
-            this._icon = value;
-            if (this.iconDisplay) {
-                this.iconDisplay.source = this._icon;
-            }
-        }
     );
     d(p, "btn"
         ,function () {
@@ -41,7 +35,6 @@ var BasePanelView = (function (_super) {
      */
     p.initData = function () {
         _super.prototype.initData.call(this);
-        this.iconDisplay.source = this._icon;
         this.button.source = this._btn;
     };
     p.closeBtnClickHandler = function (e) {

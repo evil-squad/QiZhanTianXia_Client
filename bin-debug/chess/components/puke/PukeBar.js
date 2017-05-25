@@ -28,6 +28,10 @@ var PukeBar = (function (_super) {
         this.addChild(item);
         egret.Tween.get(item).to({ x: PukeBar.ITEM_STACKED_WIDTH * this._infos.length }, 500);
     };
+    p.showHiddenPuke = function (info) {
+        var item = this.getChildAt(0);
+        item.info = info;
+    };
     p.switchItem = function (item) {
         if (this._curtItem == null) {
             this._curtItem = item;
@@ -77,7 +81,7 @@ var PukeBar = (function (_super) {
     };
     PukeBar.ITEM_WIDTH = 100;
     PukeBar.ITEM_HEIGHT = 120;
-    PukeBar.ITEM_STACKED_WIDTH = 60;
+    PukeBar.ITEM_STACKED_WIDTH = 130;
     PukeBar.PUKE_MAX_COUNT = 5;
     return PukeBar;
 }(eui.Component));

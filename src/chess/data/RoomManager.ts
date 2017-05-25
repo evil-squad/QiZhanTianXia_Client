@@ -8,6 +8,9 @@ class RoomManager {
 	private static _roomId:string;
 	private static _seatId:number;
 
+	private static _curtBettingUid:number = 0;
+	private static _curtPlayingUid:number = 0;
+
 	public constructor() {
 	}
 
@@ -53,6 +56,10 @@ class RoomManager {
         for (var i = 0; i < players.length; i++) {
             RoomManager.addPlayer(players[i]);
         }
+	}
+
+	public static parseGameInfo(gameInfo:any):void{
+		Log.trace(gameInfo);
 	}
 
 	public static setRoomInfo(roomId:string){
@@ -102,5 +109,21 @@ class RoomManager {
 	public static clearRoomInfo():void{
 		this._roomId = null;
         this._seatId = 0;
+	}
+
+	public static set curtBettingUid(value:number){
+		this._curtBettingUid = value;
+	}
+
+	public static get curtBettingUid():number{
+		return this._curtBettingUid;
+	}
+
+	public static set curtPlayingUid(value:number){
+		this._curtPlayingUid = value;
+	}
+
+	public static get curtPlayingUid():number{
+		return this._curtPlayingUid;
 	}
 }

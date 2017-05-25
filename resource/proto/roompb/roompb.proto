@@ -74,6 +74,8 @@ message EnterRoomResp {
 	errpb.ERR errcode = 1;
 	// 座位情况
 	repeated PlayerInfo players = 3;
+	// 游戏信息
+	GameInfo game_info = 4;
 }
 
 enum LEAVE_REASON {
@@ -131,8 +133,7 @@ message AskDismissRoomReq {
 message AskDismissRoomResp {
 	errpb.ERR errcode = 1;
 	// 等待回复的剩余时间, 时间到还没有决议就强行解散房间;
-	int32 ask_second = 2;
-	int32 wait_seconds = 3;
+	int32 wait_seconds = 2;
 }
 
 message ReplyDismissRoomReq {
@@ -240,12 +241,18 @@ enum NOTIFY {
 	PLAYER_BET = 12;
 	// 下注结束, 开始要牌
 	PLAYING_START = 13;
+	// 更新当前可下注玩家
+	UPDATE_CUR_BETTING_UID = 14;
+	// 更新当前可要牌玩家
+	UPDATE_CUR_PLAYING_UID = 15;
+	// 玩家获得一张可见牌
+	PLAYER_HIT= 16;
 	// 玩家已经停牌
-	PLAYER_STAND = 14;
+	PLAYER_STAND = 17;
 	// 当所有人都停牌或倒计时结束, 一局结束(通知胜负和分数结算)
-	ROUND_FINISH = 15;
+	ROUND_FINISH = 18;
 	// 房卡用完, 最终结束(游戏过程被存储, 房间会被回收)
-	GAME_FINISH = 16;
+	GAME_FINISH = 19;
 }
 enum ROOM_CLOSE_REASON {
 	// 房间空闲超时(指:没有玩家, 但可能还有ob)
@@ -278,11 +285,14 @@ message Notify {
 	BettingStartNotify betting_start = 15;
 	PlayerBetNotify player_bet = 16;
 	PlayingStartNotify playing_start = 17;
-	PlayerStandNotify player_stand = 18;
-	RoundFinishNotify round_finish = 19;
-	GameFinishNotify game_finish = 20;
+	UpdateCurBettingUid update_cur_betting_uid = 18;
+	UpdateCurPlayingUid update_cur_playing_uid = 19;
+	PlayerHitNotify player_hit = 20;
+	PlayerStandNotify player_stand = 21;
+	RoundFinishNotify round_finish = 22;
+	GameFinishNotify game_finish = 23;
 }
-// PLAYER_READY
+// NOTIFY_PLAYER_READY
 message PlayerReadyNotify {
 	// 已准备的玩家uid
 	int32 uid = 1;
@@ -293,13 +303,13 @@ message RoomStartNotify {
 	// 房主(用于扣卡)
 	int32 owner = 2;
 }
-// GO_NEXT_ROUND
+// NOTIFY_GO_NEXT_ROUND
 message GoNextRoundNotify {
 	string roomid = 1;
 	// 切换到第几局(0,1,...)
 	int32 round_id = 2;
 }
-// ROUND_START
+// NOTIFY_ROUND_START
 message RoundStartNotify {
 	// 第几局
 	int32 round_id = 1;
@@ -308,14 +318,14 @@ message RoundStartNotify {
 	// 庄家 uid
 	int32 banker = 3;
 }
-// BETTING_START
+// NOTIFY_BETTING_START
 message BettingStartNotify {
 	// 第几局
 	int32 round_id = 1;
 	// 倒计时多少秒
 	int32 countdown_seconds = 2;
 }
-// PLAYER_BET
+// NOTIFY_PLAYER_BET
 message PlayerBetNotify {
 	// 下注者uid
 	int32 uid = 1;
@@ -324,7 +334,7 @@ message PlayerBetNotify {
 	// 总下注数
 	int32 total_bet = 3;
 }
-// PLAYING_START
+// NOTIFY_PLAYING_START
 message PlayingStartNotify {
 	// 第几局
 	int32 round_id = 1;
@@ -332,15 +342,36 @@ message PlayingStartNotify {
 	int32 countdown_seconds = 2;
 	// 每个人的下注情况(包括强制下注)
 	repeated BetInfo bets = 3;
-	// 每个人的手牌信息
-	repeated HandInfo hands = 4;
+	// 每个人自己的手牌信息
+	HandInfo hands = 4;
 }
-// PLAYER_STAND
+// NOTIFY_UPDATE_CUR_BETTING_UID
+message UpdateCurBettingUid {
+	// 当前可以下注的uid
+	int32 uid = 1;
+}
+// NOTIFY_UPDATE_CUR_PLAYING_UID
+message UpdateCurPlayingUid {
+	// 当前可以要牌的uid
+	int32 uid = 1;
+}
+// NOTIFY_PLAYER_HIT
+message PlayerHitNotify {
+	// 停牌者uid
+	int32 uid = 1;
+	// 刚拿到的可见牌
+	Card card = 2;
+}
+// NOTIFY_PLAYER_STAND
 message PlayerStandNotify {
 	// 停牌者uid
 	int32 uid = 1;
+	// true 因为爆牌而停牌
+	bool burst = 2;
+	// 底牌(如果是爆牌, 就会把底牌公布)
+	Card hidden_card = 3;
 }
-// ROUND_FINISH
+// NOTIFY_ROUND_FINISH
 message RoundFinishNotify {
 	// 第几局
 	int32 round_id = 1;
@@ -358,11 +389,27 @@ message RoundSettlement {
 	// 手牌
 	repeated Card cards = 3;
 	// 本局得分(负分表示扣钱, 正分表示挣钱)
-	int64 Score = 4;
+	int32 score = 4;
 }
-// GAME_FINISH
+// NOTIFY_GAME_FINISH
 message GameFinishNotify {
 	string roomid = 1;
+	// 10局的结算
+	repeated GameSettlement settlements = 2;
+}
+message GameSettlement {
+	int32 uid = 1;
+	string nick = 2;
+	bytes icon = 3;
+	string ip = 4;
+	int32 attend_times = 5;
+	int32 banker_times = 6;
+	int32 win_times = 7;
+	int32 lost_times = 8;
+	int32 total_bet = 9;
+	int32 total_win_score = 10;
+	int32 total_lost_score = 11;
+	int32 final_score = 14;
 }
 // NOTIFY_ROOM_CLOSED
 message RoomCloseNotify {
@@ -393,9 +440,8 @@ message PlayerLeaveNotify {
 message AskDismissNotify {
 	// 发起解散者
 	int32 dismisser = 1;
-	// 等待解散时间, 超时没决议, 服务器强行解散房间
-	int32 ask_second = 2;
-	int32 wait_seconds = 3;
+	// 等待解散的秒数, 超时没决议, 服务器强行解散房间
+	int32 wait_seconds = 2;
 }
 // NOTIFY_REPLY_DISMISS_ROOM
 message ReplyDismissNotify {
@@ -422,6 +468,49 @@ message PlayerInfo {
 }
 
 // game define
+
+message GameInfo {
+	// 牌局开始没有
+	bool started = 1;
+	// true: 表示这个房间已经固化, 数据不会再变化
+	bool finished = 2;
+	// 当前局信息
+	GameRound round = 3;
+}
+
+message GameRound {
+	// 第几局(0,1,2,...)
+	int32 id = 1;
+	// 这局到状态
+	RoundState state = 2;
+	// 庄家uid
+	int32 Banker = 3;
+	// 所有这局到参加玩家uid列表
+	repeated int32 uids = 4;
+	// >0:当前下注玩家
+	int32 cur_betting_uid = 5;
+	// >0:当前要牌玩家
+	int32 cur_playing_uid = 6;
+
+	// >0:剩余报名秒数
+	int32 wait_ready_sec = 7;
+	// >0:剩余下注秒数
+	int32 wait_betting_sec = 8;
+	// >0:剩余要牌秒数
+	int32 wait_playing_sec = 9;
+
+	// 手牌
+	repeated RoundHand hands = 10;
+}
+
+message RoundHand {
+	int32 uid = 1;
+	Card first_card = 2;
+	int32 bet = 3;
+	bool stand = 4;
+	// 如果是进入者自己, 就有下面的字段
+	repeated Card cards = 5;
+}
 
 enum HandCat {
 	// 初始状态 (目前没有用到)
@@ -474,9 +563,11 @@ message Card {
 	// CardID
 	int32 ID = 1;
 	// 花色
-	string Kind = 2;
-	// 点数
-	string Point = 3;
+	string kind = 2;
+	// 点数 "A,2,..,O,J,K,.."
+	string point = 3;
+	// 值 "1,2,3,.."
+	int32 value = 4;
 }
 
 // 手牌信息

@@ -56,9 +56,21 @@ var GamingStates = (function () {
      */
     GamingStates.PLAYING_START = 32;
     /**
-     * 要牌中
+     * 要牌中：某玩家要牌，其他玩家等待
      */
-    //public static GETTING:number = 4;
+    GamingStates.SWITCH_BETTING = 33;
+    /**
+     * 要牌中：某玩家要牌，其他玩家等待
+     */
+    GamingStates.SWITCH_BET_WAITING = 34;
+    /**
+     * 要牌中：某玩家要牌，其他玩家等待
+     */
+    GamingStates.SWITCH_GETTING = 4;
+    /**
+     * 要牌中：某玩家要牌，其他玩家等待
+     */
+    GamingStates.SWITCH_GET_WAITING = 41;
     /**
      * 游戏中/他人要牌中
      */

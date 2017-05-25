@@ -1,21 +1,11 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,resource_core_json,global_json,button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,font_fnt,font_png,load_Reel_png,guaiwu001_skeleton_json,guaiwu001_texture_json,guaiwu001_texture_png,guaiwu002_skeleton_json,guaiwu002_texture_json,guaiwu002_texture_png,guaiwu002_effect_skeleton_json,guaiwu002_effect_texture_json,guaiwu002_effect_texture_png,guaiwu003_skeleton_json,guaiwu003_texture_json,guaiwu003_texture_png,guaiwu003_effect_skeleton_json,guaiwu003_effect_texture_json,guaiwu003_effect_texture_png,jineng1_skeleton_json,jineng1_texture_json,jineng1_texture_png,jineng2_skeleton_json,jineng2_texture_json,jineng2_texture_png,zhujue1_skeleton_json,zhujue1_texture_json,zhujue1_texture_png,zhujue2_skeleton_json,zhujue2_texture_json,zhujue2_texture_png,bbs_png,btn_activity_png,btn_mail_png,btn_mission_png,btn_shrink_png,btn_shrink_bg_png,btn_wrong_png,card_bg_png,icon_02_png,icon_badge_png,icon_diamond_png,icon_experience_png,icon_factory_png,icon_factory_tittle_png,icon_fertilization_png,icon_fertilizer02_png,icon_fertilizer03_png,icon_fertilizer04_png,icon_fertilizer05_png,icon_friend_png,icon_gold_png,icon_head_png,icon_line_png,icon_LV_png,icon_more_png,icon_name_png,icon_sale_png,icon_shop_png,icon_warehouse_png,menu_bg_png,sto_table_tittle_png,tabBar_down_png,tabBar_selected_down_png,table_activity_png,table_bg_png,table_box_down_png,table_box_down__png,table_box_middle_png,table_box_up_png,table_cloud_png,table_cloud1_png,table_mail_png,table_shop_png,table_task_png,table_tittle_png,table_warehouse_png,task_bg_png,text_fertilizer01_png,text_fertilizer02_png,text_fruit_01_png,text_fruit_02_png,text_fruit_juice_01_png,text_fruit_juice_02_png,text_seed01_png,text_seed02_png,checkbox-select_disabled_png,checkbox-select_normal_png,checkbox-select_over_png,checkbox-unselect_disabled_png,checkbox-unselect_normal_png,checkbox-unselect_over_png,dropdownlist_arrow_down_png,dropdownlist_arrow_up_png,DropDownListButtonSkin_down_png,DropDownListButtonSkin_up_png,hscrollbtn_png,hscrolltrack_png,HSlider_fill_png,HSlider_thumb_png,HSlider_track_png,app_list_item_cutlline_png,app_list_item_select_png,app_list_item_up_png,button_disabled_png,button_down2_png,button_normal_png,onoffbutton_off_label_png,onoffbutton_off_thumb_png,onoffbutton_off_track_png,onoffbutton_on_label_png,onoffbutton_on_thumb_png,onoffbutton_on_track_png,Panel_back_png,Panel_headeBack_png,Progressbar_fill_png,Progressbar_track_png,RadioButton_select_disabled_png,RadioButton_select_normal_png,RadioButton_select_over_png,RadioButton_unselect_disabled_png,RadioButton_unselect_normal_png,RadioButton_unselect_over_png,Tab Bar_select_png,textbox_png,closebtn_disabled_png,closebtn_down_png,closebtn_up_png,togglebutton_disabled_png,togglebutton_normal_png,togglebutton_over_png,togglebutton_selected_png,tree_back_png,tree_btnDisabled_png,tree_btnDisabledSelect_png,tree_btnDown_png,tree_btnDownSelect_png,tree_btnUp_png,tree_btnUpSelect_png,tree_icon_dir_png,tree_icon_file_png,vscrollbtn_png,vscrolltrack_png,VSlider_fill_png,VSlider_thumb_png,VSlider_track_png,-10_png,baoji_png,btnAttack_png,btnAttack1_png,btnSkill1_png,btnSkill1_1_png,btnSkill2_png,btnSkill2_1_png,btnSkill3_png,btnSkill3_1_png,btnSkill4_png,btnSkill4_1_png,move_png,moveBg_png,beiji_wav,bg_mp3,bossAttack_mp3,bossSkill_mp3,dianji_mp3,enemyAttack_mp3,enenyLand_wav,heroAttack_wav,heroBeiji_wav,heroSkill_mp3,resource_ui_json,resource_battle_json,resource_version_json,global_local_json,global_web_json,11_jpg,12_jpg,13_jpg,14_jpg,15_jpg,16_jpg,17_jpg,18_jpg,19_jpg,21_jpg,22_jpg,23_jpg,24_jpg,25_jpg,26_jpg,27_jpg,28_jpg,29_jpg,31_jpg,32_jpg,33_jpg,34_jpg,35_jpg,36_jpg,37_jpg,38_jpg,39_jpg,41_jpg,42_jpg,43_jpg,44_jpg,45_jpg,46_jpg,47_jpg,51_jpg,52_jpg,53_jpg,54_jpg,55_jpg,56_jpg,57_jpg,58_jpg,map1_jpg,vmobile_jpg,hmobile_jpg,home_jpg",
+			"keys": "description_json,resource_core_json,global_json,button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,font_fnt,font_png,load_Reel_png,guaiwu001_skeleton_json,guaiwu001_texture_json,guaiwu001_texture_png,guaiwu002_skeleton_json,guaiwu002_texture_json,guaiwu002_texture_png,guaiwu002_effect_skeleton_json,guaiwu002_effect_texture_json,guaiwu002_effect_texture_png,guaiwu003_skeleton_json,guaiwu003_texture_json,guaiwu003_texture_png,guaiwu003_effect_skeleton_json,guaiwu003_effect_texture_json,guaiwu003_effect_texture_png,jineng1_skeleton_json,jineng1_texture_json,jineng1_texture_png,jineng2_skeleton_json,jineng2_texture_json,jineng2_texture_png,zhujue1_skeleton_json,zhujue1_texture_json,zhujue1_texture_png,zhujue2_skeleton_json,zhujue2_texture_json,zhujue2_texture_png,bbs_png,btn_activity_png,btn_mail_png,btn_mission_png,btn_shrink_png,btn_shrink_bg_png,btn_wrong_png,card_bg_png,icon_02_png,icon_badge_png,icon_diamond_png,icon_experience_png,icon_factory_png,icon_factory_tittle_png,icon_fertilization_png,icon_fertilizer02_png,icon_fertilizer03_png,icon_fertilizer04_png,icon_fertilizer05_png,icon_friend_png,icon_gold_png,icon_head_png,icon_line_png,icon_LV_png,icon_more_png,icon_name_png,icon_sale_png,icon_shop_png,icon_warehouse_png,menu_bg_png,sto_table_tittle_png,tabBar_down_png,tabBar_selected_down_png,table_activity_png,table_bg_png,table_box_down_png,table_box_down__png,table_box_middle_png,table_box_up_png,table_cloud_png,table_cloud1_png,table_mail_png,table_shop_png,table_task_png,table_tittle_png,table_warehouse_png,task_bg_png,text_fertilizer01_png,text_fertilizer02_png,text_fruit_01_png,text_fruit_02_png,text_fruit_juice_01_png,text_fruit_juice_02_png,text_seed01_png,text_seed02_png,checkbox-select_disabled_png,checkbox-select_normal_png,checkbox-select_over_png,checkbox-unselect_disabled_png,checkbox-unselect_normal_png,checkbox-unselect_over_png,dropdownlist_arrow_down_png,dropdownlist_arrow_up_png,DropDownListButtonSkin_down_png,DropDownListButtonSkin_up_png,hscrollbtn_png,hscrolltrack_png,HSlider_fill_png,HSlider_thumb_png,HSlider_track_png,app_list_item_cutlline_png,app_list_item_select_png,app_list_item_up_png,button_disabled_png,button_down2_png,button_normal_png,onoffbutton_off_label_png,onoffbutton_off_thumb_png,onoffbutton_off_track_png,onoffbutton_on_label_png,onoffbutton_on_thumb_png,onoffbutton_on_track_png,Panel_back_png,Panel_headeBack_png,Progressbar_fill_png,Progressbar_track_png,RadioButton_select_disabled_png,RadioButton_select_normal_png,RadioButton_select_over_png,RadioButton_unselect_disabled_png,RadioButton_unselect_normal_png,RadioButton_unselect_over_png,Tab Bar_select_png,textbox_png,closebtn_disabled_png,closebtn_down_png,closebtn_up_png,togglebutton_disabled_png,togglebutton_normal_png,togglebutton_over_png,togglebutton_selected_png,tree_back_png,tree_btnDisabled_png,tree_btnDisabledSelect_png,tree_btnDown_png,tree_btnDownSelect_png,tree_btnUp_png,tree_btnUpSelect_png,tree_icon_dir_png,tree_icon_file_png,vscrollbtn_png,vscrolltrack_png,VSlider_fill_png,VSlider_thumb_png,VSlider_track_png,beiji_wav,bg_mp3,bossAttack_mp3,bossSkill_mp3,dianji_mp3,enemyAttack_mp3,enenyLand_wav,heroAttack_wav,heroBeiji_wav,heroSkill_mp3,resource_ui_json,resource_battle_json,resource_version_json,global_local_json,global_web_json,map1_jpg,vmobile_jpg,hmobile_jpg,home_jpg,vhome_bg_png,hhome_bg_png,vroom_bg_png,hroom_bg_png,chat_bg_png,expression_json,expression_png,00_png,23_png,22_png,21_png,20_png,19_png,18_png,17_png,16_png,15_png,14_png,13_png,12_png,11_png,10_png,09_png,08_png,07_png,06_png,05_png,04_png,03_png,02_png,01_png,roomSeatItem_bg_png,panel_body_png,panel_bottom_png,panel_head_png,ue_button_down_png,ue_button_up_png,home_girl_png,hhome_bg1_png,join_button_png,create_button_png,hhome_bottom_bar_left_png,hhome_bottom_bar_right_png,up_button_png,report_button_png,message_button_png,help_button_png,setting_button_png,results_button_png,share_button_png,room_bg_png,room_girl_png,room_seat_item_png,exit_room_button_png,get_continue_button_png,stop_button_png,chat_button_png,expression_button_png,give_up_button_png,room_seat_bottom_bg_png,room_seat_bet_bg_png,bet_button_png,get_puke_button_png,ready_button_png,close_button_png,common_button_png,common_panel_bg_png,101_png,102_png,103_png,104_png,105_png,106_png,107_png,108_png,109_png,110_png,111_png,112_png,113_png,201_png,202_png,203_png,204_png,205_png,206_png,207_png,208_png,209_png,210_png,211_png,212_png,213_png,301_png,302_png,303_png,304_png,305_png,306_png,307_png,308_png,309_png,310_png,311_png,312_png,313_png,401_png,402_png,403_png,404_png,405_png,406_png,407_png,408_png,409_png,410_png,411_png,412_png,413_png,num_input_return_png,panel_border_bg_png,dismiss_button_png,enter_loading_bg_png,501_png,502_png,home_role_bg_png",
 			"name": "preload"
 		}
 	],
 	"resources": [
-		{
-			"url": "assets/bg.jpg",
-			"type": "image",
-			"name": "bg_jpg"
-		},
-		{
-			"url": "assets/egret_icon.png",
-			"type": "image",
-			"name": "egret_icon_png"
-		},
 		{
 			"url": "config/description.json",
 			"type": "json",
@@ -877,76 +867,6 @@
 			"name": "VSlider_track_png"
 		},
 		{
-			"url": "assets/ui/-10.png",
-			"type": "image",
-			"name": "-10_png"
-		},
-		{
-			"url": "assets/ui/baoji.png",
-			"type": "image",
-			"name": "baoji_png"
-		},
-		{
-			"url": "assets/ui/btnAttack.png",
-			"type": "image",
-			"name": "btnAttack_png"
-		},
-		{
-			"url": "assets/ui/btnAttack1.png",
-			"type": "image",
-			"name": "btnAttack1_png"
-		},
-		{
-			"url": "assets/ui/btnSkill1.png",
-			"type": "image",
-			"name": "btnSkill1_png"
-		},
-		{
-			"url": "assets/ui/btnSkill1_1.png",
-			"type": "image",
-			"name": "btnSkill1_1_png"
-		},
-		{
-			"url": "assets/ui/btnSkill2.png",
-			"type": "image",
-			"name": "btnSkill2_png"
-		},
-		{
-			"url": "assets/ui/btnSkill2_1.png",
-			"type": "image",
-			"name": "btnSkill2_1_png"
-		},
-		{
-			"url": "assets/ui/btnSkill3.png",
-			"type": "image",
-			"name": "btnSkill3_png"
-		},
-		{
-			"url": "assets/ui/btnSkill3_1.png",
-			"type": "image",
-			"name": "btnSkill3_1_png"
-		},
-		{
-			"url": "assets/ui/btnSkill4.png",
-			"type": "image",
-			"name": "btnSkill4_png"
-		},
-		{
-			"url": "assets/ui/btnSkill4_1.png",
-			"type": "image",
-			"name": "btnSkill4_1_png"
-		},
-		{
-			"url": "assets/ui/move.png",
-			"type": "image",
-			"name": "move_png"
-		},
-		{
-			"url": "assets/ui/moveBg.png",
-			"type": "image",
-			"name": "moveBg_png"
-		},
-		{
 			"url": "sound/beiji.wav",
 			"type": "sound",
 			"name": "beiji_wav"
@@ -1022,216 +942,6 @@
 			"name": "global_web_json"
 		},
 		{
-			"url": "assets/mj/11.jpg",
-			"type": "image",
-			"name": "11_jpg"
-		},
-		{
-			"url": "assets/mj/12.jpg",
-			"type": "image",
-			"name": "12_jpg"
-		},
-		{
-			"url": "assets/mj/13.jpg",
-			"type": "image",
-			"name": "13_jpg"
-		},
-		{
-			"url": "assets/mj/14.jpg",
-			"type": "image",
-			"name": "14_jpg"
-		},
-		{
-			"url": "assets/mj/15.jpg",
-			"type": "image",
-			"name": "15_jpg"
-		},
-		{
-			"url": "assets/mj/16.jpg",
-			"type": "image",
-			"name": "16_jpg"
-		},
-		{
-			"url": "assets/mj/17.jpg",
-			"type": "image",
-			"name": "17_jpg"
-		},
-		{
-			"url": "assets/mj/18.jpg",
-			"type": "image",
-			"name": "18_jpg"
-		},
-		{
-			"url": "assets/mj/19.jpg",
-			"type": "image",
-			"name": "19_jpg"
-		},
-		{
-			"url": "assets/mj/21.jpg",
-			"type": "image",
-			"name": "21_jpg"
-		},
-		{
-			"url": "assets/mj/22.jpg",
-			"type": "image",
-			"name": "22_jpg"
-		},
-		{
-			"url": "assets/mj/23.jpg",
-			"type": "image",
-			"name": "23_jpg"
-		},
-		{
-			"url": "assets/mj/24.jpg",
-			"type": "image",
-			"name": "24_jpg"
-		},
-		{
-			"url": "assets/mj/25.jpg",
-			"type": "image",
-			"name": "25_jpg"
-		},
-		{
-			"url": "assets/mj/26.jpg",
-			"type": "image",
-			"name": "26_jpg"
-		},
-		{
-			"url": "assets/mj/27.jpg",
-			"type": "image",
-			"name": "27_jpg"
-		},
-		{
-			"url": "assets/mj/28.jpg",
-			"type": "image",
-			"name": "28_jpg"
-		},
-		{
-			"url": "assets/mj/29.jpg",
-			"type": "image",
-			"name": "29_jpg"
-		},
-		{
-			"url": "assets/mj/31.jpg",
-			"type": "image",
-			"name": "31_jpg"
-		},
-		{
-			"url": "assets/mj/32.jpg",
-			"type": "image",
-			"name": "32_jpg"
-		},
-		{
-			"url": "assets/mj/33.jpg",
-			"type": "image",
-			"name": "33_jpg"
-		},
-		{
-			"url": "assets/mj/34.jpg",
-			"type": "image",
-			"name": "34_jpg"
-		},
-		{
-			"url": "assets/mj/35.jpg",
-			"type": "image",
-			"name": "35_jpg"
-		},
-		{
-			"url": "assets/mj/36.jpg",
-			"type": "image",
-			"name": "36_jpg"
-		},
-		{
-			"url": "assets/mj/37.jpg",
-			"type": "image",
-			"name": "37_jpg"
-		},
-		{
-			"url": "assets/mj/38.jpg",
-			"type": "image",
-			"name": "38_jpg"
-		},
-		{
-			"url": "assets/mj/39.jpg",
-			"type": "image",
-			"name": "39_jpg"
-		},
-		{
-			"url": "assets/mj/41.jpg",
-			"type": "image",
-			"name": "41_jpg"
-		},
-		{
-			"url": "assets/mj/42.jpg",
-			"type": "image",
-			"name": "42_jpg"
-		},
-		{
-			"url": "assets/mj/43.jpg",
-			"type": "image",
-			"name": "43_jpg"
-		},
-		{
-			"url": "assets/mj/44.jpg",
-			"type": "image",
-			"name": "44_jpg"
-		},
-		{
-			"url": "assets/mj/45.jpg",
-			"type": "image",
-			"name": "45_jpg"
-		},
-		{
-			"url": "assets/mj/46.jpg",
-			"type": "image",
-			"name": "46_jpg"
-		},
-		{
-			"url": "assets/mj/47.jpg",
-			"type": "image",
-			"name": "47_jpg"
-		},
-		{
-			"url": "assets/mj/51.jpg",
-			"type": "image",
-			"name": "51_jpg"
-		},
-		{
-			"url": "assets/mj/52.jpg",
-			"type": "image",
-			"name": "52_jpg"
-		},
-		{
-			"url": "assets/mj/53.jpg",
-			"type": "image",
-			"name": "53_jpg"
-		},
-		{
-			"url": "assets/mj/54.jpg",
-			"type": "image",
-			"name": "54_jpg"
-		},
-		{
-			"url": "assets/mj/55.jpg",
-			"type": "image",
-			"name": "55_jpg"
-		},
-		{
-			"url": "assets/mj/56.jpg",
-			"type": "image",
-			"name": "56_jpg"
-		},
-		{
-			"url": "assets/mj/57.jpg",
-			"type": "image",
-			"name": "57_jpg"
-		},
-		{
-			"url": "assets/mj/58.jpg",
-			"type": "image",
-			"name": "58_jpg"
-		},
-		{
 			"url": "assets/bg/map1.jpg",
 			"type": "image",
 			"name": "map1_jpg"
@@ -1250,6 +960,636 @@
 			"url": "assets/bg/home.jpg",
 			"type": "image",
 			"name": "home_jpg"
+		},
+		{
+			"url": "assets/bg/vhome_bg.png",
+			"type": "image",
+			"name": "vhome_bg_png"
+		},
+		{
+			"url": "assets/bg/hhome_bg.png",
+			"type": "image",
+			"name": "hhome_bg_png"
+		},
+		{
+			"url": "assets/bg/vroom_bg.png",
+			"type": "image",
+			"name": "vroom_bg_png"
+		},
+		{
+			"url": "assets/bg/hroom_bg.png",
+			"type": "image",
+			"name": "hroom_bg_png"
+		},
+		{
+			"url": "assets/bg/chat_bg.png",
+			"type": "image",
+			"name": "chat_bg_png"
+		},
+		{
+			"url": "assets/expression/expression.json",
+			"type": "json",
+			"name": "expression_json"
+		},
+		{
+			"url": "assets/expression/expression.png",
+			"type": "image",
+			"name": "expression_png"
+		},
+		{
+			"url": "assets/expression/00.png",
+			"type": "image",
+			"name": "00_png"
+		},
+		{
+			"url": "assets/expression/23.png",
+			"type": "image",
+			"name": "23_png"
+		},
+		{
+			"url": "assets/expression/22.png",
+			"type": "image",
+			"name": "22_png"
+		},
+		{
+			"url": "assets/expression/21.png",
+			"type": "image",
+			"name": "21_png"
+		},
+		{
+			"url": "assets/expression/20.png",
+			"type": "image",
+			"name": "20_png"
+		},
+		{
+			"url": "assets/expression/19.png",
+			"type": "image",
+			"name": "19_png"
+		},
+		{
+			"url": "assets/expression/18.png",
+			"type": "image",
+			"name": "18_png"
+		},
+		{
+			"url": "assets/expression/17.png",
+			"type": "image",
+			"name": "17_png"
+		},
+		{
+			"url": "assets/expression/16.png",
+			"type": "image",
+			"name": "16_png"
+		},
+		{
+			"url": "assets/expression/15.png",
+			"type": "image",
+			"name": "15_png"
+		},
+		{
+			"url": "assets/expression/14.png",
+			"type": "image",
+			"name": "14_png"
+		},
+		{
+			"url": "assets/expression/13.png",
+			"type": "image",
+			"name": "13_png"
+		},
+		{
+			"url": "assets/expression/12.png",
+			"type": "image",
+			"name": "12_png"
+		},
+		{
+			"url": "assets/expression/11.png",
+			"type": "image",
+			"name": "11_png"
+		},
+		{
+			"url": "assets/expression/10.png",
+			"type": "image",
+			"name": "10_png"
+		},
+		{
+			"url": "assets/expression/09.png",
+			"type": "image",
+			"name": "09_png"
+		},
+		{
+			"url": "assets/expression/08.png",
+			"type": "image",
+			"name": "08_png"
+		},
+		{
+			"url": "assets/expression/07.png",
+			"type": "image",
+			"name": "07_png"
+		},
+		{
+			"url": "assets/expression/06.png",
+			"type": "image",
+			"name": "06_png"
+		},
+		{
+			"url": "assets/expression/05.png",
+			"type": "image",
+			"name": "05_png"
+		},
+		{
+			"url": "assets/expression/04.png",
+			"type": "image",
+			"name": "04_png"
+		},
+		{
+			"url": "assets/expression/03.png",
+			"type": "image",
+			"name": "03_png"
+		},
+		{
+			"url": "assets/expression/02.png",
+			"type": "image",
+			"name": "02_png"
+		},
+		{
+			"url": "assets/expression/01.png",
+			"type": "image",
+			"name": "01_png"
+		},
+		{
+			"url": "assets/bg/roomSeatItem_bg.png",
+			"type": "image",
+			"name": "roomSeatItem_bg_png"
+		},
+		{
+			"url": "eui_assets/Panel/panel_body.png",
+			"type": "image",
+			"name": "panel_body_png"
+		},
+		{
+			"url": "eui_assets/Panel/panel_bottom.png",
+			"type": "image",
+			"name": "panel_bottom_png"
+		},
+		{
+			"url": "eui_assets/Panel/panel_head.png",
+			"type": "image",
+			"name": "panel_head_png"
+		},
+		{
+			"url": "eui_assets/Button/ue_button_down.png",
+			"type": "image",
+			"name": "ue_button_down_png"
+		},
+		{
+			"url": "eui_assets/Button/ue_button_up.png",
+			"type": "image",
+			"name": "ue_button_up_png"
+		},
+		{
+			"url": "assets/bg/home_girl.png",
+			"type": "image",
+			"name": "home_girl_png"
+		},
+		{
+			"url": "assets/bg/hhome_bg1.png",
+			"type": "image",
+			"name": "hhome_bg1_png"
+		},
+		{
+			"url": "assets/home/join_button.png",
+			"type": "image",
+			"name": "join_button_png"
+		},
+		{
+			"url": "assets/home/create_button.png",
+			"type": "image",
+			"name": "create_button_png"
+		},
+		{
+			"url": "assets/home/hhome_bottom_bar_left.png",
+			"type": "image",
+			"name": "hhome_bottom_bar_left_png"
+		},
+		{
+			"url": "assets/home/hhome_bottom_bar_right.png",
+			"type": "image",
+			"name": "hhome_bottom_bar_right_png"
+		},
+		{
+			"url": "assets/home/up_button.png",
+			"type": "image",
+			"name": "up_button_png"
+		},
+		{
+			"url": "assets/home/report_button.png",
+			"type": "image",
+			"name": "report_button_png"
+		},
+		{
+			"url": "assets/home/message_button.png",
+			"type": "image",
+			"name": "message_button_png"
+		},
+		{
+			"url": "assets/home/help_button.png",
+			"type": "image",
+			"name": "help_button_png"
+		},
+		{
+			"url": "assets/home/setting_button.png",
+			"type": "image",
+			"name": "setting_button_png"
+		},
+		{
+			"url": "assets/home/results_button.png",
+			"type": "image",
+			"name": "results_button_png"
+		},
+		{
+			"url": "assets/home/share_button.png",
+			"type": "image",
+			"name": "share_button_png"
+		},
+		{
+			"url": "assets/room/room_bg.png",
+			"type": "image",
+			"name": "room_bg_png"
+		},
+		{
+			"url": "assets/room/room_girl.png",
+			"type": "image",
+			"name": "room_girl_png"
+		},
+		{
+			"url": "assets/room/room_seat_item.png",
+			"type": "image",
+			"name": "room_seat_item_png"
+		},
+		{
+			"url": "assets/room/exit_room_button.png",
+			"type": "image",
+			"name": "exit_room_button_png"
+		},
+		{
+			"url": "assets/room/get_continue_button.png",
+			"type": "image",
+			"name": "get_continue_button_png"
+		},
+		{
+			"url": "assets/room/stop_button.png",
+			"type": "image",
+			"name": "stop_button_png"
+		},
+		{
+			"url": "assets/room/chat_button.png",
+			"type": "image",
+			"name": "chat_button_png"
+		},
+		{
+			"url": "assets/room/expression_button.png",
+			"type": "image",
+			"name": "expression_button_png"
+		},
+		{
+			"url": "assets/room/give_up_button.png",
+			"type": "image",
+			"name": "give_up_button_png"
+		},
+		{
+			"url": "assets/room/room_seat_bottom_bg.png",
+			"type": "image",
+			"name": "room_seat_bottom_bg_png"
+		},
+		{
+			"url": "assets/room/room_seat_bet_bg.png",
+			"type": "image",
+			"name": "room_seat_bet_bg_png"
+		},
+		{
+			"url": "assets/room/bet_button.png",
+			"type": "image",
+			"name": "bet_button_png"
+		},
+		{
+			"url": "assets/room/get_puke_button.png",
+			"type": "image",
+			"name": "get_puke_button_png"
+		},
+		{
+			"url": "assets/room/ready_button.png",
+			"type": "image",
+			"name": "ready_button_png"
+		},
+		{
+			"url": "assets/room/close_button.png",
+			"type": "image",
+			"name": "close_button_png"
+		},
+		{
+			"url": "assets/room/common_button.png",
+			"type": "image",
+			"name": "common_button_png"
+		},
+		{
+			"url": "assets/bg/common_panel_bg.png",
+			"type": "image",
+			"name": "common_panel_bg_png"
+		},
+		{
+			"url": "assets/puke/101.png",
+			"type": "image",
+			"name": "101_png"
+		},
+		{
+			"url": "assets/puke/102.png",
+			"type": "image",
+			"name": "102_png"
+		},
+		{
+			"url": "assets/puke/103.png",
+			"type": "image",
+			"name": "103_png"
+		},
+		{
+			"url": "assets/puke/104.png",
+			"type": "image",
+			"name": "104_png"
+		},
+		{
+			"url": "assets/puke/105.png",
+			"type": "image",
+			"name": "105_png"
+		},
+		{
+			"url": "assets/puke/106.png",
+			"type": "image",
+			"name": "106_png"
+		},
+		{
+			"url": "assets/puke/107.png",
+			"type": "image",
+			"name": "107_png"
+		},
+		{
+			"url": "assets/puke/108.png",
+			"type": "image",
+			"name": "108_png"
+		},
+		{
+			"url": "assets/puke/109.png",
+			"type": "image",
+			"name": "109_png"
+		},
+		{
+			"url": "assets/puke/110.png",
+			"type": "image",
+			"name": "110_png"
+		},
+		{
+			"url": "assets/puke/111.png",
+			"type": "image",
+			"name": "111_png"
+		},
+		{
+			"url": "assets/puke/112.png",
+			"type": "image",
+			"name": "112_png"
+		},
+		{
+			"url": "assets/puke/113.png",
+			"type": "image",
+			"name": "113_png"
+		},
+		{
+			"url": "assets/puke/201.png",
+			"type": "image",
+			"name": "201_png"
+		},
+		{
+			"url": "assets/puke/202.png",
+			"type": "image",
+			"name": "202_png"
+		},
+		{
+			"url": "assets/puke/203.png",
+			"type": "image",
+			"name": "203_png"
+		},
+		{
+			"url": "assets/puke/204.png",
+			"type": "image",
+			"name": "204_png"
+		},
+		{
+			"url": "assets/puke/205.png",
+			"type": "image",
+			"name": "205_png"
+		},
+		{
+			"url": "assets/puke/206.png",
+			"type": "image",
+			"name": "206_png"
+		},
+		{
+			"url": "assets/puke/207.png",
+			"type": "image",
+			"name": "207_png"
+		},
+		{
+			"url": "assets/puke/208.png",
+			"type": "image",
+			"name": "208_png"
+		},
+		{
+			"url": "assets/puke/209.png",
+			"type": "image",
+			"name": "209_png"
+		},
+		{
+			"url": "assets/puke/210.png",
+			"type": "image",
+			"name": "210_png"
+		},
+		{
+			"url": "assets/puke/211.png",
+			"type": "image",
+			"name": "211_png"
+		},
+		{
+			"url": "assets/puke/212.png",
+			"type": "image",
+			"name": "212_png"
+		},
+		{
+			"url": "assets/puke/213.png",
+			"type": "image",
+			"name": "213_png"
+		},
+		{
+			"url": "assets/puke/301.png",
+			"type": "image",
+			"name": "301_png"
+		},
+		{
+			"url": "assets/puke/302.png",
+			"type": "image",
+			"name": "302_png"
+		},
+		{
+			"url": "assets/puke/303.png",
+			"type": "image",
+			"name": "303_png"
+		},
+		{
+			"url": "assets/puke/304.png",
+			"type": "image",
+			"name": "304_png"
+		},
+		{
+			"url": "assets/puke/305.png",
+			"type": "image",
+			"name": "305_png"
+		},
+		{
+			"url": "assets/puke/306.png",
+			"type": "image",
+			"name": "306_png"
+		},
+		{
+			"url": "assets/puke/307.png",
+			"type": "image",
+			"name": "307_png"
+		},
+		{
+			"url": "assets/puke/308.png",
+			"type": "image",
+			"name": "308_png"
+		},
+		{
+			"url": "assets/puke/309.png",
+			"type": "image",
+			"name": "309_png"
+		},
+		{
+			"url": "assets/puke/310.png",
+			"type": "image",
+			"name": "310_png"
+		},
+		{
+			"url": "assets/puke/311.png",
+			"type": "image",
+			"name": "311_png"
+		},
+		{
+			"url": "assets/puke/312.png",
+			"type": "image",
+			"name": "312_png"
+		},
+		{
+			"url": "assets/puke/313.png",
+			"type": "image",
+			"name": "313_png"
+		},
+		{
+			"url": "assets/puke/401.png",
+			"type": "image",
+			"name": "401_png"
+		},
+		{
+			"url": "assets/puke/402.png",
+			"type": "image",
+			"name": "402_png"
+		},
+		{
+			"url": "assets/puke/403.png",
+			"type": "image",
+			"name": "403_png"
+		},
+		{
+			"url": "assets/puke/404.png",
+			"type": "image",
+			"name": "404_png"
+		},
+		{
+			"url": "assets/puke/405.png",
+			"type": "image",
+			"name": "405_png"
+		},
+		{
+			"url": "assets/puke/406.png",
+			"type": "image",
+			"name": "406_png"
+		},
+		{
+			"url": "assets/puke/407.png",
+			"type": "image",
+			"name": "407_png"
+		},
+		{
+			"url": "assets/puke/408.png",
+			"type": "image",
+			"name": "408_png"
+		},
+		{
+			"url": "assets/puke/409.png",
+			"type": "image",
+			"name": "409_png"
+		},
+		{
+			"url": "assets/puke/410.png",
+			"type": "image",
+			"name": "410_png"
+		},
+		{
+			"url": "assets/puke/411.png",
+			"type": "image",
+			"name": "411_png"
+		},
+		{
+			"url": "assets/puke/412.png",
+			"type": "image",
+			"name": "412_png"
+		},
+		{
+			"url": "assets/puke/413.png",
+			"type": "image",
+			"name": "413_png"
+		},
+		{
+			"url": "assets/home/num_input_return.png",
+			"type": "image",
+			"name": "num_input_return_png"
+		},
+		{
+			"url": "assets/home/panel_border_bg.png",
+			"type": "image",
+			"name": "panel_border_bg_png"
+		},
+		{
+			"name": "dismiss_button_png",
+			"type": "image",
+			"url": "assets/room/dismiss_button.png"
+		},
+		{
+			"name": "enter_loading_bg_png",
+			"type": "image",
+			"url": "assets/bg/enter_loading_bg.png"
+		},
+		{
+			"name": "501_png",
+			"type": "image",
+			"url": "assets/puke/501.png"
+		},
+		{
+			"name": "502_png",
+			"type": "image",
+			"url": "assets/puke/502.png"
+		},
+		{
+			"name": "home_role_bg_png",
+			"type": "image",
+			"url": "assets/home/home_role_bg.png"
 		}
 	]
 }

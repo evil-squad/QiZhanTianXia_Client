@@ -5,8 +5,8 @@ var Socket = (function (_super) {
      */
     function Socket() {
         _super.call(this);
-        this._needReconnect = false;
-        this._maxReconnectCount = 10;
+        this._needReconnect = true;
+        this._maxReconnectCount = 20;
         this._reconnectCount = 0;
     }
     var d = __define,c=Socket,p=c.prototype;
@@ -32,6 +32,9 @@ var Socket = (function (_super) {
      * 服务器连接成功
      */
     p.onSocketOpen = function () {
+        if (this._reconnectCount != 0) {
+            MainManager.autologin();
+        }
         this._reconnectCount = 0;
         if (this._connectFlag) {
             App.MessageCenter.dispatch(SocketConst.SOCKET_RECONNECT);
@@ -109,10 +112,11 @@ var Socket = (function (_super) {
      * 重新连接
      */
     p.reconnect = function () {
+        Log.trace("reconnect");
         this.close();
         this._reconnectCount++;
         if (this._reconnectCount < this._maxReconnectCount) {
-            this.connect();
+            this.startTimer(this._reconnectCount);
         }
         else {
             this._reconnectCount = 0;
@@ -123,6 +127,22 @@ var Socket = (function (_super) {
                 App.MessageCenter.dispatch(SocketConst.SOCKET_NOCONNECT);
             }
         }
+    };
+    p.startTimer = function (reconnectCount) {
+        //创建一个计时器对象
+        var timer = new egret.Timer(reconnectCount * 500, 1);
+        //注册事件侦听器
+        timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
+        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.timerComFunc, this);
+        //开始计时
+        timer.start();
+    };
+    p.timerFunc = function () {
+        console.log("计时");
+        this.connect();
+    };
+    p.timerComFunc = function () {
+        console.log("计时结束");
     };
     /**
      * 发送消息到服务器
@@ -143,6 +163,9 @@ var Socket = (function (_super) {
         this._socket = null;
         this._isConnecting = false;
         this._connectFlag = false;
+    };
+    p.cutoff = function () {
+        this._socket.close();
     };
     /**
      * Socket是否在连接中

@@ -26,6 +26,9 @@ class RoomController  extends BaseController{
 		App.MessageCenter.addListener(NotifyConst.BETTING_START,this.bettingStart, this);
 		App.MessageCenter.addListener(NotifyConst.PLAYER_BET,this.playerBet, this);
 		App.MessageCenter.addListener(NotifyConst.PLAYING_START,this.playingStart, this);
+		App.MessageCenter.addListener(NotifyConst.UPDATE_CUR_BETTING_UID,this.updateCurBettingUid, this);
+		App.MessageCenter.addListener(NotifyConst.UPDATE_CUR_PLAYING_UID,this.updateCurPlayingUid, this);
+		App.MessageCenter.addListener(NotifyConst.PLAYER_HIT,this.playerHit, this);
 		App.MessageCenter.addListener(NotifyConst.PLAYER_STAND,this.playerStand, this);
 		App.MessageCenter.addListener(NotifyConst.ROUND_FINISH,this.roundFinish, this);
 		App.MessageCenter.addListener(NotifyConst.GAME_FINISH,this.gameFinish, this);
@@ -169,6 +172,7 @@ class RoomController  extends BaseController{
 	// }
 
 	private hitReq(){
+		this.roomUIView.state = GamingStates.SWITCH_GET_WAITING;//点击要牌就禁用
 		this.proxy.hitReq();
 	}
 
@@ -183,10 +187,11 @@ class RoomController  extends BaseController{
 
 	//
 	private readyForStartResp(obj:any){
+		//MainManager.bankerUid = 0;
 		this.totalPoints = 0;
 		this.roomView.revert();
 		this.roomUIView.revert();
-		this.roomUIView.state = GamingStates.PLAYER_READY;
+		this.roomUIView.state = GamingStates.PLAYER_READY;//已准备，隐藏准备按钮
 	}
 
 	private onRoomStart(obj:any):void{
@@ -200,35 +205,37 @@ class RoomController  extends BaseController{
 
 	private goNextRound(obj:any,roundId:number){
 		this.roomUIView.curtRound = roundId;
-		this.roomUIView.state = GamingStates.ROUND_START;//Waiting
 	}
 
 	private betResp(obj:any){
-		//this.roomUIView.state = GamingStates.PLAYER_BET;//交给Notify的PlayingStart来控制按钮
+		this.roomUIView.state = GamingStates.PLAYER_BET;//已下注，隐藏下注按钮
 	}
 
-	private hitResp(obj:any){
+	private hitResp(obj:any){//自己要到了牌
 		var card = obj.card;
 		//App.TipsUtils.showCenter("ID:"+card.ID+" Kind:"+card.Kind+" Point:"+card.Point);
-
+		if(card == null)return;
 		var info:PukeInfo = new PukeInfo(card.ID);
-		this.roomView.getOnePuke(info);
+		// this.roomUIView.addMyCard(card);
+		// if(MainManager.bankerUid == MainManager.userId){
+		// 	this.roomView.getOnePuke(info);
+		// }
 
-		this.totalPoints += parseInt(card.Point);
+		//this.totalPoints += parseInt(card.value)/2;
 		if(this.totalPoints > 10.5){
-			this.roomUIView.state = GamingStates.BOOM;
+			//this.roomUIView.state = GamingStates.BOOM;
 		}else{
 			//App.TipsUtils.showCenter("当前点数："+this.totalPoints);
 		}
 
-		if(this.roomView.pukeCount >= PukeBar.PUKE_MAX_COUNT){
-			this.roomUIView.state = GamingStates.SETTLEMENT;
-			this.roomUIView.curtPoints = this.totalPoints;
-		}
+		// if(this.roomView.pukeCount >= PukeBar.PUKE_MAX_COUNT){
+		// 	this.roomUIView.state = GamingStates.SETTLEMENT;
+		// 	this.roomUIView.curtPoints = this.totalPoints;
+		// }
 	}
 
 	private standResp(obj:any){
-		//this.roomUIView.state = GamingStates.PLAYER_STAND;//
+		this.roomUIView.state = GamingStates.PLAYER_STAND;//已停牌，隐藏所有按钮
 	}
 
 	private getGameDataResp(obj:any){
@@ -251,7 +258,8 @@ class RoomController  extends BaseController{
 		this.roomUIView.setPlayerView(readyPlayer,GamingStates.PLAYER_READY);
 	}
 
-	private roundStart(roundId:number,countdownSeconds:number,banker:any):void{
+	private roundStart(roundId:number,countdownSeconds:number,banker:any):void{//刷新庄家
+		this.readyForStartResp(null);
 		this.roomUIView.curtRound = roundId;
 		var bankerPlayer = banker;
 		this.roomUIView.message = "此局开始";
@@ -260,6 +268,7 @@ class RoomController  extends BaseController{
 	}
 
 	private bettingStart(countdown_seconds:any):void{
+		this.readyForStartResp(null);
 		var countdownSeconds = countdown_seconds;
 		this.roomUIView.state = GamingStates.BETTING_START;
 		this.roomUIView.message = "报名结束，开始下注，倒计时："+countdownSeconds;
@@ -267,11 +276,11 @@ class RoomController  extends BaseController{
 
 	private playerBet(player:any,playerBet:number):void{
 		var betPlayer = player;
-		var bet = playerBet;
-		this.roomUIView.setPlayerView(betPlayer,GamingStates.PLAYER_BET);
+		var item:RoomSeatItem = this.roomUIView.setPlayerView(betPlayer,GamingStates.PLAYER_BET);
+		if(item != null) item.bet = playerBet;
 	}
 
-	private playingStart(countdown_seconds:any,bets:any,hands:any):void{
+	private playingStart(countdown_seconds:any,bets:any,handInfo:any):void{//逻辑待定
 		var countdownSeconds = countdown_seconds;
 		this.roomUIView.message = "下注结束, 开始要牌，倒计时："+countdownSeconds;
 		this.roomUIView.state = GamingStates.PLAYING_START;
@@ -280,43 +289,87 @@ class RoomController  extends BaseController{
 		var i:number = 0;
 		for(i=0; i<bets.length; i++){
 			betInfo = bets[i];
-			if(betInfo.uid == MainManager.userId){
-				this.roomUIView.setMyBet(betInfo.bet);
-			}else{
-				this.roomUIView.setPlayerBet(betInfo);
+			this.roomUIView.setPlayerBet(betInfo);
+			if(betInfo.uid == MainManager.bankerUid){
+				
 			}
 		}
 
-		var handInfo:any;
-		var cards:any;
-		var cardIndx:number = 0;
-		for(i=0; i<hands.length; i++){
-			handInfo = hands[i];
-			if(handInfo.uid == MainManager.userId){
-				cards = handInfo.cards;
-				for(cardIndx=0; cardIndx<cards.length; cardIndx++){
-					this.roomView.getOnePuke(new PukeInfo(cards[cardIndx].ID));
+		if(handInfo.uid == MainManager.userId){
+			this.roomUIView.addHandcards(handInfo);
+			if(handInfo.uid == MainManager.bankerUid){//庄家的牌，同时显示在桌面上
+				var cards:any = handInfo.cards;
+				for(var i=0; i<cards.length; i++){
+					if(i == 0){
+						this.roomView.getOnePuke(null);
+					}else{
+						this.roomView.getOnePuke(new PukeInfo(cards[i].ID));
+					}
 				}
-			}else{
-				this.roomUIView.addHandcards(handInfo);
+			}else{//显示一张庄家的底牌在桌面上
+				this.roomView.getOnePuke(null);
 			}
 		}
 	}
 
-	private playerStand(obj:any):void{
-		var standPlayer = obj;
-		Log.trace("停牌："+standPlayer.uid);
-		this.roomUIView.setPlayerView(standPlayer,GamingStates.PLAYER_STAND);
+	private updateCurBettingUid(player:any):void{
+		var curPlayer = player;
+		if(curPlayer.uid == MainManager.userId){
+			this.roomUIView.state = GamingStates.SWITCH_BETTING;
+		}else{
+			this.roomUIView.state = GamingStates.SWITCH_BET_WAITING;
+		}
+		this.roomUIView.setPlayerView(curPlayer,GamingStates.SWITCH_BETTING);
+	}
+
+	private updateCurPlayingUid(player:any):void{
+		var curPlayer = player;
+		if(curPlayer.uid == MainManager.userId){
+			this.roomUIView.state = GamingStates.SWITCH_GETTING;
+		}else{
+			this.roomUIView.state = GamingStates.SWITCH_GET_WAITING;
+		}
+		this.roomUIView.setPlayerView(curPlayer,GamingStates.SWITCH_GETTING);
+	}
+
+	private playerHit(uid:number,card:any):void{
+		this.roomUIView.addCard(uid,card);
+		if(uid == MainManager.bankerUid){//庄家的牌，同时显示在桌面上
+			this.roomView.getOnePuke(new PukeInfo(card.ID));
+		}
+	}
+
+	private playerStand(player:any,burst:Boolean,card:any):void{
+		//Log.trace("停牌："+standPlayer.uid);
+		if(burst){
+			App.TipsUtils.showCenter(player.nick+"已爆牌");
+			// 底牌(如果是爆牌, 就会把底牌公布)
+			this.roomUIView.showHiddenCard(player,card);
+			if(player.uid == MainManager.bankerUid){
+				this.roomView.showHiddenPuke(new PukeInfo(card.ID));
+			}
+		}
+		this.roomUIView.setPlayerView(player,GamingStates.PLAYER_STAND);
+		if(player.uid == MainManager.userId){
+			this.roomUIView.state = GamingStates.PLAYER_STAND;
+		}
 	}
 
 	private roundFinish(roundId:number,maxCatUid:number,settlements:any):void{
 		this.roomUIView.message = "此局结束";
-		App.ViewManager.open(ViewConst.Settlement,roundId,maxCatUid,settlements);
+		this.roomUIView.state = GamingStates.ROUND_FINISH;
+		setTimeout(function() {
+			App.ViewManager.open(ViewConst.Settlement,roundId,maxCatUid,settlements);
+		}, 3000);
+		
 	}
 	
 	private gameFinish(obj:any):void{
 		if(App.SceneManager.getCurrScene() == SceneConsts.Room.valueOf()){
-			App.SceneManager.runScene(SceneConsts.Home);//返回首页
+			App.TipsUtils.showCenter("牌局结束，返回大厅");
+			setTimeout(function() {
+				App.SceneManager.runScene(SceneConsts.Home);//返回首页
+			}, 4000);
 		}
 	}
 }

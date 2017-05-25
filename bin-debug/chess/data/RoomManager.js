@@ -43,6 +43,9 @@ var RoomManager = (function () {
             RoomManager.addPlayer(players[i]);
         }
     };
+    RoomManager.parseGameInfo = function (gameInfo) {
+        Log.trace(gameInfo);
+    };
     RoomManager.setRoomInfo = function (roomId) {
         this._roomId = roomId;
     };
@@ -92,9 +95,27 @@ var RoomManager = (function () {
         this._roomId = null;
         this._seatId = 0;
     };
+    d(RoomManager, "curtBettingUid"
+        ,function () {
+            return this._curtBettingUid;
+        }
+        ,function (value) {
+            this._curtBettingUid = value;
+        }
+    );
+    d(RoomManager, "curtPlayingUid"
+        ,function () {
+            return this._curtPlayingUid;
+        }
+        ,function (value) {
+            this._curtPlayingUid = value;
+        }
+    );
     RoomManager.MAX_PLAYER_CNT = 4;
     RoomManager._players = new Array();
     RoomManager._isOb = false;
+    RoomManager._curtBettingUid = 0;
+    RoomManager._curtPlayingUid = 0;
     return RoomManager;
 }());
 egret.registerClass(RoomManager,'RoomManager');

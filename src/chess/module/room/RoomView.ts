@@ -15,8 +15,8 @@ class RoomView extends BaseEuiView {
 		super.initUI();
 
         this.bbar = new PukeBar();
-		this.bbar.x = (App.StageUtils.getWidth()-PukeBar.ITEM_STACKED_WIDTH*5)/2;
-        this.bbar.y = App.StageUtils.getHeight() - 290;
+		this.bbar.x = (App.StageUtils.getWidth()-PukeBar.ITEM_STACKED_WIDTH*5)/2-100;
+        this.bbar.y = (App.StageUtils.getHeight() - PukeBar.ITEM_HEIGHT)/2-50;
         this.addChild(this.bbar);
 	}
 
@@ -37,6 +37,10 @@ class RoomView extends BaseEuiView {
 	public getOnePuke(info:PukeInfo):PukeInfo{
 		this.bbar.addItem(info);
 		return info;
+	}
+
+	public showHiddenPuke(info:PukeInfo):void{
+		this.bbar.showHiddenPuke(info);
 	}
 
 	public get pukeCount():number{

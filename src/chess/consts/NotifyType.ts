@@ -23,12 +23,18 @@ class NotifyType {
 	public static PLAYER_BET:number = 12;
 	// 下注结束, 开始要牌
 	public static PLAYING_START:number = 13;
+	// 更新当前可下注玩家
+	public static UPDATE_CUR_BETTING_UID:number = 14;
+	// 更新当前可要牌玩家
+	public static UPDATE_CUR_PLAYING_UID:number = 15;
+	// 玩家获得一张可见牌
+	public static PLAYER_HIT:number= 16;
 	// 玩家已经停牌
-	public static PLAYER_STAND:number = 14;
+	public static PLAYER_STAND:number = 17;
 	// 当所有人都停牌或倒计时结束, 一局结束(通知胜负和分数结算)
-	public static ROUND_FINISH:number = 15;
+	public static ROUND_FINISH:number = 18;
 	// 房卡用完, 最终结束(游戏过程被存储, 房间会被回收)
-	public static GAME_FINISH:number = 16;
+	public static GAME_FINISH:number = 19;
 
 	public static getDesc(type:number):string{
 
@@ -46,6 +52,9 @@ class NotifyType {
 			case NotifyType.ROUND_START: return "一局开始了";
 			case NotifyType.BETTING_START: return "报名结束，可以开始下注了";
 			case NotifyType.PLAYER_BET: return "有玩家下注了";
+			case NotifyType.UPDATE_CUR_BETTING_UID: return "更新当前可下注玩家";
+			case NotifyType.UPDATE_CUR_PLAYING_UID: return "更新当前可要牌玩家";
+			case NotifyType.PLAYER_HIT: return "玩家获得一张可见牌";
 			case NotifyType.PLAYING_START: return "下注结束，可以要牌了";
 			case NotifyType.PLAYER_STAND: return "有玩家已经停牌/爆牌了";
 			case NotifyType.ROUND_FINISH: return "一局结束了";

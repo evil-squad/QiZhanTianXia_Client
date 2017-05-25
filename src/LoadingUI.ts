@@ -34,9 +34,14 @@ class LoadingUI extends egret.Sprite {
         this.createView();
     }
 
+    private background:eui.Image;
     private textField:egret.TextField;
 
     private createView():void {
+
+        this.background = new eui.Image("enter_loading_bg_png");
+        this.addChild(this.background);
+
         this.textField = new egret.TextField();
         this.addChild(this.textField);
         this.textField.y = 300;

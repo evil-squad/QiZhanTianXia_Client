@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GetButtonSkin" width="211" height="75" currentState="up" xmlns:e="http://ns.egret.com/eui" states="up,down" >
+	<e:Image left="0" right="0" top="0" bottom="0" source="get_continue_button_png" top.down="2" bottom.down="-2"/>
+</e:Skin>

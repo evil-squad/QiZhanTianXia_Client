@@ -21,6 +21,12 @@ class NotifyConst {
 	public static PLAYER_BET:string = "NotifyType.PLAYER_BET";
 	// 下注结束, 开始要牌
 	public static PLAYING_START:string = "NotifyType.PLAYING_START";
+	// 更新当前可下注玩家
+	public static UPDATE_CUR_BETTING_UID:string = "NotifyType.UPDATE_CUR_BETTING_UID";
+	// 更新当前可要牌玩家
+	public static UPDATE_CUR_PLAYING_UID:string = "NotifyType.UPDATE_CUR_PLAYING_UID";
+	// 玩家获得一张可见牌
+	public static PLAYER_HIT:string= "PLAYER_HIT";
 	// 玩家已经停牌
 	public static PLAYER_STAND:string = "NotifyType.PLAYER_STAND";
 	// 当所有人都停牌或倒计时结束, 一局结束(通知胜负和分数结算)

@@ -7,7 +7,7 @@ class UserInfo {
 	private _nick:string;
 	private _icon:egret.ByteArray;
 	private _lastLoginTime:number;
-	private _roomCard:number;
+	private _roomCard:number = 0;
 
 	public constructor(pbObj:any) {
 		if (pbObj == null)
@@ -15,8 +15,8 @@ class UserInfo {
         this._uid = pbObj.uid;
         this._nick = pbObj.nick;
         this._icon = pbObj.icon;
-        this._lastLoginTime = pbObj.last_login_time;
-		this._roomCard = pbObj.room_card;
+        this._lastLoginTime = pbObj.lastLoginTime;
+		this._roomCard = pbObj.roomCard;
 	}
 
 	public get uid():number{

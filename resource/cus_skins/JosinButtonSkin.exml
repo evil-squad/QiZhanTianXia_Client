@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="JosinButtonSkin" width="454" height="165" currentState="up" xmlns:e="http://ns.egret.com/eui" states="up,down" >
+	<e:Image left="0" top="0" bottom="0" right="0" source="join_button_png" top.down="2" bottom.down="-2"/>
+</e:Skin>

@@ -14,6 +14,7 @@ var LoginProxy = (function (_super) {
      */
     p.login = function (openId, code, nick) {
         //var nick = "nick"+Math.floor(Math.random()*10);
+        MainManager.initLoginInfo(openId, nick, code);
         var debug = App.lookupProtoMessage(Msg.DEBUG).create({ openid: openId, nick: nick });
         var wechat = App.lookupProtoMessage(Msg.WECHAT).create({ code: code });
         var body = {

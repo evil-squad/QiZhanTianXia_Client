@@ -12,7 +12,7 @@
     <style>
         html, body {
             -ms-touch-action: none;
-            background: #888888;
+            background: #FFFFFF;
             padding: 0;
             border: 0;
             margin: 0;
@@ -50,10 +50,6 @@
 	<script egret="game" src="bin-debug/chess/components/puke/BasePukeItem.js"></script>
 	<script egret="game" src="bin-debug/chess/components/puke/PukeBar.js"></script>
 	<script egret="game" src="bin-debug/chess/components/puke/PukeItem.js"></script>
-	<script egret="game" src="bin-debug/chess/components/room/RoomSeatBar.js"></script>
-	<script egret="game" src="bin-debug/chess/components/room/RoomSeatItem.js"></script>
-	<script egret="game" src="bin-debug/chess/components/settlement/SettlementItem.js"></script>
-	<script egret="game" src="bin-debug/chess/components/settlement/SettlementList.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/Cmd.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/ControllerConst.js"></script>
 	<script egret="game" src="bin-debug/chess/consts/Direction.js"></script>
@@ -83,7 +79,9 @@
 	<script egret="game" src="bin-debug/chess/model/PukeInfo.js"></script>
 	<script egret="game" src="bin-debug/chess/model/UserInfo.js"></script>
 	<script egret="game" src="bin-debug/core/mvc/view/BaseEuiView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/base/BaseModelView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/base/BasePanelView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/base/CommonPanelView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/bet/BetConst.js"></script>
 	<script egret="game" src="bin-debug/core/mvc/controller/BaseController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/bet/BetController.js"></script>
@@ -91,6 +89,15 @@
 	<script egret="game" src="bin-debug/chess/module/bet/BetPanel.js"></script>
 	<script egret="game" src="bin-debug/chess/module/bet/BetProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/bet/BetTile.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/ChatConst.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/ChatController.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/ChatPopView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/ChatProxy.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/MovieClip2.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/components/ChatExpressions.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/components/ChatHistories.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/components/ChatMessages.js"></script>
+	<script egret="game" src="bin-debug/chess/module/chat/components/ExpressionItem.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeConst.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/home/HomeProxy.js"></script>
@@ -109,11 +116,15 @@
 	<script egret="game" src="bin-debug/chess/module/replyDismiss/ReplyDismissController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/replyDismiss/ReplyDismissPanel.js"></script>
 	<script egret="game" src="bin-debug/chess/module/replyDismiss/ReplyDismissProxy.js"></script>
+	<script egret="game" src="bin-debug/chess/module/room/PlayersView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomConst.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomProxy.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomUIView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/room/RoomView.js"></script>
+	<script egret="game" src="bin-debug/chess/module/room/components/RoomSeatBar.js"></script>
+	<script egret="game" src="bin-debug/chess/module/room/components/RoomSeatItem.js"></script>
+	<script egret="game" src="bin-debug/chess/module/roomEnter/NumberInputView.js"></script>
 	<script egret="game" src="bin-debug/chess/module/roomEnter/RoomEnterController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/roomEnter/RoomEnterPanel.js"></script>
 	<script egret="game" src="bin-debug/chess/module/roomEnter/RoomEnterProxy.js"></script>
@@ -122,6 +133,8 @@
 	<script egret="game" src="bin-debug/chess/module/servers/ServerItemRenderer.js"></script>
 	<script egret="game" src="bin-debug/chess/module/settlement/SettlementController.js"></script>
 	<script egret="game" src="bin-debug/chess/module/settlement/SettlementPanel.js"></script>
+	<script egret="game" src="bin-debug/chess/module/settlement/components/SettlementItem.js"></script>
+	<script egret="game" src="bin-debug/chess/module/settlement/components/SettlementList.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/BaseTips.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/CenterTips.js"></script>
 	<script egret="game" src="bin-debug/chess/module/tips/NormalTips.js"></script>
@@ -179,8 +192,8 @@
          data-orientation="auto"
          data-scale-mode="showAll"
          data-frame-rate="30"
-         data-content-width="320"
-         data-content-height="504"
+         data-content-width="1335"
+         data-content-height="750"
          data-show-paint-rect="false"
          data-multi-fingered="2"
          data-show-fps="false" data-show-log="false"

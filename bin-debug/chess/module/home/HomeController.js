@@ -34,10 +34,12 @@ var HomeController = (function (_super) {
     };
     p.createResp = function (roomId) {
         this.homeView.createRoomSuccess();
-        App.TipsUtils.showCenter("创建房间 roomId:" + roomId);
+        App.TipsUtils.showCenter("创建成功");
+        this.proxy.enterRoom();
     };
     p.enterResp = function (obj) {
         RoomManager.parsePlayers(obj.players, "home");
+        RoomManager.parseGameInfo(obj.gameInfo);
         App.SceneManager.runScene(SceneConsts.Room);
     };
     return HomeController;

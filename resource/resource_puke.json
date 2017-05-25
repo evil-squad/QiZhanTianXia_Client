@@ -1,288 +1,415 @@
 {
     "groups":[
         {
-            "keys":"puke0,puke1,puke2,puke3,puke4,puke5,puke6,puke7,puke8,puke9,puke10,puke11,puke12,puke13,puke14,puke15,puke16,puke17,puke18,puke19,puke20,puke21,puke22,puke23,puke24,puke25,puke26,puke27,puke28,puke29,puke30,puke31,puke32,puke33,puke34,puke35,puke36,puke37,puke38,puke39,puke40,puke41,puke42,puke43,puke44,puke45,puke46,puke47,puke48,puke49,puke50,puke51,puke52,puke53",
+            "keys":"puke_bg,puke0,puke1,puke2,puke3,puke4,puke5,puke6,puke7,puke8,puke9,puke10,puke11,puke12,puke13,puke14,puke15,puke16,puke17,puke18,puke19,puke20,puke21,puke22,puke23,puke24,puke25,puke26,puke27,puke28,puke29,puke30,puke31,puke32,puke33,puke34,puke35,puke36,puke37,puke38,puke39,puke40,puke41,puke42,puke43,puke44,puke45,puke46,puke47,puke48,puke49,puke50,puke51,puke52,puke53,expression00,expression01,expression02,expression03,expression04,expression05,expression06,expression07,expression08,expression09,expression10,expression11,expression12,expression13,expression14,expression15,expression16,expression17,expression18,expression19,expression20,expression21,expression22,expression23",
             "name":"preload_puke"
         }
     ],
     "resources":[
         {
+            "name":"puke_bg",
+            "type":"image",
+            "url":"assets/room/puke_bg.png"
+        },
+        {
             "name":"puke0",
             "type":"image",
-            "url":"assets/puke/101.jpg"
+            "url":"assets/puke/101.png"
         },
         {
             "name":"puke1",
             "type":"image",
-            "url":"assets/puke/102.jpg"
+            "url":"assets/puke/102.png"
         },
         {
             "name":"puke2",
             "type":"image",
-            "url":"assets/puke/103.jpg"
+            "url":"assets/puke/103.png"
         },
         {
             "name":"puke3",
             "type":"image",
-            "url":"assets/puke/104.jpg"
+            "url":"assets/puke/104.png"
         },
         {
             "name":"puke4",
             "type":"image",
-            "url":"assets/puke/105.jpg"
+            "url":"assets/puke/105.png"
         },
         {
             "name":"puke5",
             "type":"image",
-            "url":"assets/puke/106.jpg"
+            "url":"assets/puke/106.png"
         },
         {
             "name":"puke6",
             "type":"image",
-            "url":"assets/puke/107.jpg"
+            "url":"assets/puke/107.png"
         },
         {
             "name":"puke7",
             "type":"image",
-            "url":"assets/puke/108.jpg"
+            "url":"assets/puke/108.png"
         },
         {
             "name":"puke8",
             "type":"image",
-            "url":"assets/puke/109.jpg"
+            "url":"assets/puke/109.png"
         },
         {
             "name":"puke9",
             "type":"image",
-            "url":"assets/puke/110.jpg"
+            "url":"assets/puke/110.png"
         },
         {
             "name":"puke10",
             "type":"image",
-            "url":"assets/puke/111.jpg"
+            "url":"assets/puke/111.png"
         },
         {
             "name":"puke11",
             "type":"image",
-            "url":"assets/puke/112.jpg"
+            "url":"assets/puke/112.png"
         },
         {
             "name":"puke12",
             "type":"image",
-            "url":"assets/puke/113.jpg"
+            "url":"assets/puke/113.png"
         }
 
         ,
         {
             "name":"puke13",
             "type":"image",
-            "url":"assets/puke/201.jpg"
+            "url":"assets/puke/201.png"
         },
         {
             "name":"puke14",
             "type":"image",
-            "url":"assets/puke/202.jpg"
+            "url":"assets/puke/202.png"
         },
         {
             "name":"puke15",
             "type":"image",
-            "url":"assets/puke/203.jpg"
+            "url":"assets/puke/203.png"
         },
         {
             "name":"puke16",
             "type":"image",
-            "url":"assets/puke/204.jpg"
+            "url":"assets/puke/204.png"
         },
         {
             "name":"puke17",
             "type":"image",
-            "url":"assets/puke/205.jpg"
+            "url":"assets/puke/205.png"
         },
         {
             "name":"puke18",
             "type":"image",
-            "url":"assets/puke/206.jpg"
+            "url":"assets/puke/206.png"
         },
         {
             "name":"puke19",
             "type":"image",
-            "url":"assets/puke/207.jpg"
+            "url":"assets/puke/207.png"
         },
         {
             "name":"puke20",
             "type":"image",
-            "url":"assets/puke/208.jpg"
+            "url":"assets/puke/208.png"
         },
         {
             "name":"puke21",
             "type":"image",
-            "url":"assets/puke/209.jpg"
+            "url":"assets/puke/209.png"
         },
         {
             "name":"puke22",
             "type":"image",
-            "url":"assets/puke/210.jpg"
+            "url":"assets/puke/210.png"
         },
         {
             "name":"puke23",
             "type":"image",
-            "url":"assets/puke/211.jpg"
+            "url":"assets/puke/211.png"
         },
         {
             "name":"puke24",
             "type":"image",
-            "url":"assets/puke/212.jpg"
+            "url":"assets/puke/212.png"
         },
         {
             "name":"puke25",
             "type":"image",
-            "url":"assets/puke/213.jpg"
+            "url":"assets/puke/213.png"
         }
 
         ,
         {
             "name":"puke26",
             "type":"image",
-            "url":"assets/puke/301.jpg"
+            "url":"assets/puke/301.png"
         },
         {
             "name":"puke27",
             "type":"image",
-            "url":"assets/puke/302.jpg"
+            "url":"assets/puke/302.png"
         },
         {
             "name":"puke28",
             "type":"image",
-            "url":"assets/puke/303.jpg"
+            "url":"assets/puke/303.png"
         },
         {
             "name":"puke29",
             "type":"image",
-            "url":"assets/puke/304.jpg"
+            "url":"assets/puke/304.png"
         },
         {
             "name":"puke30",
             "type":"image",
-            "url":"assets/puke/305.jpg"
+            "url":"assets/puke/305.png"
         },
         {
             "name":"puke31",
             "type":"image",
-            "url":"assets/puke/306.jpg"
+            "url":"assets/puke/306.png"
         },
         {
             "name":"puke32",
             "type":"image",
-            "url":"assets/puke/307.jpg"
+            "url":"assets/puke/307.png"
         },
         {
             "name":"puke33",
             "type":"image",
-            "url":"assets/puke/308.jpg"
+            "url":"assets/puke/308.png"
         },
         {
             "name":"puke34",
             "type":"image",
-            "url":"assets/puke/309.jpg"
+            "url":"assets/puke/309.png"
         },
         {
             "name":"puke35",
             "type":"image",
-            "url":"assets/puke/310.jpg"
+            "url":"assets/puke/310.png"
         },
         {
             "name":"puke36",
             "type":"image",
-            "url":"assets/puke/311.jpg"
+            "url":"assets/puke/311.png"
         },
         {
             "name":"puke37",
             "type":"image",
-            "url":"assets/puke/312.jpg"
+            "url":"assets/puke/312.png"
         },
         {
             "name":"puke38",
             "type":"image",
-            "url":"assets/puke/313.jpg"
+            "url":"assets/puke/313.png"
         }
 
         ,
         {
             "name":"puke39",
             "type":"image",
-            "url":"assets/puke/401.jpg"
+            "url":"assets/puke/401.png"
         },
         {
             "name":"puke40",
             "type":"image",
-            "url":"assets/puke/402.jpg"
+            "url":"assets/puke/402.png"
         },
         {
             "name":"puke41",
             "type":"image",
-            "url":"assets/puke/403.jpg"
+            "url":"assets/puke/403.png"
         },
         {
             "name":"puke42",
             "type":"image",
-            "url":"assets/puke/404.jpg"
+            "url":"assets/puke/404.png"
         },
         {
             "name":"puke43",
             "type":"image",
-            "url":"assets/puke/405.jpg"
+            "url":"assets/puke/405.png"
         },
         {
             "name":"puke44",
             "type":"image",
-            "url":"assets/puke/406.jpg"
+            "url":"assets/puke/406.png"
         },
         {
             "name":"puke45",
             "type":"image",
-            "url":"assets/puke/407.jpg"
+            "url":"assets/puke/407.png"
         },
         {
             "name":"puke46",
             "type":"image",
-            "url":"assets/puke/408.jpg"
+            "url":"assets/puke/408.png"
         },
         {
             "name":"puke47",
             "type":"image",
-            "url":"assets/puke/409.jpg"
+            "url":"assets/puke/409.png"
         },
         {
             "name":"puke48",
             "type":"image",
-            "url":"assets/puke/410.jpg"
+            "url":"assets/puke/410.png"
         },
         {
             "name":"puke49",
             "type":"image",
-            "url":"assets/puke/411.jpg"
+            "url":"assets/puke/411.png"
         },
         {
             "name":"puke50",
             "type":"image",
-            "url":"assets/puke/412.jpg"
+            "url":"assets/puke/412.png"
         },
         {
             "name":"puke51",
             "type":"image",
-            "url":"assets/puke/413.jpg"
+            "url":"assets/puke/413.png"
         }
 
         ,
         {
             "name":"puke52",
             "type":"image",
-            "url":"assets/puke/501.jpg"
+            "url":"assets/puke/501.png"
         },
         {
             "name":"puke53",
             "type":"image",
-            "url":"assets/puke/502.jpg"
+            "url":"assets/puke/502.png"
+        }
+
+        ,
+        {
+            "name":"expression00",
+            "type":"image",
+            "url":"assets/expression/00.png"
+        },
+        {
+            "name":"expression01",
+            "type":"image",
+            "url":"assets/expression/01.png"
+        },
+        {
+            "name":"expression02",
+            "type":"image",
+            "url":"assets/expression/02.png"
+        },
+        {
+            "name":"expression03",
+            "type":"image",
+            "url":"assets/expression/03.png"
+        },
+        {
+            "name":"expression04",
+            "type":"image",
+            "url":"assets/expression/04.png"
+        },
+        {
+            "name":"expression05",
+            "type":"image",
+            "url":"assets/expression/05.png"
+        },
+        {
+            "name":"expression06",
+            "type":"image",
+            "url":"assets/expression/06.png"
+        },
+        {
+            "name":"expression07",
+            "type":"image",
+            "url":"assets/expression/07.png"
+        },
+        {
+            "name":"expression08",
+            "type":"image",
+            "url":"assets/expression/08.png"
+        },
+        {
+            "name":"expression09",
+            "type":"image",
+            "url":"assets/expression/09.png"
+        },
+        {
+            "name":"expression10",
+            "type":"image",
+            "url":"assets/expression/10.png"
+        },
+        {
+            "name":"expression11",
+            "type":"image",
+            "url":"assets/expression/11.png"
+        },
+        {
+            "name":"expression12",
+            "type":"image",
+            "url":"assets/expression/12.png"
+        },
+        {
+            "name":"expression13",
+            "type":"image",
+            "url":"assets/expression/13.png"
+        },
+        {
+            "name":"expression14",
+            "type":"image",
+            "url":"assets/expression/14.png"
+        },
+        {
+            "name":"expression15",
+            "type":"image",
+            "url":"assets/expression/15.png"
+        },
+        {
+            "name":"expression16",
+            "type":"image",
+            "url":"assets/expression/16.png"
+        },
+        {
+            "name":"expression17",
+            "type":"image",
+            "url":"assets/expression/17.png"
+        },
+        {
+            "name":"expression18",
+            "type":"image",
+            "url":"assets/expression/18.png"
+        },
+        {
+            "name":"expression19",
+            "type":"image",
+            "url":"assets/expression/19.png"
+        },
+        {
+            "name":"expression20",
+            "type":"image",
+            "url":"assets/expression/20.png"
+        },
+        {
+            "name":"expression21",
+            "type":"image",
+            "url":"assets/expression/21.png"
+        },
+        {
+            "name":"expression22",
+            "type":"image",
+            "url":"assets/expression/22.png"
+        },
+        {
+            "name":"expression23",
+            "type":"image",
+            "url":"assets/expression/23.png"
         }
     ]
 }

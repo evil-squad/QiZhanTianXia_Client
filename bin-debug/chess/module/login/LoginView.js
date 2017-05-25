@@ -2,12 +2,12 @@ var LoginView = (function (_super) {
     __extends(LoginView, _super);
     function LoginView($controller, $parent) {
         _super.call(this, $controller, $parent);
-        if (App.DeviceUtils.IsMobile) {
-            this.skinName = "resource/skins/vmobile/LoginViewMSkin.exml";
-        }
-        else {
-            this.skinName = "resource/skins/LoginSkin.exml";
-        }
+        this.skinName = "resource/skins/LoginSkin.exml";
+        // if(App.DeviceUtils.IsMobile){
+        //     this.skinName = "resource/skins/vmobile/LoginViewMSkin.exml";
+        // }else{
+        //     this.skinName = "resource/skins/LoginSkin.exml";
+        // }
     }
     var d = __define,c=LoginView,p=c.prototype;
     /**
@@ -16,7 +16,7 @@ var LoginView = (function (_super) {
      */
     p.initUI = function () {
         _super.prototype.initUI.call(this);
-        this.openIdInput.text = "openid_1_" + egret.Capabilities.os;
+        this.openIdInput.text = "openid_3_" + egret.Capabilities.os;
         this.nickInput.text = "nick" + Math.floor(Math.random() * 100);
         //this.passwordInput.displayAsPassword = true;
         this.enterBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onLogin, this);
@@ -78,7 +78,7 @@ var LoginView = (function (_super) {
         //     return;
         // }
         //var openId = egret.Capabilities.os+""+(Math.floor(Math.random()*10));
-        var code = "1";
+        var code = "2";
         this.applyFunc(LoginConst.LOGIN_REQ, openId, code, nick);
     };
     /**

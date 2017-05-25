@@ -9,5 +9,6 @@ var ControllerConst;
     ControllerConst[ControllerConst["ReplyDismiss"] = 10006] = "ReplyDismiss";
     ControllerConst[ControllerConst["Settlement"] = 10007] = "Settlement";
     ControllerConst[ControllerConst["Bet"] = 10008] = "Bet";
+    ControllerConst[ControllerConst["Chat"] = 10009] = "Chat";
 })(ControllerConst || (ControllerConst = {}));
 //# sourceMappingURL=ControllerConst.js.map

@@ -148,4 +148,18 @@ enum ERR {
 	CANNOT_PLAY_IN_NOT_START_ROOM = 2052;
 	// 不能获得没开始房间的牌局信息
 	CANNOT_GET_GAME_DATA_IN_NOT_START_ROOM = 2053;
+	// 存储房间信息失败
+	FAILED_STORE_ROOM = 2054;
+	// 不是当前可以要牌的玩家
+	NOT_CUR_PLAYING_UID = 2055;
+	// 不是当前可以下注的玩家
+	NOT_CUR_BETTING_UID = 2056;
+	// 庄家不能下注
+	BANKER_CANNOT_BET = 2057;
+	// 下注金额太少
+	BET_TOO_SMALL = 2058;
+	// 下注金额太多
+	BET_TOO_LARGE = 2059;
+	// 不能重复应答房间解散提议
+	CANNOT_DUP_REPLY_DISMISS_ROOM = 2060;
 }

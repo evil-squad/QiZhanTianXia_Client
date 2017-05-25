@@ -2,6 +2,10 @@ class ErrorConst {
 	public constructor() {
 	}
 
+	public static RELOAD_CODE:number = 1002;//NOFOUND_PLAYER = 1002;
+	public static NOT_IN_ROOM:number = 2008;
+	public static NOFOUND_ROOM:number = 2010;
+
 	private static list:Array<ErrorInfo> = [
 
 		new ErrorInfo(1,"FAILED_DECODE"),
@@ -78,7 +82,14 @@ class ErrorConst {
 		new ErrorInfo(2050,"已停牌的玩家不能再要牌了"),
 		new ErrorInfo(2051,"玩家没有参加本局游戏"),
 		new ErrorInfo(2052,"不能在没开始的房间玩牌(要牌/停牌)"),
-		new ErrorInfo(2053,"不能获得没开始房间的牌局信息")
+		new ErrorInfo(2053,"存储房间信息失败"),
+		new ErrorInfo(2054,"不能获得没开始房间的牌局信息"),
+		new ErrorInfo(2055,"不是当前可以要牌的玩家"),
+		new ErrorInfo(2056,"不是当前可以下注的玩家"),
+		new ErrorInfo(2057,"庄家不能下注"),
+		new ErrorInfo(2058,"下注金额太少"),
+		new ErrorInfo(2059,"下注金额太多"),
+		new ErrorInfo(2060,"不能重复应答房间解散提议")
 	];
 
 	public static getDetail(code:number):String{
@@ -89,4 +100,5 @@ class ErrorConst {
 		}
 		return "未知错误";
 	}
+
 }
